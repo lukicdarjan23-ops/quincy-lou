@@ -50,28 +50,34 @@ Each section maps to a specific job:
 
 ## Design system
 
-**Colour.** `--ink #101014` · `--ground #F2F1EE` (a warm-biased neutral, not a flat
-grey) · `--paper #FFFFFF` · `--violet #6A4DFF` · `--lilac #EBE6FF` ·
-`--melon #FF7A59` · `--pitch #131317`. Violet carries every call to action; melon
-appears only on figures and the headline underline. Everything else stays quiet.
+Modelled on designjoy.co's visual language.
 
-**Type.** Schibsted Grotesk at 800/900 with tight negative tracking for display,
-Instrument Sans at 400/500 for body. Both from Google Fonts, with real fallback
-stacks.
+**Colour.** `--ground #EFEEEA` (warm light grey) · `--paper #FFFFFF` ·
+`--ink #0D0D0D` · `--ash #5C5C56` · `--ash-light #6A6A64`. There is deliberately
+no flat brand hue. All colour arrives through **gradient blobs** (`.blob-1`
+through `.blob-5` and `.blob-full`), each built from four or five layered
+`radial-gradient()` stops so they read as soft multi-colour fields rather than
+linear ramps. One full-black band carries the pricing card, the closing CTA and
+the footer.
 
-**Layout.** A 1120px column, alternating ground/paper bands, 28px card radii and
-pill CTAs.
+**Type.** The signature is a bold grotesk mixed with an italic serif *inside the
+same headline*: Schibsted Grotesk 800 with -0.042em tracking for the sans,
+Instrument Serif Italic for the emphasised words ("done *properly*",
+"*Frequently* asked questions"). Instrument Sans carries body copy. Any `<em>`
+inside a heading picks up the serif automatically.
 
-**Theming.** Light and dark are both designed. All colour lives in tokens defined
-on bare `:root`, redefined under `@media (prefers-color-scheme: dark)` (guarded as
-`:root:not([data-theme="light"])`) and again under `:root[data-theme="dark"]`, so
-the page resolves correctly whether the viewer set a theme explicitly or left it on
-system. No component sets a colour outside the token set.
+**Layout.** A 1080px column. Left-aligned hero with a gradient card alongside,
+centred section heads, white cards at 22px radius with no shadow, black pill
+CTAs, and tiny uppercase letterspaced eyebrows rather than coloured pills.
 
-**Accessibility.** Every sampled text/background pair clears WCAG AA in both
-themes. Visible 3px focus rings, a skip link, keyboard-operable FAQ, and
-`prefers-reduced-motion` disables the reveal animation entirely rather than
-speeding it up.
+**Theming.** This is a committed single-look light design, matching the brand it
+is modelled on. There is no dark variant, so every colour — including `body`
+background — is painted explicitly from tokens rather than inherited, and the
+page holds on any host ground.
+
+**Accessibility.** All 29 sampled text/background pairs clear WCAG AA. Visible
+focus rings, a skip link, keyboard-operable FAQ via native `<details>`, and
+`prefers-reduced-motion` disables the reveal animation entirely.
 
 ## Images
 

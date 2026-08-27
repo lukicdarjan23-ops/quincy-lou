@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Build — Quincy Lou</title>
+<title>Build &#8212; Quincy Lou</title>
 <meta name="description" content="Website build from Quincy Lou. Fast, accessible, editable by your own team, and yours to own from day one.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@500;700;800&display=swap">
 <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
@@ -19,8 +19,8 @@
 
     <div class="brand">
       <a class="brand__row" href="../index.html" aria-label="Quincy Lou — home">
-        <span class="brand__mark" aria-hidden="true">Q</span>
-        <span class="brand__name">quincylou</span>
+        <span class="brand__mark blob-full" aria-hidden="true"></span>
+        <span class="brand__name">Quincy Lou</span>
       </a>
       <p class="brand__line">We design, build and optimise websites that sell.</p>
     </div>
@@ -38,7 +38,7 @@
         <span class="header-phone__label">Talk to a human</span>
         <a class="header-phone__num" href="tel:+442079460318">020 7946 0318</a>
       </div>
-      <a class="btn btn--primary btn--sm" href="#review">Get a website review</a>
+      <a class="btn btn--dark btn--sm" href="#review">Get a website review</a>
     </div>
 
   </div>
@@ -47,60 +47,80 @@
 <main id="main">
 
 <section class="page-hero">
-  <div class="wrap page-hero__inner">
-    <p class="crumb"><a href="../index.html">Home</a> <span aria-hidden="true">/</span> Services <span aria-hidden="true">/</span> Build</p>
-    <span class="eyebrow" data-reveal><span class="dot" aria-hidden="true"></span>Service 02 · Build</span>
-    <h1 data-reveal data-reveal-delay="60">Fast, accessible, and yours to own.</h1>
-    <p data-reveal data-reveal-delay="120">A site your team can edit on a Tuesday afternoon without ringing an agency, on hosting you control, with the tracking already wired up.</p>
-    <div class="page-hero__ctas" data-reveal data-reveal-delay="180">
-      <a class="btn btn--primary btn--lg" href="#review">Get a website review</a>
-      <a class="btn btn--ghost btn--lg" href="../index.html#results">Explore our work</a>
+  <div class="wrap page-hero__grid">
+    <div class="page-hero__copy">
+      <p class="crumb"><a href="../index.html">Home</a> <span aria-hidden="true">/</span> Services <span aria-hidden="true">/</span> Build</p>
+      <h1 data-reveal>Fast, accessible, and <em>yours to own</em></h1>
+      <p data-reveal data-reveal-delay="60">A site your team can edit on a Tuesday afternoon without ringing an agency, on hosting you control, with the tracking already wired up.</p>
+      <div class="page-hero__ctas" data-reveal data-reveal-delay="110">
+        <a class="btn btn--dark btn--lg" href="#review">Get a website review</a>
+        <a class="btn btn--outline btn--lg" href="../index.html#results">Explore our work</a>
+      </div>
+      <div class="trust" data-reveal data-reveal-delay="160">
+        <span class="trust__item"><b>4.9<span class="stars" aria-hidden="true"> &#9733;&#9733;&#9733;&#9733;&#9733;</span></b> 87 reviews</span>
+        <span class="trust__item"><b>12 years</b> since 2014</span>
+        <span class="trust__item"><b>310</b> sites shipped</span>
+      </div>
+    </div>
+
+    <div class="gcard blob-2" data-reveal data-reveal-delay="90">
+      <span class="gcard__tag">Service 02</span>
+      <div class="gcard__panel">
+        <h2>Build<br>only</h2>
+        <p>Already have designs? We build them, from &#163;6,200, on your accounts and your hosting.</p>
+        <a class="btn btn--dark" href="#review">Get a website review</a>
+        <div class="gcard__row">
+          <span class="plate plate--avatar" role="img" aria-label="Portrait of Rob Threlfall"></span>
+          <span>Rob records it himself.<br>Usually same week.</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section section--paper section--tight">
+<section class="section section--tight">
   <div class="wrap split">
     <div class="split__copy" data-reveal>
-      <h2>No black boxes, no hostage situations.</h2>
+      <span class="eyebrow">How we work</span>
+      <h2>No black boxes,<br>no <em>hostage situations</em></h2>
       <p>Everything ships on your accounts: your repository, your hosting, your domain,
       your analytics. If you sack us tomorrow, nothing switches off and nothing needs buying back.</p>
       <p>We build to WCAG 2.2 AA as standard rather than as a paid extra, and every page has to
       pass Core Web Vitals on a mid-range Android over 4G before it is allowed to launch.</p>
       <a class="svc__link" href="../index.html#pricing">See what it costs <span class="arrow" aria-hidden="true">&#8594;</span></a>
     </div>
-    <span class="plate plate--wide" role="img" aria-label="Build environment and component library for a client project" data-reveal data-reveal-delay="100"></span>
+    <span class="plate plate--wide" role="img" aria-label="Build environment and component library for a client project" data-reveal data-reveal-delay="80"></span>
   </div>
 </section>
 
-<section class="section">
+<section class="section section--tight">
   <div class="wrap">
     <div class="sec-head" data-reveal>
-      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>What you get</span>
-      <h2>Everything on the build.</h2>
+      <span class="eyebrow">What you get</span>
+      <h2>Everything on the <em>build</em></h2>
     </div>
     <div class="deliverables">
       <article class="deliverable" data-reveal>
         <h3>Sub-second loads</h3>
         <p>Budgeted, not hoped for. Every template is tested on a mid-range Android over 4G.</p>
       </article>
-      <article class="deliverable" data-reveal data-reveal-delay="70">
+      <article class="deliverable" data-reveal data-reveal-delay="60">
         <h3>WCAG 2.2 AA</h3>
         <p>Keyboard paths, contrast and focus states checked with a screen reader, not just a linter.</p>
       </article>
-      <article class="deliverable" data-reveal data-reveal-delay="140">
+      <article class="deliverable" data-reveal data-reveal-delay="120">
         <h3>A CMS people use</h3>
         <p>Content types set up around your actual pages, so editing feels like filling in a form.</p>
       </article>
-      <article class="deliverable" data-reveal data-reveal-delay="210">
+      <article class="deliverable" data-reveal data-reveal-delay="180">
         <h3>Content migration</h3>
         <p>We move the pages worth keeping and quietly retire the ones nobody has opened since 2021.</p>
       </article>
-      <article class="deliverable" data-reveal data-reveal-delay="280">
+      <article class="deliverable" data-reveal data-reveal-delay="240">
         <h3>Tracking before launch</h3>
-        <p>Analytics, call tracking and form goals live on day one, so the 90 days actually measure something.</p>
+        <p>Analytics, call tracking and form goals live on day one, so the 90 days measure something.</p>
       </article>
-      <article class="deliverable" data-reveal data-reveal-delay="350">
+      <article class="deliverable" data-reveal data-reveal-delay="300">
         <h3>Training and handover</h3>
         <p>A session with your team plus a short video for whoever joins next year.</p>
       </article>
@@ -108,62 +128,73 @@
   </div>
 </section>
 
-<section class="section section--pitch section--tight">
+<section class="section section--tight on-ink">
   <div class="wrap">
     <div class="sec-head" data-reveal>
-      <span class="eyebrow eyebrow--pitch"><span class="dot" aria-hidden="true"></span>Proof</span>
-      <h2>Build work, measured.</h2>
+      <span class="eyebrow">Proof</span>
+      <h2>Build work, <em>measured</em></h2>
       <p>What the build side of three recent projects actually moved.</p>
     </div>
-    <div class="steps">
-      <div class="step step--proof" data-reveal>
-        <span class="step__metric">3.4&#215; quote requests</span>
+    <div class="proofs">
+      <div class="proof" data-reveal>
+        <p class="proof__metric">3.4&#215; quote requests</p>
         <h3>Northbeam Roofing</h3>
         <p>Rebuilt around a single action: book a survey. Same ad spend, far less friction getting to it.</p>
       </div>
-      <div class="step step--proof" data-reveal data-reveal-delay="80">
-        <span class="step__metric">+164% enquiries</span>
+      <div class="proof" data-reveal data-reveal-delay="70">
+        <p class="proof__metric">+164% enquiries</p>
         <h3>Halverson Legal</h3>
         <p>Four-field form, server-side validation, replies routed to a human within the hour.</p>
       </div>
-      <div class="step step--proof" data-reveal data-reveal-delay="160">
-        <span class="step__metric">0.9s median LCP</span>
+      <div class="proof" data-reveal data-reveal-delay="140">
+        <p class="proof__metric">0.9s median LCP</p>
         <h3>Load times</h3>
         <p>Median Largest Contentful Paint across every site we launched last year, on 4G.</p>
       </div>
-      <div class="step step--proof" data-reveal data-reveal-delay="240">
-        <span class="step__metric">From £6,200</span>
+      <div class="proof" data-reveal data-reveal-delay="210">
+        <p class="proof__metric">From &#163;6,200</p>
         <h3>What it costs</h3>
-        <p>Build sits inside a full project from £8,500, or runs build-only from £6,200 on someone else’s designs.</p>
+        <p>Build sits inside a full project from &#163;8,500, or runs build-only on someone else&#8217;s designs.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section close-cta" id="review">
-  <div class="wrap">
-    <div class="close-cta__card" data-reveal>
-      <h2>Find out what your build is costing you.</h2>
-      <p>Send us your URL. We’ll record a 12-minute walkthrough naming the three things
-      losing you the most enquiries, and how we’d fix each one.</p>
-      <div class="close-cta__ctas">
-        <a class="btn btn--onviolet btn--lg" href="mailto:hello@quincylou.com?subject=Website%20review%20request">Get a website review</a>
-        <a class="btn btn--onviolet-ghost btn--lg" href="tel:+442079460318">Or call 020 7946 0318</a>
+<section class="close-cta on-ink" id="review">
+  <div class="wrap close-grid">
+    <div class="close-copy">
+      <span class="eyebrow" data-reveal>The next step</span>
+      <h2 data-reveal data-reveal-delay="50">Find out what your build is <em>costing you</em></h2>
+      <p data-reveal data-reveal-delay="100">Send us your URL. We&#8217;ll record a 12-minute walkthrough naming the three
+      things losing you the most enquiries, and how we&#8217;d fix each one.</p>
+      <div class="close-ctas" data-reveal data-reveal-delay="150">
+        <a class="btn btn--light btn--lg" href="mailto:hello@quincylou.com?subject=Website%20review%20request">Get a website review</a>
+        <a class="btn btn--outline-ink btn--lg" href="tel:+442079460318">Or call 020 7946 0318</a>
       </div>
-      <p class="reassure"><span class="dot" aria-hidden="true"></span>Free, no pitch, no follow-up sequence. You keep the video either way.</p>
-      <div class="trustbar">
-        <div class="trustbar__logos" aria-label="Clients we work with">
+      <p class="reassure" data-reveal data-reveal-delay="190"><span class="dot" aria-hidden="true"></span>Free, no pitch, no follow-up sequence. You keep the video either way.</p>
+      <div class="trust" data-reveal data-reveal-delay="230">
+        <span class="trust__item"><b>4.9<span class="stars" aria-hidden="true"> &#9733;&#9733;&#9733;&#9733;&#9733;</span></b> 87 Google reviews</span>
+        <span class="trust__item"><b>310</b> sites since 2014</span>
+        <span class="trust__item"><b>2 days</b> turnaround</span>
+        <span class="trust__logos">
           <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
           <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
           <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
-          <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
+        </span>
+      </div>
+    </div>
+
+    <div class="gcard blob-full" data-reveal data-reveal-delay="120">
+      <span class="gcard__tag">2 day turnaround</span>
+      <div class="gcard__panel">
+        <h2>What you<br>get back</h2>
+        <p>A 12-minute screen recording, a one-page summary of the three fixes, and a
+        rough number for what each is worth. No deck.</p>
+        <a class="btn btn--dark" href="mailto:hello@quincylou.com?subject=Website%20review%20request">Send us your URL</a>
+        <div class="gcard__row">
+          <span class="plate plate--avatar" role="img" aria-label="Portrait of Sadie Okonjo"></span>
+          <span>Reviewed by Sadie,<br>head of conversion.</span>
         </div>
-        <span class="trustbar__rule" aria-hidden="true"></span>
-        <div class="trustbar__stat"><b>4.9<span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></b><span>87 Google reviews</span></div>
-        <span class="trustbar__rule" aria-hidden="true"></span>
-        <div class="trustbar__stat"><b>310 sites</b><span>since 2014</span></div>
-        <span class="trustbar__rule" aria-hidden="true"></span>
-        <div class="trustbar__stat"><b>2 days</b><span>average review turnaround</span></div>
       </div>
     </div>
   </div>
@@ -173,15 +204,16 @@
 
 <footer class="site-footer">
   <div class="wrap">
+    <div class="footer-rule"></div>
+
     <div class="footer-top">
 
       <div class="footer-brand">
         <span class="brand__row">
-          <span class="brand__mark" aria-hidden="true">Q</span>
-          <span class="brand__name">quincylou</span>
+          <span class="brand__mark blob-full" aria-hidden="true"></span>
+          <span class="brand__name">Quincy Lou</span>
         </span>
-        <p>A ten-person studio in Bermondsey. We design, build and optimise websites
-        for service businesses that need the phone to ring.</p>
+        <p>A ten-person studio in Bermondsey. We design, build and optimise websites for service businesses that need the phone to ring.</p>
       </div>
 
       <div class="footer-col">
@@ -222,6 +254,8 @@
 
     </div>
 
+    <div class="footer-rule"></div>
+
     <div class="people">
       <div class="person">
         <span class="plate plate--avatar" role="img" aria-label="Portrait of Quincy Adeyemi"></span>
@@ -241,13 +275,21 @@
       </div>
     </div>
 
+    <div class="footer-rule"></div>
+
     <div class="footer-base">
-      <p>&copy; 2026 Quincy Lou Ltd. Registered in England &amp; Wales, no. 09184427.</p>
+      <p>© 2026 Quincy Lou Ltd. Registered in England &amp; Wales, no. 09184427.</p>
       <ul>
-        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#main">Back to top</a></li>
         <li><a href="../index.html#faq">FAQ</a></li>
         <li><a href="mailto:hello@quincylou.com">hello@quincylou.com</a></li>
       </ul>
+    </div>
+
+    <div class="dots" aria-hidden="true">
+      <span class="blob-1"></span><span class="blob-2"></span><span class="blob-3"></span>
+      <span class="blob-4"></span><span class="blob-5"></span><span class="blob-full"></span>
+      <span class="blob-2"></span><span class="blob-1"></span>
     </div>
 
   </div>

@@ -7,7 +7,7 @@
 <meta name="description" content="Quincy Lou designs, builds and optimises websites for service businesses. Fixed price, fixed launch date, no surprises. Websites from £8,500.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@500;700;800&display=swap">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
@@ -18,11 +18,10 @@
 <header class="site-header">
   <div class="wrap header-inner">
 
-    <!-- Logo top left, orientation line directly under it -->
     <div class="brand">
       <a class="brand__row" href="index.html" aria-label="Quincy Lou — home">
-        <span class="brand__mark" aria-hidden="true">Q</span>
-        <span class="brand__name">quincylou</span>
+        <span class="brand__mark blob-full" aria-hidden="true"></span>
+        <span class="brand__name">Quincy Lou</span>
       </a>
       <p class="brand__line">We design, build and optimise websites that sell.</p>
     </div>
@@ -35,13 +34,12 @@
       <a href="#faq">FAQ</a>
     </nav>
 
-    <!-- Phone top right, not buried in the footer -->
     <div class="header-right">
       <div class="header-phone">
         <span class="header-phone__label">Talk to a human</span>
         <a class="header-phone__num" href="tel:+442079460318">020 7946 0318</a>
       </div>
-      <a class="btn btn--primary btn--sm" href="#review">Get a website review</a>
+      <a class="btn btn--dark btn--sm" href="#review">Get a website review</a>
     </div>
 
   </div>
@@ -51,94 +49,99 @@
 
 <!-- ============================= HERO ============================= -->
 <section class="hero">
-  <div class="wrap hero__inner">
-    <span class="eyebrow" data-reveal><span class="dot" aria-hidden="true"></span>Design · Build · Optimise</span>
+  <div class="wrap hero__grid">
 
-    <h1 data-reveal data-reveal-delay="60">
-      More booked jobs from the traffic you <span class="mark">already have</span>.
-    </h1>
+    <div class="hero__copy">
+      <h1 data-reveal>More booked jobs from the traffic you <em>already have</em></h1>
 
-    <p class="hero__sub" data-reveal data-reveal-delay="120">
-      We build websites for service businesses that need the phone to ring, not an
-      award. Fixed price, fixed launch date, no surprises.
-    </p>
+      <p class="hero__sub" data-reveal data-reveal-delay="60">
+        Websites for service businesses that need the phone to ring, not an award.
+        Fixed price, fixed launch date. No surprises.
+      </p>
 
-    <div class="hero__ctas" data-reveal data-reveal-delay="180">
-      <a class="btn btn--primary btn--lg" href="#review">Get a website review</a>
-      <a class="btn btn--ghost btn--lg" href="#results">Explore our work</a>
+      <div class="hero__ctas" data-reveal data-reveal-delay="110">
+        <a class="btn btn--dark btn--lg" href="#review">Get a website review</a>
+        <a class="btn btn--outline btn--lg" href="#results">Explore our work</a>
+      </div>
+
+      <p class="hero__note" data-reveal data-reveal-delay="150">
+        Free, no pitch. A 12-minute video back inside two working days.
+      </p>
+
+      <!-- trust sits directly under the CTAs -->
+      <div class="trust" data-reveal data-reveal-delay="200">
+        <span class="trust__item">
+          <b>4.9<span class="stars" aria-hidden="true"> ★★★★★</span></b> 87 reviews
+        </span>
+        <span class="trust__item"><b>12 years</b> since 2014</span>
+        <span class="trust__item"><b>310</b> sites shipped, still standing</span>
+      </div>
     </div>
 
-    <p class="hero__note" data-reveal data-reveal-delay="220">
-      Free, no pitch. A 12-minute video back inside two working days.
-    </p>
-
-    <!-- Trust sits directly under the CTAs -->
-    <div class="trustbar" data-reveal data-reveal-delay="280">
-      <div class="trustbar__logos" aria-label="Clients we work with">
-        <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
-        <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
-        <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
-        <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
-        <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
+    <div class="gcard blob-full" data-reveal data-reveal-delay="120">
+      <span class="gcard__tag">Free review</span>
+      <div class="gcard__panel">
+        <h2>Send us<br>your URL</h2>
+        <p>
+          We record a 12-minute walkthrough of your current site and name the three
+          things costing you the most enquiries.
+        </p>
+        <a class="btn btn--dark" href="#review">Get a website review</a>
+        <div class="gcard__row">
+          <span class="plate plate--avatar" role="img" aria-label="Portrait of Rob Threlfall"></span>
+          <span>Rob records it himself.<br>Usually same week.</span>
+        </div>
       </div>
+    </div>
 
-      <span class="trustbar__rule" aria-hidden="true"></span>
+  </div>
 
-      <div class="trustbar__stat">
-        <b>4.9<span class="stars" aria-hidden="true">★★★★★</span></b>
-        <span>from 87 Google reviews</span>
-      </div>
-
-      <span class="trustbar__rule" aria-hidden="true"></span>
-
-      <div class="trustbar__stat">
-        <b>12 years</b>
-        <span>independent since 2014</span>
-      </div>
-
-      <span class="trustbar__rule" aria-hidden="true"></span>
-
-      <div class="trustbar__stat">
-        <b>310 sites</b>
-        <span>shipped and still standing</span>
-      </div>
+  <!-- client logo strip, greyscale, under the fold of the CTAs -->
+  <div class="wrap">
+    <div class="logostrip" aria-label="Clients we work with" data-reveal>
+      <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
+      <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
+      <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
+      <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
+      <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
     </div>
   </div>
 </section>
 
 <!-- =========================== PROBLEM ============================ -->
-<section class="section section--paper" id="problem">
-  <div class="wrap problem__grid">
+<section class="section section--tight" id="problem">
+  <div class="wrap">
 
-    <div class="problem__copy" data-reveal>
-      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Sound familiar?</span>
-      <h2>Your website looks fine. It just doesn’t sell.</h2>
-      <p class="lede">
-        Visitors can’t work out what you do inside five seconds, your pricing is a
-        mystery, and the only route to a human is a form nobody answers.
-      </p>
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Sound familiar?</span>
+      <h2>Your website looks fine.<br>It just <em>doesn’t sell</em></h2>
+    </div>
+
+    <div class="inset" data-reveal>
       <p>
-        So they hit back and ring the next firm on the list. You’re not losing to a
-        better company. You’re losing to a clearer one.
+        Visitors can’t work out what you do inside five seconds, your pricing is a
+        mystery, and the only route to a human is a form nobody answers. So they hit
+        back and ring the next firm on the list. You’re not losing to a better
+        company, you’re losing to a clearer one.
       </p>
     </div>
 
-    <div class="symptoms" data-reveal data-reveal-delay="100">
-      <div class="symptom">
-        <span class="symptom__x" aria-hidden="true">✕</span>
-        <p><b>Traffic is fine, enquiries aren’t.</b> Analytics look healthy and the inbox stays quiet.</p>
+    <div class="symptoms">
+      <div class="symptom" data-reveal>
+        <b>Traffic is fine, enquiries aren’t</b>
+        <p>Analytics look healthy and the inbox stays quiet.</p>
       </div>
-      <div class="symptom">
-        <span class="symptom__x" aria-hidden="true">✕</span>
-        <p><b>Every lead asks the same question.</b> “So what do you actually charge?”</p>
+      <div class="symptom" data-reveal data-reveal-delay="60">
+        <b>Every lead asks the same thing</b>
+        <p>“So what do you actually charge?”</p>
       </div>
-      <div class="symptom">
-        <span class="symptom__x" aria-hidden="true">✕</span>
-        <p><b>Nobody can update it.</b> A price change means an email to an agency that left in 2022.</p>
+      <div class="symptom" data-reveal data-reveal-delay="120">
+        <b>Nobody can update it</b>
+        <p>A price change means emailing an agency that left in 2022.</p>
       </div>
-      <div class="symptom">
-        <span class="symptom__x" aria-hidden="true">✕</span>
-        <p><b>It falls apart on a phone.</b> Where two thirds of your visitors actually are.</p>
+      <div class="symptom" data-reveal data-reveal-delay="180">
+        <b>It falls apart on a phone</b>
+        <p>Which is where two thirds of your visitors actually are.</p>
       </div>
     </div>
 
@@ -150,65 +153,71 @@
   <div class="wrap">
 
     <div class="sec-head" data-reveal>
-      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>What we do</span>
-      <h2>Three things, done properly.</h2>
+      <span class="eyebrow">What we do</span>
+      <h2>Three things,<br>done <em>properly</em></h2>
       <p>Most agencies hand you a pretty site and disappear. We stay until the numbers move.</p>
     </div>
 
     <div class="svc-grid">
 
       <article class="svc" data-reveal>
-        <span class="svc__num">01</span>
-        <h3>Design</h3>
-        <p class="svc__lede">
-          A site that looks like the best firm in your market, because you are.
-          Clear, quick to read, and impossible to confuse with the competition.
-        </p>
-        <ul class="svc__list">
-          <li><span class="tick" aria-hidden="true">✓</span>Messaging and page structure</li>
-          <li><span class="tick" aria-hidden="true">✓</span>Full visual identity for the web</li>
-          <li><span class="tick" aria-hidden="true">✓</span>Every page designed for mobile first</li>
-          <li><span class="tick" aria-hidden="true">✓</span>Unlimited revisions inside the sprint</li>
-        </ul>
-        <a class="svc__link" href="services/design.html">
-          See what’s included <span class="arrow" aria-hidden="true">→</span>
-        </a>
+        <div class="svc__art blob-1"><span class="svc__glyph" aria-hidden="true">01</span></div>
+        <div class="svc__body">
+          <h3>Design</h3>
+          <p class="svc__lede">
+            A site that looks like the best firm in your market, because you are.
+            Clear, quick to read, impossible to confuse with the competition.
+          </p>
+          <ul class="svc__list">
+            <li><span class="tick" aria-hidden="true">→</span>Messaging and page structure</li>
+            <li><span class="tick" aria-hidden="true">→</span>Full visual identity for the web</li>
+            <li><span class="tick" aria-hidden="true">→</span>Mobile designed first, every page</li>
+            <li><span class="tick" aria-hidden="true">→</span>Unlimited revisions in the sprint</li>
+          </ul>
+          <a class="svc__link" href="services/design.html">
+            See what’s included <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
       </article>
 
-      <article class="svc" data-reveal data-reveal-delay="90">
-        <span class="svc__num">02</span>
-        <h3>Build</h3>
-        <p class="svc__lede">
-          Fast, accessible, and easy for your team to edit without ringing us
-          first. You own the code and the hosting from day one.
-        </p>
-        <ul class="svc__list">
-          <li><span class="tick" aria-hidden="true">✓</span>Sub-second loads on 4G</li>
-          <li><span class="tick" aria-hidden="true">✓</span>WCAG 2.2 AA as standard</li>
-          <li><span class="tick" aria-hidden="true">✓</span>A CMS your team can actually use</li>
-          <li><span class="tick" aria-hidden="true">✓</span>Tracking wired up before launch</li>
-        </ul>
-        <a class="svc__link" href="services/build.html">
-          See what’s included <span class="arrow" aria-hidden="true">→</span>
-        </a>
+      <article class="svc" data-reveal data-reveal-delay="80">
+        <div class="svc__art blob-2"><span class="svc__glyph" aria-hidden="true">02</span></div>
+        <div class="svc__body">
+          <h3>Build</h3>
+          <p class="svc__lede">
+            Fast, accessible, and easy for your team to edit without ringing us
+            first. You own the code and the hosting from day one.
+          </p>
+          <ul class="svc__list">
+            <li><span class="tick" aria-hidden="true">→</span>Sub-second loads on 4G</li>
+            <li><span class="tick" aria-hidden="true">→</span>WCAG 2.2 AA as standard</li>
+            <li><span class="tick" aria-hidden="true">→</span>A CMS your team can actually use</li>
+            <li><span class="tick" aria-hidden="true">→</span>Tracking wired up before launch</li>
+          </ul>
+          <a class="svc__link" href="services/build.html">
+            See what’s included <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
       </article>
 
-      <article class="svc" data-reveal data-reveal-delay="180">
-        <span class="svc__num">03</span>
-        <h3>Optimise</h3>
-        <p class="svc__lede">
-          Launch day is the start. We keep testing headlines, forms and offers
-          until the enquiry line moves, then we do it again.
-        </p>
-        <ul class="svc__list">
-          <li><span class="tick" aria-hidden="true">✓</span>Monthly test plan, agreed with you</li>
-          <li><span class="tick" aria-hidden="true">✓</span>Session recordings and heatmaps</li>
-          <li><span class="tick" aria-hidden="true">✓</span>Technical SEO and Core Web Vitals</li>
-          <li><span class="tick" aria-hidden="true">✓</span>One report, in plain English</li>
-        </ul>
-        <a class="svc__link" href="services/optimise.html">
-          See what’s included <span class="arrow" aria-hidden="true">→</span>
-        </a>
+      <article class="svc" data-reveal data-reveal-delay="160">
+        <div class="svc__art blob-3"><span class="svc__glyph" aria-hidden="true">03</span></div>
+        <div class="svc__body">
+          <h3>Optimise</h3>
+          <p class="svc__lede">
+            Launch day is the start. We keep testing headlines, forms and offers
+            until the enquiry line moves, then we do it again.
+          </p>
+          <ul class="svc__list">
+            <li><span class="tick" aria-hidden="true">→</span>Monthly test plan, agreed with you</li>
+            <li><span class="tick" aria-hidden="true">→</span>Session recordings and heatmaps</li>
+            <li><span class="tick" aria-hidden="true">→</span>Technical SEO and Core Web Vitals</li>
+            <li><span class="tick" aria-hidden="true">→</span>One report, in plain English</li>
+          </ul>
+          <a class="svc__link" href="services/optimise.html">
+            See what’s included <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
       </article>
 
     </div>
@@ -216,12 +225,12 @@
 </section>
 
 <!-- ========================= FEATURED RESULTS ====================== -->
-<section class="section section--paper" id="results">
+<section class="section section--tight" id="results">
   <div class="wrap">
 
     <div class="sec-head" data-reveal>
-      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Featured results</span>
-      <h2>Nice screenshots are easy. Numbers aren’t.</h2>
+      <span class="eyebrow">Featured results</span>
+      <h2>Nice screenshots are easy.<br><em>Numbers aren’t</em></h2>
       <p>Three recent projects, measured 90 days after launch against the same period the year before.</p>
     </div>
 
@@ -233,53 +242,50 @@
         </div>
         <div class="result__body">
           <span class="result__client">Halverson Legal</span>
-          <p class="result__num">+164%<small>more enquiry forms completed</small></p>
+          <p class="result__num">+164<span class="unit">%</span></p>
+          <p class="result__caption">more enquiry forms completed</p>
           <p class="result__what">
             Put fees on the site. Cut the contact form from 11 fields to 4 and gave
             every practice area its own page.
           </p>
           <div class="result__meta">
-            <span class="chip">Design</span>
-            <span class="chip">Build</span>
-            <span class="chip">90 days</span>
+            <span class="chip">Design</span><span class="chip">Build</span><span class="chip">90 days</span>
           </div>
         </div>
       </article>
 
-      <article class="result" data-reveal data-reveal-delay="90">
+      <article class="result" data-reveal data-reveal-delay="80">
         <div class="result__figure">
           <span class="plate plate--wide" role="img" aria-label="Northbeam Roofing website screenshot"></span>
         </div>
         <div class="result__body">
           <span class="result__client">Northbeam Roofing</span>
-          <p class="result__num">3.4×<small>the quote requests, same ad spend</small></p>
+          <p class="result__num">3.4<span class="unit">×</span></p>
+          <p class="result__caption">the quote requests, same ad spend</p>
           <p class="result__what">
             Rebuilt the site around one job: book a survey. Postcode checker on the
             homepage, phone number pinned to every screen.
           </p>
           <div class="result__meta">
-            <span class="chip">Build</span>
-            <span class="chip">Optimise</span>
-            <span class="chip">6 months</span>
+            <span class="chip">Build</span><span class="chip">Optimise</span><span class="chip">6 months</span>
           </div>
         </div>
       </article>
 
-      <article class="result" data-reveal data-reveal-delay="180">
+      <article class="result" data-reveal data-reveal-delay="160">
         <div class="result__figure">
           <span class="plate plate--wide" role="img" aria-label="Meridian Dental website screenshot"></span>
         </div>
         <div class="result__body">
           <span class="result__client">Meridian Dental</span>
-          <p class="result__num">11 → 47<small>new patient bookings a month</small></p>
+          <p class="result__num">11 → 47</p>
+          <p class="result__caption">new patient bookings a month</p>
           <p class="result__what">
             Online booking replaced the phone queue. Treatment prices went live and
             the “call us to discuss” button went in the bin.
           </p>
           <div class="result__meta">
-            <span class="chip">Design</span>
-            <span class="chip">Optimise</span>
-            <span class="chip">4 months</span>
+            <span class="chip">Design</span><span class="chip">Optimise</span><span class="chip">4 months</span>
           </div>
         </div>
       </article>
@@ -289,55 +295,51 @@
 </section>
 
 <!-- ============================ PROCESS =========================== -->
-<section class="section section--pitch" id="process">
+<section class="section section--tight" id="process">
   <div class="wrap">
 
     <div class="sec-head" data-reveal>
-      <span class="eyebrow eyebrow--pitch"><span class="dot" aria-hidden="true"></span>How it works</span>
-      <h2>Four steps. You always know what’s next.</h2>
+      <span class="eyebrow">How it works</span>
+      <h2>Four steps. You always<br>know <em>what’s next</em></h2>
       <p>No black box, no radio silence, no invoice you didn’t see coming.</p>
     </div>
 
     <ol class="steps">
 
       <li class="step" data-reveal>
-        <span class="step__n" aria-hidden="true">1</span>
-        <h3>Website review</h3>
-        <p>
-          We record a 12-minute walkthrough of your current site and name the three
-          things costing you the most. Yours to keep, whatever you decide next.
-        </p>
-        <span class="step__when">2 working days</span>
+        <span class="step__tile blob-1" aria-hidden="true">1</span>
+        <div class="step__body">
+          <h3>Website review</h3>
+          <p>A 12-minute walkthrough of your current site naming the three things costing you the most. Yours to keep either way.</p>
+          <span class="step__when">2 working days</span>
+        </div>
       </li>
 
-      <li class="step" data-reveal data-reveal-delay="80">
-        <span class="step__n" aria-hidden="true">2</span>
-        <h3>Plan and fixed quote</h3>
-        <p>
-          One call, then a written scope with the price and the launch date on it.
-          Both are agreed before anyone opens a design file.
-        </p>
-        <span class="step__when">Week 1</span>
+      <li class="step" data-reveal data-reveal-delay="70">
+        <span class="step__tile blob-4" aria-hidden="true">2</span>
+        <div class="step__body">
+          <h3>Plan and fixed quote</h3>
+          <p>One call, then a written scope with the price and the launch date on it. Both agreed before anyone opens a design file.</p>
+          <span class="step__when">Week 1</span>
+        </div>
       </li>
 
-      <li class="step" data-reveal data-reveal-delay="160">
-        <span class="step__n" aria-hidden="true">3</span>
-        <h3>Design and build</h3>
-        <p>
-          You see real progress every Friday on a live link. Leave feedback right on
-          the page instead of writing essays in email.
-        </p>
-        <span class="step__when">Weeks 2 to 6</span>
+      <li class="step" data-reveal data-reveal-delay="140">
+        <span class="step__tile blob-2" aria-hidden="true">3</span>
+        <div class="step__body">
+          <h3>Design and build</h3>
+          <p>Real progress every Friday on a live link. Leave feedback right on the page instead of writing essays in email.</p>
+          <span class="step__when">Weeks 2 to 6</span>
+        </div>
       </li>
 
-      <li class="step" data-reveal data-reveal-delay="240">
-        <span class="step__n" aria-hidden="true">4</span>
-        <h3>Launch and optimise</h3>
-        <p>
-          We watch the numbers for 90 days and keep changing whatever isn’t working.
-          Then you either take the keys or keep us on.
-        </p>
-        <span class="step__when">Launch onwards</span>
+      <li class="step" data-reveal data-reveal-delay="210">
+        <span class="step__tile blob-3" aria-hidden="true">4</span>
+        <div class="step__body">
+          <h3>Launch and optimise</h3>
+          <p>We watch the numbers for 90 days and keep changing whatever isn’t working. Then you take the keys or keep us on.</p>
+          <span class="step__when">Launch onwards</span>
+        </div>
       </li>
 
     </ol>
@@ -345,26 +347,50 @@
 </section>
 
 <!-- ========================== TESTIMONIALS ========================= -->
-<section class="section">
+<section class="section section--tight">
   <div class="wrap">
 
-    <div class="sec-head" data-reveal>
-      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Don’t take our word for it</span>
-      <h2>Three clients, three formats, no editing.</h2>
+    <div class="quotes">
+      <div class="quote" data-reveal>
+        <blockquote>
+          “We’d been through two agencies. Quincy Lou were the first to ask what a
+          job was worth to us before showing us a single colour.”
+        </blockquote>
+        <div class="quote__who">
+          <span class="plate plate--avatar" role="img" aria-label="Portrait of Dean Northcott"></span>
+          <span class="txt">
+            <b>Dean Northcott</b>
+            <span>Managing Director, Northbeam Roofing</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="quote" data-reveal data-reveal-delay="90">
+        <blockquote>
+          “Six weeks from kick-off to live, on the day they said. The bookings
+          doubled in the first month and haven’t dropped since.”
+        </blockquote>
+        <div class="quote__who">
+          <span class="plate plate--avatar" role="img" aria-label="Portrait of Marcus Ellery"></span>
+          <span class="txt">
+            <b>Marcus Ellery</b>
+            <span>Partner, Halverson Legal</span>
+          </span>
+        </div>
+      </div>
     </div>
 
+    <!-- deliberately different formats, so the trust signal doesn't go blind -->
     <div class="tstm-grid">
-
-      <!-- format 1: video -->
       <article class="tstm" data-reveal>
         <span class="tstm__tag">Video · 2 min</span>
-        <span class="plate plate--video" role="img" aria-label="Video testimonial from Priya Raval, Meridian Dental"></span>
-        <a class="tstm__watch" href="#review">
-          <span aria-hidden="true">▶</span> Watch Priya’s story
-        </a>
+        <div class="tstm__plate">
+          <span class="plate plate--video" role="img" aria-label="Video testimonial from Priya Raval, Meridian Dental"></span>
+          <a class="tstm__play" href="#review"><span aria-hidden="true">▶</span> Watch Priya’s story</a>
+        </div>
         <p class="tstm__body">
-          “Shot on a phone in the practice. We asked for the honest version and
-          that’s what turned up.”
+          Shot on a phone in the practice. We asked for the honest version and that’s
+          what turned up.
         </p>
         <div class="tstm__who">
           <span class="plate plate--avatar" role="img" aria-label="Portrait of Priya Raval"></span>
@@ -375,110 +401,76 @@
         </div>
       </article>
 
-      <!-- format 2: written -->
       <article class="tstm" data-reveal data-reveal-delay="90">
-        <span class="tstm__tag">Written</span>
-        <blockquote class="tstm__quote">
-          “We’d been through two agencies. Quincy Lou were the first to ask what a
-          job was worth to us before showing us a single colour.”
-        </blockquote>
-        <p class="tstm__body">
-          “Six weeks from kick-off to live, on the day they said. The survey
-          bookings doubled in the first month and haven’t dropped since. My office
-          manager updates the prices herself now, which was the bit I never believed.”
-        </p>
-        <div class="tstm__who">
-          <span class="plate plate--avatar" role="img" aria-label="Portrait of Dean Northcott"></span>
-          <span>
-            <b>Dean Northcott</b>
-            <span>Managing Director, Northbeam Roofing</span>
-          </span>
-        </div>
-      </article>
-
-      <!-- format 3: review-platform screenshot -->
-      <article class="tstm" data-reveal data-reveal-delay="180">
-        <span class="tstm__tag">Google Reviews</span>
+        <span class="tstm__tag">Google Reviews · unedited</span>
         <span class="plate plate--shot" role="img" aria-label="Screenshot of a five star Google review for Quincy Lou"></span>
-        <p class="tstm__caption">
-          Screenshot: Google Reviews, 4.9 average from 87 reviews. Not one of them
-          written by us.
+        <p class="tstm__body">
+          4.9 average from 87 reviews, screenshotted straight off the listing. Not
+          one of them written by us.
         </p>
         <div class="tstm__who">
-          <span class="plate plate--avatar" role="img" aria-label="Portrait of Marcus Ellery"></span>
+          <span class="plate plate--avatar" role="img" aria-label="Google Reviews logo"></span>
           <span>
-            <b>Marcus Ellery</b>
-            <span>Partner, Halverson Legal</span>
+            <b>87 reviews</b>
+            <span>Google Business Profile</span>
           </span>
         </div>
       </article>
-
     </div>
+
   </div>
 </section>
 
 <!-- ======================= OBJECTION HANDLING ====================== -->
-<section class="section section--paper">
+<section class="section section--tight">
   <div class="wrap">
 
     <div class="sec-head" data-reveal>
-      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Let’s be honest</span>
-      <h2>The four things you’re already thinking.</h2>
+      <span class="eyebrow">Let’s be honest</span>
+      <h2>The four things<br>you’re <em>already thinking</em></h2>
       <p>We’d rather answer them now than halfway through a call neither of us wanted.</p>
     </div>
 
     <div class="obj-grid">
 
       <article class="obj" data-reveal>
-        <h3>This is going to be expensive.</h3>
+        <h3>“This is going to be expensive.”</h3>
         <p>
           Sites start at <b>£8,500</b> and most land between £8,500 and £22,000. You
-          get the full number and the launch date in writing before you commit to
-          anything, so the only surprise is the invoice being exactly what we said.
+          get the full number and the launch date in writing before you commit, so
+          the only surprise is the invoice being exactly what we said.
         </p>
-        <p>
-          If one extra job a month covers it, it’s a cost. If it doesn’t, we’ll tell
-          you on the review call and save you the money.
-        </p>
+        <p>If one extra job a month covers it, it’s a cost. If it doesn’t, we’ll say so on the review call and save you the money.</p>
       </article>
 
-      <article class="obj" data-reveal data-reveal-delay="80">
-        <h3>We haven’t got six weeks.</h3>
+      <article class="obj" data-reveal data-reveal-delay="70">
+        <h3>“We haven’t got six weeks.”</h3>
         <p>
           Most builds run four to six weeks and the date is fixed at quote stage, not
           hoped for. In twelve years we’ve missed it twice, both times waiting on
           content from the client’s side.
         </p>
-        <p>
-          Genuinely urgent? We keep one <b>10-day sprint</b> slot open each month for
-          a single landing page that has to be live before a campaign starts.
-        </p>
+        <p>Genuinely urgent? We keep one <b>10-day sprint</b> slot open each month for a single landing page that has to be live before a campaign starts.</p>
       </article>
 
-      <article class="obj" data-reveal data-reveal-delay="160">
-        <h3>We already have a designer.</h3>
+      <article class="obj" data-reveal data-reveal-delay="140">
+        <h3>“We already have a designer.”</h3>
         <p>
-          Good. Keep them. Plenty of our work starts as a build-only job on somebody
+          Good, keep them. Plenty of our work starts as a build-only job on somebody
           else’s designs, or an <b>optimise</b> retainer sitting on top of a site we
           never touched.
         </p>
-        <p>
-          We’ll happily work alongside an in-house designer or your existing agency.
-          Nobody has to be fired for us to be useful.
-        </p>
+        <p>We’ll happily work alongside an in-house designer or your existing agency. Nobody has to be fired for us to be useful.</p>
       </article>
 
-      <article class="obj" data-reveal data-reveal-delay="240">
-        <h3>We tried this before and nothing changed.</h3>
+      <article class="obj" data-reveal data-reveal-delay="210">
+        <h3>“We tried this before and nothing changed.”</h3>
         <p>
           Usually because nobody agreed what “worked” meant. We set the number we’re
           moving before the project starts, and it’s an enquiry, a booking or a call,
           never a bounce rate.
         </p>
-        <p>
-          Then we stay for <b>90 days after launch</b> and keep changing things.
-          That’s the part the last agency skipped.
-        </p>
+        <p>Then we stay for <b>90 days after launch</b> and keep changing things. That’s the part the last agency skipped.</p>
       </article>
 
     </div>
@@ -486,224 +478,209 @@
 </section>
 
 <!-- =========================== PRICE ANCHOR ======================== -->
-<section class="section section--pitch" id="pricing">
-  <div class="wrap price">
+<section class="section section--tight" id="pricing">
+  <div class="wrap">
 
-    <div class="price__lead" data-reveal>
-      <span class="eyebrow eyebrow--pitch"><span class="dot" aria-hidden="true"></span>Straight answer</span>
-      <span class="price__from">Websites from</span>
-      <p class="price__fig">£8,500<em>+ VAT</em></p>
-      <p class="price__note">
-        No surprises here. That’s a complete site, designed, built and live, with the
-        price and the launch date fixed before you commit.
-      </p>
-      <p class="price__retainer">
-        <b>Optimise retainers from £1,200 a month.</b> Rolling, 30 days’ notice, and
-        you keep everything we build.
-      </p>
-      <a class="btn btn--cream btn--lg" href="#review">Get a website review</a>
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Pricing</span>
+      <h2>One number,<br><em>no surprises</em></h2>
     </div>
 
-    <div class="price__cols" data-reveal data-reveal-delay="120">
-      <div class="price__col">
-        <h3>What’s in</h3>
-        <ul>
-          <li><span class="tick" aria-hidden="true">✓</span>Messaging and page structure</li>
-          <li><span class="tick" aria-hidden="true">✓</span>Custom design, mobile first</li>
-          <li><span class="tick" aria-hidden="true">✓</span>Build, CMS and content migration</li>
-          <li><span class="tick" aria-hidden="true">✓</span>Analytics and call tracking</li>
-          <li><span class="tick" aria-hidden="true">✓</span>Training for your team</li>
-          <li><span class="tick" aria-hidden="true">✓</span>90 days of tuning after launch</li>
-        </ul>
-      </div>
-      <div class="price__col">
-        <h3>What’s not</h3>
-        <ul>
-          <li><span class="cross" aria-hidden="true">✕</span>Ad spend and media buying</li>
-          <li><span class="cross" aria-hidden="true">✕</span>Photography and video shoots</li>
-          <li><span class="cross" aria-hidden="true">✕</span>Third-party licences and hosting</li>
-          <li><span class="cross" aria-hidden="true">✕</span>Bespoke web apps and portals</li>
-          <li><span class="cross" aria-hidden="true">✕</span>Anything we quote after starting</li>
-        </ul>
-      </div>
-    </div>
+    <div class="price-grid">
 
+      <div class="price-card" data-reveal>
+        <span class="price-card__corner blob-1" aria-hidden="true"></span>
+        <div class="price-card__head">
+          <span class="price-card__label">Website project</span>
+          <span class="price-card__badge">Fixed price</span>
+        </div>
+        <div>
+          <span class="price-card__from">Starting from</span>
+          <p class="price-card__fig">£8,500<span class="vat">+ VAT</span></p>
+        </div>
+        <p class="price-card__note">
+          A complete site, designed, built and live, with the price and the launch
+          date agreed before you commit.
+        </p>
+        <a class="btn btn--light" href="#review">Get a website review</a>
+      </div>
+
+      <div class="price-side">
+        <div class="price-card" data-reveal data-reveal-delay="80">
+          <div class="price-card__cols">
+            <div class="price-card__col">
+              <h3>What’s in</h3>
+              <ul>
+                <li><span class="mark" aria-hidden="true">+</span>Messaging and page structure</li>
+                <li><span class="mark" aria-hidden="true">+</span>Custom design, mobile first</li>
+                <li><span class="mark" aria-hidden="true">+</span>Build, CMS and content migration</li>
+                <li><span class="mark" aria-hidden="true">+</span>Analytics and call tracking</li>
+                <li><span class="mark" aria-hidden="true">+</span>Training for your team</li>
+                <li><span class="mark" aria-hidden="true">+</span>90 days of tuning after launch</li>
+              </ul>
+            </div>
+            <div class="price-card__col">
+              <h3>What’s not</h3>
+              <ul>
+                <li><span class="mark" aria-hidden="true">−</span>Ad spend and media buying</li>
+                <li><span class="mark" aria-hidden="true">−</span>Photography and video shoots</li>
+                <li><span class="mark" aria-hidden="true">−</span>Third-party licences and hosting</li>
+                <li><span class="mark" aria-hidden="true">−</span>Bespoke web apps and portals</li>
+                <li><span class="mark" aria-hidden="true">−</span>Anything we quote after starting</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="price-note-card" data-reveal data-reveal-delay="140">
+          <b>Optimise retainers from £1,200 a month</b>
+          <p>Rolling, 30 days’ notice, and you keep everything we build. On any site, including ones we never touched.</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
 <!-- ============================== FAQ ============================== -->
-<section class="section" id="faq">
-  <div class="wrap">
+<section class="section section--tight" id="faq">
+  <div class="wrap faq-grid">
 
-    <div class="sec-head" data-reveal>
-      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>FAQ</span>
-      <h2>Questions we get every week.</h2>
+    <div>
+      <div class="faq-head" data-reveal>
+        <h2><em>Frequently</em> asked questions</h2>
+      </div>
+
+      <div class="faq" data-reveal>
+
+        <details>
+          <summary>Why wouldn’t we just hire someone in-house?<span class="chev" aria-hidden="true">▾</span></summary>
+          <div class="answer">
+            <p>A decent mid-weight designer costs £45,000 plus employer costs, and you still need someone who can build and someone who can read analytics. Most businesses need that trio for about eight weeks a year.</p>
+            <p>Hire in-house when the work is constant. Use us when it isn’t.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How long does a website actually take?<span class="chev" aria-hidden="true">▾</span></summary>
+          <div class="answer">
+            <p>Four to six weeks for most sites, from kick-off to live. Bigger builds with a lot of content run eight to ten. You get the date in the quote and we hold to it.</p>
+            <p>The one thing that moves it is content. If your copy and photos are ready, we’re fast.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What if we don’t like the design?<span class="chev" aria-hidden="true">▾</span></summary>
+          <div class="answer">
+            <p>You get unlimited revisions inside the design sprint, so we keep going until it’s right rather than counting rounds at you.</p>
+            <p>If we’re still nowhere after the first two concepts, you can walk away and pay only for the work delivered. It’s happened three times in twelve years.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Do you write the copy?<span class="chev" aria-hidden="true">▾</span></summary>
+          <div class="answer">
+            <p>Yes, and we’d rather. The words do most of the selling, so writing them is part of the design job, not an add-on.</p>
+            <p>We interview you and two or three of your customers, then draft everything. You edit, you approve, you always have the final word.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Can our team edit the site after launch?<span class="chev" aria-hidden="true">▾</span></summary>
+          <div class="answer">
+            <p>That’s the point. Every site ships on a CMS with your content types set up properly, plus a training session and a short video for whoever joins next year.</p>
+            <p>Prices, staff, case studies, opening hours: all yours to change without ringing anyone.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What happens after the 90 days?<span class="chev" aria-hidden="true">▾</span></summary>
+          <div class="answer">
+            <p>Your call. Take the keys and run it yourself, or move onto an optimise retainer from £1,200 a month and we keep testing.</p>
+            <p>Either way you own the design files, the code, the domain and the hosting. Nothing is held hostage.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Do you work outside the UK?<span class="chev" aria-hidden="true">▾</span></summary>
+          <div class="answer">
+            <p>Regularly. Roughly a fifth of our work is in Ireland, the Netherlands and the US east coast.</p>
+            <p>We keep at least three hours of overlap with your working day, so anything further west than Denver isn’t a good fit and we’ll say so.</p>
+          </div>
+        </details>
+
+      </div>
     </div>
 
-    <div class="faq" data-reveal>
-
-      <details>
-        <summary>Why wouldn’t we just hire someone in-house?<span class="sign" aria-hidden="true">+</span></summary>
-        <div class="answer">
-          <p>
-            A decent mid-weight designer costs £45,000 plus employer costs, and you
-            still need someone who can build and someone who can read analytics.
-            Most businesses need that trio for about eight weeks a year.
-          </p>
-          <p>
-            Hire in-house when the work is constant. Use us when it isn’t.
-          </p>
+    <div class="gcard blob-4" data-reveal data-reveal-delay="80">
+      <span class="gcard__tag">Still deciding?</span>
+      <div class="gcard__panel">
+        <h2>Book a 15-min<br>intro call</h2>
+        <p>No deck, no discovery questionnaire. Fifteen minutes to find out whether we’re any use to you.</p>
+        <a class="btn btn--dark" href="tel:+442079460318">Call 020 7946 0318</a>
+        <div class="gcard__row">
+          <span class="plate plate--avatar" role="img" aria-label="Portrait of Rob Threlfall"></span>
+          <span>Or email<br><a href="mailto:hello@quincylou.com">hello@quincylou.com</a></span>
         </div>
-      </details>
-
-      <details>
-        <summary>How long does a website actually take?<span class="sign" aria-hidden="true">+</span></summary>
-        <div class="answer">
-          <p>
-            Four to six weeks for most sites, from kick-off to live. Bigger builds
-            with a lot of content run eight to ten. You get the date in the quote and
-            we hold to it.
-          </p>
-          <p>
-            The one thing that moves it is content. If your copy and photos are
-            ready, we’re fast.
-          </p>
-        </div>
-      </details>
-
-      <details>
-        <summary>What if we don’t like the design?<span class="sign" aria-hidden="true">+</span></summary>
-        <div class="answer">
-          <p>
-            You get unlimited revisions inside the design sprint, so we keep going
-            until it’s right rather than counting rounds at you.
-          </p>
-          <p>
-            If we’re still nowhere after the first two concepts, you can walk away and
-            pay only for the work delivered. It’s happened three times in twelve years.
-          </p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Do you write the copy?<span class="sign" aria-hidden="true">+</span></summary>
-        <div class="answer">
-          <p>
-            Yes, and we’d rather. The words do most of the selling, so writing them is
-            part of the design job, not an add-on.
-          </p>
-          <p>
-            We interview you and two or three of your customers, then draft
-            everything. You edit, you approve, you always have the final word.
-          </p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Can our team edit the site after launch?<span class="sign" aria-hidden="true">+</span></summary>
-        <div class="answer">
-          <p>
-            That’s the point. Every site ships on a CMS with your content types set up
-            properly, plus a training session and a short video for whoever joins next
-            year.
-          </p>
-          <p>
-            Prices, staff, case studies, opening hours: all yours to change without
-            ringing anyone.
-          </p>
-        </div>
-      </details>
-
-      <details>
-        <summary>What happens after the 90 days?<span class="sign" aria-hidden="true">+</span></summary>
-        <div class="answer">
-          <p>
-            Your call. Take the keys and run it yourself, or move onto an optimise
-            retainer from £1,200 a month and we keep testing.
-          </p>
-          <p>
-            Either way you own the design files, the code, the domain and the hosting.
-            Nothing is held hostage.
-          </p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Do you work outside the UK?<span class="sign" aria-hidden="true">+</span></summary>
-        <div class="answer">
-          <p>
-            Regularly. Roughly a fifth of our work is in Ireland, the Netherlands and
-            the US east coast.
-          </p>
-          <p>
-            We keep at least three hours of overlap with your working day, so anything
-            further west than Denver isn’t a good fit and we’ll say so.
-          </p>
-        </div>
-      </details>
-
+      </div>
     </div>
+
   </div>
 </section>
 
 <!-- ========================== CLOSING CTA ========================== -->
-<section class="section close-cta" id="review">
-  <div class="wrap">
-    <div class="close-cta__card" data-reveal>
+<section class="close-cta on-ink" id="review">
+  <div class="wrap close-grid">
 
-      <h2>Find out what your site is costing you.</h2>
-      <p>
+    <div class="close-copy">
+      <span class="eyebrow" data-reveal>The next step</span>
+      <h2 data-reveal data-reveal-delay="50">See if Quincy Lou is the right fit for you <em>(it probably is)</em></h2>
+      <p data-reveal data-reveal-delay="100">
         Send us your URL. We’ll record a 12-minute walkthrough naming the three
         things losing you the most enquiries, and how we’d fix each one.
       </p>
 
-      <div class="close-cta__ctas">
-        <a class="btn btn--onviolet btn--lg" href="mailto:hello@quincylou.com?subject=Website%20review%20request">
-          Get a website review
-        </a>
-        <a class="btn btn--onviolet-ghost btn--lg" href="tel:+442079460318">
-          Or call 020 7946 0318
-        </a>
+      <div class="close-ctas" data-reveal data-reveal-delay="150">
+        <a class="btn btn--light btn--lg" href="mailto:hello@quincylou.com?subject=Website%20review%20request">Get a website review</a>
+        <a class="btn btn--outline-ink btn--lg" href="tel:+442079460318">Or call 020 7946 0318</a>
       </div>
 
-      <!-- reassurance line, right next to the button -->
-      <p class="reassure">
+      <p class="reassure" data-reveal data-reveal-delay="190">
         <span class="dot" aria-hidden="true"></span>
         Free, no pitch, no follow-up sequence. You keep the video either way.
       </p>
 
-      <!-- closing CTA gets its own trust bar -->
-      <div class="trustbar">
-        <div class="trustbar__logos" aria-label="Clients we work with">
+      <!-- the closing CTA gets its own trust bar -->
+      <div class="trust" data-reveal data-reveal-delay="230">
+        <span class="trust__item">
+          <b>4.9<span class="stars" aria-hidden="true"> ★★★★★</span></b> 87 Google reviews
+        </span>
+        <span class="trust__item"><b>310</b> sites since 2014</span>
+        <span class="trust__item"><b>2 days</b> turnaround</span>
+        <span class="trust__logos">
           <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
           <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
           <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
-          <span class="plate plate--logo" role="img" aria-label="Client logo"></span>
-        </div>
+        </span>
+      </div>
+    </div>
 
-        <span class="trustbar__rule" aria-hidden="true"></span>
-
-        <div class="trustbar__stat">
-          <b>4.9<span class="stars" aria-hidden="true">★★★★★</span></b>
-          <span>87 Google reviews</span>
-        </div>
-
-        <span class="trustbar__rule" aria-hidden="true"></span>
-
-        <div class="trustbar__stat">
-          <b>310 sites</b>
-          <span>since 2014</span>
-        </div>
-
-        <span class="trustbar__rule" aria-hidden="true"></span>
-
-        <div class="trustbar__stat">
-          <b>2 days</b>
-          <span>average review turnaround</span>
+    <div class="gcard blob-full" data-reveal data-reveal-delay="120">
+      <span class="gcard__tag">2 day turnaround</span>
+      <div class="gcard__panel">
+        <h2>What you<br>get back</h2>
+        <p>
+          A 12-minute screen recording, a one-page summary of the three fixes, and a
+          rough number for what each is worth. No deck.
+        </p>
+        <a class="btn btn--dark" href="mailto:hello@quincylou.com?subject=Website%20review%20request">Send us your URL</a>
+        <div class="gcard__row">
+          <span class="plate plate--avatar" role="img" aria-label="Portrait of Sadie Okonjo"></span>
+          <span>Reviewed by Sadie,<br>head of conversion.</span>
         </div>
       </div>
-
     </div>
+
   </div>
 </section>
 
@@ -712,18 +689,16 @@
 <!-- ============================= FOOTER ============================ -->
 <footer class="site-footer">
   <div class="wrap">
+    <div class="footer-rule"></div>
 
     <div class="footer-top">
 
       <div class="footer-brand">
         <span class="brand__row">
-          <span class="brand__mark" aria-hidden="true">Q</span>
-          <span class="brand__name">quincylou</span>
+          <span class="brand__mark blob-full" aria-hidden="true"></span>
+          <span class="brand__name">Quincy Lou</span>
         </span>
-        <p>
-          A ten-person studio in Bermondsey. We design, build and optimise websites
-          for service businesses that need the phone to ring.
-        </p>
+        <p>A ten-person studio in Bermondsey. We design, build and optimise websites for service businesses that need the phone to ring.</p>
       </div>
 
       <div class="footer-col">
@@ -758,46 +733,34 @@
         </div>
         <div class="contact-line">
           <span class="k">Studio</span>
-          <address>
-            Studio 7, Nelson Works<br>
-            128 Loman Street<br>
-            London SE1 0EH
-          </address>
+          <address>Studio 7, Nelson Works<br>128 Loman Street<br>London SE1 0EH</address>
         </div>
       </div>
 
     </div>
 
+    <div class="footer-rule"></div>
+
     <div class="people">
       <div class="person">
         <span class="plate plate--avatar" role="img" aria-label="Portrait of Quincy Adeyemi"></span>
-        <span>
-          <b>Quincy Adeyemi</b>
-          <span>Founder &amp; design lead</span>
-        </span>
+        <span><b>Quincy Adeyemi</b><span>Founder &amp; design lead</span></span>
       </div>
       <div class="person">
         <span class="plate plate--avatar" role="img" aria-label="Portrait of Lou Marchetti"></span>
-        <span>
-          <b>Lou Marchetti</b>
-          <span>Founder &amp; technical lead</span>
-        </span>
+        <span><b>Lou Marchetti</b><span>Founder &amp; technical lead</span></span>
       </div>
       <div class="person">
         <span class="plate plate--avatar" role="img" aria-label="Portrait of Sadie Okonjo"></span>
-        <span>
-          <b>Sadie Okonjo</b>
-          <span>Head of conversion</span>
-        </span>
+        <span><b>Sadie Okonjo</b><span>Head of conversion</span></span>
       </div>
       <div class="person">
         <span class="plate plate--avatar" role="img" aria-label="Portrait of Rob Threlfall"></span>
-        <span>
-          <b>Rob Threlfall</b>
-          <span>Client lead, takes the first call</span>
-        </span>
+        <span><b>Rob Threlfall</b><span>Client lead, takes the first call</span></span>
       </div>
     </div>
+
+    <div class="footer-rule"></div>
 
     <div class="footer-base">
       <p>© 2026 Quincy Lou Ltd. Registered in England &amp; Wales, no. 09184427.</p>
@@ -806,6 +769,12 @@
         <li><a href="#faq">FAQ</a></li>
         <li><a href="mailto:hello@quincylou.com">hello@quincylou.com</a></li>
       </ul>
+    </div>
+
+    <div class="dots" aria-hidden="true">
+      <span class="blob-1"></span><span class="blob-2"></span><span class="blob-3"></span>
+      <span class="blob-4"></span><span class="blob-5"></span><span class="blob-full"></span>
+      <span class="blob-2"></span><span class="blob-1"></span>
     </div>
 
   </div>
