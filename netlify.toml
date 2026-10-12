@@ -1,0 +1,20 @@
+# Netlify config for the Quincy Lou site.
+# Plain static HTML/CSS/JS: no build step, the repo root is the site root.
+
+[build]
+  publish = "."
+
+# Basic security headers on every response.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Design concepts are for internal comparison; keep them out of search results.
+[[headers]]
+  for = "/concept/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
