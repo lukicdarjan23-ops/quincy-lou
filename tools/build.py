@@ -206,7 +206,7 @@ def page(path: str, title: str, desc: str, body: str, active: str = "") -> None:
 
 
 # ---------------------------------------------------------------- components
-ACCENTS = ["coral", "lime", "lavender", "mint"]
+ACCENTS = ["lime", "lavender", "coral", "mint", "pink"]
 
 
 def work_card(w: dict, ratio: str) -> str:
