@@ -117,7 +117,6 @@ def header(active: str = "") -> str:
     <a class="logo" href="/" aria-label="{e(S['name'])}, home">{e(S['name'])}<i aria-hidden="true"></i></a>
     <nav class="nav" aria-label="Main">{links}</nav>
     <div class="hdr__right">
-      <span class="avail"><i aria-hidden="true"></i>{e(S['availability'])}</span>
       <a class="hdr__phone" href="tel:{S['phone_href']}">{e(S['phone'])}</a>
       {btn(S['cta'], '/contact/', 'cta')}
       <details class="menu">
@@ -284,13 +283,13 @@ def team_block() -> str:
     return f'<div class="team">{cards}</div>'
 
 
-def enquire_block() -> str:
+def enquire_block(form_id: str = "review", tag: str = "h2", cls: str = "band") -> str:
     h = C["home"]
-    return f"""<section class="band" id="enquire" aria-labelledby="enq-h">
+    return f"""<section class="{cls}" id="enquire" aria-labelledby="enq-h">
   <div class="wrap">
     <div class="enquire" data-r>
       <div>
-        {acc_title(h['form_title'], 'h2', ' id="enq-h"')}
+        {acc_title(h['form_title'], tag, ' id="enq-h"')}
         <p class="enquire__lede">{e(h['form_lede'])}</p>
         <div class="enquire__alt">
           <a href="mailto:{e(S['email'])}">Prefer email? {e(S['email'])}</a>
@@ -298,7 +297,7 @@ def enquire_block() -> str:
           <span>{e(S['reply_time'])}.</span>
         </div>
       </div>
-      {enquiry_form()}
+      {enquiry_form(form_id)}
     </div>
   </div>
 </section>"""
@@ -447,7 +446,6 @@ def build_work_index() -> None:
 <section class="band" style="padding-top:0">
   <div class="wrap">{work_grid(C['work'])}</div>
 </section>
-{enquire_block()}
 """
     page("/work/", "Work", "Websites Quincy Lou has designed, built and optimised, with the numbers behind each one.", body, "Work")
 
@@ -619,30 +617,17 @@ def build_articles() -> None:
 
 def build_contact() -> None:
     ct = C["contact"]
-    faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in ct["faq"])
-    addr = "<br>".join(e(x) for x in S["address"])
+    faq = "".join(f"""<details class="qa"{' open' if i == 0 else ''}><summary>{e(q)}<i aria-hidden="true"></i></summary><p>{e(a)}</p></details>"""
+                  for i, (q, a) in enumerate(ct["faq"]))
     body = f"""
-<section class="page-hero">
-  <div class="wrap page-hero__row">
-    {acc_title(ct['title'], 'h1', ' data-r')}
-    <p class="page-hero__side" data-r="120">{e(ct['lede'])}</p>
-  </div>
-</section>
-<section class="band" style="padding-top:0">
-  <div class="wrap contact-grid">
-    <div data-r>{enquiry_form('contact')}</div>
-    <div class="contact-side">
-      <div class="card" data-r="80">
-        <h3>Talk to a person</h3>
-        <dl>
-          <div><dt>Phone</dt><dd><a href="tel:{S['phone_href']}">{e(S['phone'])}</a></dd></div>
-          <div><dt>Email</dt><dd><a href="mailto:{e(S['email'])}">{e(S['email'])}</a></dd></div>
-          <div><dt>Studio</dt><dd>{addr}</dd></div>
-          <div><dt>Hours</dt><dd>{e(S['hours'])}</dd></div>
-        </dl>
-      </div>
-      <div class="card card--ink faq" data-r="160"><h3>Before you ask</h3>{faq}</div>
+{enquire_block('contact', 'h1', 'band contact-top')}
+<section class="band faq-band" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div class="faq-grid__head">
+      {acc_title(ct['faq_title'], 'h2', ' id="faq-h" data-r')}
+      <p data-r="100">{e(ct['faq_lede'])}</p>
     </div>
+    <div class="qas" data-r="120">{faq}</div>
   </div>
 </section>
 """

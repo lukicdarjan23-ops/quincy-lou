@@ -9,7 +9,6 @@
     "email": "hello@quincylou.com",
     "phone": "020 7946 0318",
     "phone_href": "+442079460318",
-    "availability": "Taking 2 projects for December",
     "cta": "Get a website review",
     "address": ["Studio 7, Nelson Works", "128 Loman Street", "London SE1 0EH"],
     "hours": "Mon to Fri, 9:00 to 17:30",
@@ -284,14 +283,17 @@
   ],
 
   "contact": {
-    "title": ["Let’s talk about", "your website."],
-    "lede": "Fill in the form, ring us or send an email. Whichever you choose, a real person replies within one working day.",
+    "faq_title": ["Questions,", "answered."],
+    "faq_lede": "Still not sure? Send the form above or ring us. A real person replies within one working day.",
     "needs": ["New website", "Redesign", "Ongoing optimisation", "Not sure yet"],
     "budgets": ["Under £5k", "£5–10k", "£10–20k", "£20k+"],
     "faq": [
       ["How quickly can you start?", "Usually within two to three weeks of a signed quote. We take on two new projects a month so each one gets proper attention."],
       ["Do you work outside London?", "Yes. Most of our clients are elsewhere in the UK and we work remotely with all of them."],
-      ["What if I only need a few changes?", "Book the free review. If a full project is not worth it for you, we will say so and suggest what to do instead."]
+      ["What if I only need a few changes?", "Book the free review. If a full project is not worth it for you, we will say so and suggest what to do instead."],
+      ["Who owns the website when it is done?", "You do. The domain, the hosting account, the code and every file are in your name from day one."],
+      ["Can we update the site ourselves?", "Yes. Every site comes with an editor your team can use, and a short recorded walkthrough of how to change pages, prices and photos."],
+      ["What if we don't like the first design?", "You see two directions before anything is built. We then revise the one you pick until it is right, inside the quoted price."]
     ]
   },
 
