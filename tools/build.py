@@ -219,11 +219,38 @@ def work_card(w: dict, ratio: str) -> str:
 
 
 def work_grid(items: list[dict]) -> str:
-    a = [w for i, w in enumerate(items) if i % 2 == 0]
-    b = [w for i, w in enumerate(items) if i % 2 == 1]
-    col_a = "".join(work_card(w, "ph--r45" if i % 2 == 0 else "ph--r43") for i, w in enumerate(a))
-    col_b = "".join(work_card(w, "ph--r43" if i % 2 == 0 else "ph--r45") for i, w in enumerate(b))
-    return f'<div class="work-grid"><div class="work-col">{col_a}</div><div class="work-col work-col--b">{col_b}</div></div>'
+    """Two columns, every card the same shape, so each left/right pair lines up."""
+    cards = "".join(work_card(w, "ph--r43") for w in items)
+    return f'<div class="work-grid">{cards}</div>'
+
+
+def receipts_block() -> str:
+    """The proof section: a short pitch beside a stats card styled as a till receipt."""
+    r = C["home"]["receipts"]
+    lines = "".join(f'<li><span>{e(k)}</span><i aria-hidden="true"></i><b>{e(v)}</b></li>' for k, v in r["lines"])
+    tools = "".join(f'<li class="tool">{e(t)}</li>' for t in r["tools"])
+    return f"""<section class="band receipts-band" aria-labelledby="rcpt-h">
+  <div class="wrap">
+    <div class="receipts">
+      <div class="receipts__copy">
+        {acc_title(r['title'], 'h2', ' id="rcpt-h" data-r')}
+        <p data-r="100">{e(r['lede'])}</p>
+      </div>
+      <figure class="receipt" data-r="120" aria-label="Studio numbers">
+        <p class="receipt__store">{e(r['store'])}</p>
+        <p class="receipt__sub">{e(r['sub'])}</p>
+        <ul class="receipt__lines">{lines}</ul>
+        <p class="receipt__total"><span>{e(r['total'][0])}</span><b>{e(r['total'][1])}</b></p>
+        <span class="receipt__barcode" aria-hidden="true"></span>
+        <p class="receipt__note">{e(r['note'])}</p>
+      </figure>
+    </div>
+    <div class="tools" data-r>
+      <div class="tools__head"><h3>{e(r['tools_title'])}</h3><p>{e(r['tools_lede'])}</p></div>
+      <ul class="tools__list">{tools}</ul>
+    </div>
+  </div>
+</section>"""
 
 
 def post_card(p: dict, idx: int = 0) -> str:
@@ -320,15 +347,6 @@ def build_home() -> None:
   </div>
 </section>
 
-<section aria-label="Showreel">
-  <div class="wrap">
-    <div class="reel" data-r>
-      {ph('Showreel video', 'ph--reel')}
-      <span class="reel__cap"><b>{icon('play')}</b>{e(h['reel_caption'])}</span>
-    </div>
-  </div>
-</section>
-
 <section class="clients" aria-label="Clients">
   <p>{e(h['clients_label'])}</p>
   <div class="marquee"><div class="marquee__track">
@@ -344,6 +362,8 @@ def build_home() -> None:
   </div>
 </section>
 
+{receipts_block()}
+
 <section class="band" id="services" aria-labelledby="svc-h">
   <div class="wrap">
     <div class="head">{acc_title(h['services_title'], 'h2', ' id="svc-h" data-r')}
@@ -354,7 +374,7 @@ def build_home() -> None:
 
 <section class="band" id="process" aria-labelledby="proc-h" style="padding-top:0">
   <div class="wrap">
-    <div class="head"><h2 id="proc-h" data-r>{e(h['process_title'][0])} <span class="acc">{e(h['process_title'][1])}</span></h2></div>
+    <div class="head head--line"><h2 id="proc-h" data-r>{e(h['process_title'][0])} <span class="acc">{e(h['process_title'][1])}</span></h2></div>
     <ol class="process">{steps}</ol>
   </div>
 </section>
@@ -385,7 +405,7 @@ def build_home() -> None:
 
 <section class="band" aria-labelledby="team-h">
   <div class="wrap">
-    <div class="head"><h2 id="team-h" data-r>{e(h['team_title'][0])} <span class="acc">{e(h['team_title'][1])}</span></h2>
+    <div class="head head--line"><h2 id="team-h" data-r>{e(h['team_title'][0])} <span class="acc">{e(h['team_title'][1])}</span></h2>
       <div class="head__side" data-r="120"><p>{e(h['team_lede'])}</p></div></div>
     {team_block()}
   </div>
@@ -393,7 +413,7 @@ def build_home() -> None:
 
 <section class="band" aria-labelledby="notes-h" style="padding-top:0">
   <div class="wrap">
-    <div class="head"><h2 id="notes-h" data-r>{e(h['journal_title'][0])} <span class="acc">{e(h['journal_title'][1])}</span></h2>
+    <div class="head head--line"><h2 id="notes-h" data-r>{e(h['journal_title'][0])} <span class="acc">{e(h['journal_title'][1])}</span></h2>
       {btn('Read the journal', '/journal/', 'line', 'sm')}</div>
     <div class="posts">{posts}</div>
   </div>
@@ -505,7 +525,7 @@ def build_studio() -> None:
 </section>
 <section class="band" style="padding-top:0">
   <div class="wrap">
-    <div class="head"><h2 data-r>{e(C['home']['team_title'][0])} <span class="acc">{e(C['home']['team_title'][1])}</span></h2>
+    <div class="head head--line"><h2 data-r>{e(C['home']['team_title'][0])} <span class="acc">{e(C['home']['team_title'][1])}</span></h2>
       <div class="head__side" data-r="120"><p>{e(C['home']['team_lede'])}</p></div></div>
     {team_block()}
   </div>

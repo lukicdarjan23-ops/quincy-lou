@@ -25,8 +25,19 @@
 
   "home": {
     "hero_lede": "We design, build and optimise websites for roofers, clinics, solicitors and every other business that lives on enquiries. Price and launch date in writing before you commit.",
-    "reel_caption": "Showreel 2026 (0:45)",
     "clients_label": "Trusted by businesses like",
+    "receipts": {
+      "title": ["Numbers you", "can check."],
+      "lede": "Every figure on this site comes from our clients’ own analytics, not from a pitch deck. Ask and we will show you the dashboards behind them.",
+      "store": "quincy lou studio",
+      "sub": "Since 2014 · London",
+      "lines": [["Sites launched", "310"], ["Years in business", "12"], ["Avg. lift in enquiries", "2.3×"], ["Average rating", "4.9/5"]],
+      "total": ["Happy clients", "80+"],
+      "note": "Paid in full. No hidden fees.",
+      "tools_title": "Tools we work with",
+      "tools_lede": "Set up, run and reported by the same four people.",
+      "tools": ["Google Analytics", "Search Console", "Hotjar", "WordPress", "Webflow", "Netlify", "HubSpot", "Calendly", "Mailchimp"]
+    },
     "clients": ["Client 01", "Client 02", "Client 03", "Client 04", "Client 05", "Client 06"],
     "work_title": ["Sites that", "pay for themselves."],
     "work_lede": "Recent launches, each measured against the same months the year before. Numbers, not adjectives.",
