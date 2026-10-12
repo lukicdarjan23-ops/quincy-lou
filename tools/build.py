@@ -38,6 +38,7 @@ def icon(name: str, cls: str = "") -> str:
         "check": '<path d="m3 8.5 3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
         "play": '<path d="M4 2.5v11l9-5.5z" fill="#fff"/>',
         "spark": '<path d="M8 1.5c.4 3.3 2.2 5.1 5.5 5.5-3.3.4-5.1 2.2-5.5 5.5-.4-3.3-2.2-5.1-5.5-5.5C5.8 6.6 7.6 4.8 8 1.5Z" fill="currentColor"/>',
+        "asterisk": '<path d="M8 2v12M2.8 5l10.4 6M2.8 11l10.4-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
         "star4": '<path d="M8 2v12M2 8h12M3.8 3.8l8.4 8.4M12.2 3.8l-8.4 8.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>',
         "pen": '<path d="M4 20 5.5 14 15 4.5l4.5 4.5L10 18.5zM13 6.5 17.5 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
         "cursor": '<path d="m5 4 13 5.5-5.6 1.9-1.9 5.6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 15.5l2-1M15 20l-.6-2.2M20 13.5l-2.1-.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
@@ -57,10 +58,11 @@ def btn(label: str, href: str, kind: str = "cta", size: str = "", arrow: bool = 
     return f'<a class="{cls}" href="{e(href)}">{e(label)}{a}</a>'
 
 
-def acc_title(parts: list[str], tag: str = "h2", attrs: str = "") -> str:
+def acc_title(parts: list[str], tag: str = "h2", attrs: str = "", one_line: bool = False) -> str:
     """Two-part headline: the first part in the grotesk, the second as the italic accent."""
     first, second = parts
-    return f'<{tag}{attrs}>{e(first)}<br><span class="acc">{e(second)}</span></{tag}>'
+    gap = " " if one_line else "<br>"
+    return f'<{tag}{attrs}>{e(first)}{gap}<span class="acc">{e(second)}</span></{tag}>'
 
 
 def ph(label: str, cls: str = "ph--r43", extra: str = "") -> str:
@@ -181,7 +183,7 @@ def footer() -> str:
         <input type="hidden" name="form-name" value="newsletter">
         <label class="sr-only" for="nl-email">Email</label>
         <input class="input" id="nl-email" type="email" name="email" placeholder="you@company.com" required>
-        <button class="btn btn--cta" type="submit">Join</button>
+        <button class="btn btn--coral" type="submit">Join</button>
       </form>
     </div>
   </div>
@@ -344,9 +346,9 @@ def build_home() -> None:
     body = f"""
 <section class="hero">
   <div class="wrap">
-    <h1 data-r>Websites <span class="inline-ph" role="img" aria-label="Photo of a finished client website"></span> that make the
-      <span class="inline-mark" aria-hidden="true">{icon('star4')}</span> <span class="acc">phone</span> ring
-      more often. <span class="inline-ph inline-ph--2" role="img" aria-label="Photo of the team at work"></span></h1>
+    <h1 data-r>Websites <span class="inline-ph" role="img" aria-label="Photo of a finished client website"></span><br>
+      that make the <span class="acc">phone</span><br>
+      ring more often. <span class="inline-ph inline-ph--2" role="img" aria-label="Photo of the team at work"></span></h1>
     <div class="hero__foot">
       <div data-r="120">
         <p class="hero__lede">{e(h['hero_lede'])}</p>
@@ -377,7 +379,7 @@ def build_home() -> None:
 
 <section class="band" id="services" aria-labelledby="svc-h">
   <div class="wrap">
-    <div class="head">{acc_title(h['services_title'], 'h2', ' id="svc-h" data-r')}
+    <div class="head">{acc_title(h['services_title'], 'h2', ' id="svc-h" data-r', one_line=True)}
       <div class="head__side" data-r="120"><p>{e(h['services_lede'])}</p></div></div>
     <div class="svc-stack">{services}</div>
   </div>
@@ -401,8 +403,7 @@ def build_home() -> None:
 
 <section class="band dark" aria-labelledby="voices-h">
   <div class="wrap">
-    <div class="head">{acc_title(h['voices_title'], 'h2', ' id="voices-h" data-r')}
-      <div class="head__side" data-r="120"><p>Unedited, from the people who pay the invoices.</p></div></div>
+    <div class="head">{acc_title(h['voices_title'], 'h2', ' id="voices-h" data-r', one_line=True)}</div>
     <div class="voices">
       <figure class="voice-hero" data-r>
         {icon('quote')}
@@ -509,10 +510,10 @@ def build_case_studies() -> None:
 
 def build_studio() -> None:
     st = C["studio"]
-    nums = "".join(f'<div data-r="{i * 80}"><b>{e(v)}</b><span>{e(k)}</span></div>' for i, (v, k) in enumerate(st["numbers"]))
-    story = "".join(f"<p>{e(p)}</p>" for p in st["story"])
-    values = "".join(f"""<div class="value" data-r="{i * 80}"><span>0{i + 1}</span><h3>{e(v['title'])}</h3><p>{e(v['text'])}</p></div>"""
-                     for i, v in enumerate(st["values"]))
+    ways = "".join(f"""<div class="way" data-r="{i * 80}"><span>0{i + 1}</span><h3>{e(w['title'])}</h3><p>{e(w['text'])}</p></div>"""
+                   for i, w in enumerate(st["ways"]))
+    beliefs = "".join(f'<li data-r>{icon("asterisk")}<span>{e(b)}</span></li>' for b in st["beliefs"])
+    hire = st["hiring"]
     body = f"""
 <section class="page-hero">
   <div class="wrap page-hero__row">
@@ -520,28 +521,30 @@ def build_studio() -> None:
     <p class="page-hero__side" data-r="120">{e(st['lede'])}</p>
   </div>
 </section>
-<section><div class="wrap" data-r>{ph('The team in the studio', 'ph--reel')}</div></section>
-<section class="band">
-  <div class="wrap story">
-    <div data-r>{story}</div>
-    <div data-r="120">{ph('A client project in progress', 'ph--r43')}</div>
-  </div>
+<section>
+  <div class="wrap"><div class="studio-shot" data-r>{ph('The team in the studio', 'ph--studio')}<span class="place-tag">{icon('asterisk')}{e(st['place'])}</span></div></div>
 </section>
-<section class="band" style="padding-top:0"><div class="wrap numbers">{nums}</div></section>
-<section class="band" style="padding-top:0">
+<section class="band ways-band"><div class="wrap ways">{ways}</div></section>
+<section class="band team-band" style="padding-top:0">
   <div class="wrap">
-    <div class="head">{acc_title(st['values_title'], 'h2', ' data-r')}</div>
-    <div class="values">{values}</div>
-  </div>
-</section>
-<section class="band" style="padding-top:0">
-  <div class="wrap">
-    <div class="head head--line"><h2 data-r>{e(C['home']['team_title'][0])} <span class="acc">{e(C['home']['team_title'][1])}</span></h2>
-      <div class="head__side" data-r="120"><p>{e(C['home']['team_lede'])}</p></div></div>
+    <div class="head">{acc_title(C['home']['team_title'], 'h2', ' data-r')}</div>
     {team_block()}
   </div>
 </section>
-{enquire_block()}
+<section class="band beliefs-band" style="padding-top:0" aria-labelledby="beliefs-h">
+  <div class="wrap">
+    <p class="beliefs__label" id="beliefs-h">{e(st['beliefs_label'])}</p>
+    <ul class="beliefs">{beliefs}</ul>
+  </div>
+</section>
+<section class="hiring-band">
+  <div class="wrap">
+    <div class="hiring" data-r>
+      <div><h2>{e(hire['title'])}</h2><p>{e(hire['text'])}</p></div>
+      {btn(hire['cta'], 'mailto:' + S['email'], 'cta')}
+    </div>
+  </div>
+</section>
 """
     page("/studio/", "Studio", "Quincy Lou is a small website studio for service businesses. Four people, no middlemen.", body, "Studio")
 
@@ -562,16 +565,14 @@ def build_journal() -> None:
     <a class="feature" href="/journal/{e(f['slug'])}/" data-r>
       {ph(f"Cover image for {f['title']}", "ph--r43")}
       <div>
-        <div class="post__meta"><span class="chip-ink">{e(f['tag'])}</span><span>{nice_date(f['date'])} · {e(f['read'])}</span></div>
+        <div class="post__meta"><span class="chip-ink">{e(f['tag'])}</span><span>{nice_date(f['date'])}</span></div>
         <h2>{e(f['title'])}</h2>
         <p>{e(f['lede'])}</p>
-        <span class="btn btn--line">Read the article{icon('arrow', 'arr')}</span>
       </div>
     </a>
-    <div class="posts">{grid}</div>
+    <div class="posts posts--two">{grid}</div>
   </div>
 </section>
-{enquire_block()}
 """
     page("/journal/", "Journal", "Practical notes on websites for service businesses, from the Quincy Lou studio.", body, "Journal")
 

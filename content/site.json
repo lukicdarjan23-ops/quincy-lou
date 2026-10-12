@@ -198,22 +198,25 @@
   ],
 
   "studio": {
-    "title": ["A small studio for businesses", "that run on enquiries."],
-    "lede": "We started Quincy Lou because the businesses we knew best, the trades, clinics and practices, kept being sold websites built to win awards instead of to make the phone ring.",
-    "story": [
-      "Most of our clients have never hired an agency before, or they have and it went badly. Both are fine. We work in plain English, we put the price in writing before anything starts, and we measure success in enquiries, bookings and calls.",
-      "We stay small on purpose. Four people means the person who reviews your site is the person who designs it, and the person who builds it is the one who picks up when something breaks."
+    "title": ["A small studio", "with plain prices."],
+    "lede": "Four people in London building websites for trades, clinics and practices. No account managers, no juniors behind a pitch deck, prices in writing.",
+    "place": "London, since 2014",
+    "ways": [
+      {"title": "One call, not five meetings.", "text": "We would rather show you a working draft than talk about one for an hour. Most decisions get made on a single call."},
+      {"title": "The person you call builds it.", "text": "No hand-offs. Whoever reviews your site designs it, and whoever builds it picks up when something breaks."},
+      {"title": "Fixed price, fixed date.", "text": "Every project has a written price and a launch date before it starts. If we run over, that is on us."}
     ],
-    "numbers": [["12", "years in business"], ["310", "sites launched"], ["4.9/5", "average client rating"], ["1 day", "average reply time"]],
-    "values_title": ["What we", "believe."],
-    "values": [
-      {"title": "Prices belong on the page", "text": "If you have to ring to find out what something costs, you are already annoyed before the conversation starts."},
-      {"title": "Measure the phone, not the pixels", "text": "We agree the number we are moving before the project starts, and it is never a bounce rate."},
-      {"title": "You own everything", "text": "Your domain, your hosting, your code and your files. Nothing is held hostage if you leave."},
-      {"title": "Say no early", "text": "If we are not the right fit, we tell you on the first call and point you somewhere better."}
-    ]
+    "beliefs_label": "What we believe",
+    "beliefs": [
+      "Prices belong on the page.",
+      "Measure the phone, not the pixels.",
+      "You own everything you paid for.",
+      "Say no early, not late.",
+      "If you can't edit it, it isn't finished.",
+      "A website is a salesperson, not a brochure."
+    ],
+    "hiring": {"title": "We're hiring a front-end developer.", "text": "London or remote in the UK. Send us a site you built, not a CV.", "cta": "Say hello"}
   },
-
   "journal": [
     {
       "slug": "put-your-prices-on-your-website", "tag": "Pricing", "date": "2026-09-18", "read": "4 min",
