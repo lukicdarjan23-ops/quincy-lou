@@ -10,8 +10,8 @@
 <meta property="og:description" content="Get in touch with Quincy Lou for a free website review. We reply within one working day.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://quincylou.com/contact/">
-<meta name="theme-color" content="#F2EDE4">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23CF2E22'/%3E%3Cpath d='M16 8v16M8 16h16M10.3 10.3l11.4 11.4M21.7 10.3 10.3 21.7' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#FDF9F1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23F46840'/%3E%3Cpath d='M16 8v16M8 16h16M10.3 10.3l11.4 11.4M21.7 10.3 10.3 21.7' stroke='%23000' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
@@ -21,16 +21,15 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="hdr">
   <div class="wrap hdr__in">
-    <a class="logo" href="/" aria-label="Quincy Lou, home">quincy lou<i aria-hidden="true"></i></a>
+    <a class="logo" href="/" aria-label="Quincy Lou, home">Quincy Lou<i aria-hidden="true"></i></a>
     <nav class="nav" aria-label="Main"><a href="/work/">Work</a><a href="/#services">Services</a><a href="/#pricing">Pricing</a><a href="/studio/">Studio</a><a href="/journal/">Journal</a></nav>
     <div class="hdr__right">
-      <span class="avail"><i aria-hidden="true"></i>Taking 2 projects for December</span>
       <a class="hdr__phone" href="tel:+442079460318">020 7946 0318</a>
-      <a class="btn btn--ink btn--sm" href="/contact/">Get a website review<svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn btn--cta" href="/contact/">Get a website review<svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <details class="menu">
         <summary>Menu</summary>
         <nav class="menu__panel" aria-label="Mobile"><a href="/work/">Work</a><a href="/#services">Services</a><a href="/#pricing">Pricing</a><a href="/studio/">Studio</a><a href="/journal/">Journal</a><a href="/contact/">Contact</a>
-          <a class="btn btn--red" href="tel:+442079460318">Call 020 7946 0318</a>
+          <a class="btn btn--cta" href="tel:+442079460318">Call 020 7946 0318</a>
         </nav>
       </details>
     </div>
@@ -38,15 +37,19 @@
 </header>
 <main id="main">
 
-<section class="page-hero">
-  <div class="wrap page-hero__row">
-    <h1 data-r>Let’s talk about<br><span class="acc">your website.</span></h1>
-    <p class="page-hero__side" data-r="120">Fill in the form, ring us or send an email. Whichever you choose, a real person replies within one working day.</p>
-  </div>
-</section>
-<section class="band" style="padding-top:0">
-  <div class="wrap contact-grid">
-    <div data-r><form class="form" name="contact" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company-website">
+<section class="band contact-top" id="enquire" aria-labelledby="enq-h">
+  <div class="wrap">
+    <div class="enquire" data-r>
+      <div>
+        <h1 id="enq-h">Tell us what<br><span class="acc">isn’t working.</span></h1>
+        <p class="enquire__lede">Four quick questions. Within one working day you get a recorded review of your current site and the three changes we would make first. No sales call unless you ask for one.</p>
+        <div class="enquire__alt">
+          <a href="mailto:hello@quincylou.com">Prefer email? hello@quincylou.com</a>
+          <a href="tel:+442079460318">Or ring 020 7946 0318</a>
+          <span>We reply within one working day.</span>
+        </div>
+      </div>
+      <form class="form" name="contact" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company-website">
   <input type="hidden" name="form-name" value="contact">
   <p class="hp"><label>Leave this empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
   <fieldset><legend>What do you need?</legend><div class="chips"><label class="chip"><input type="checkbox" name="need" value="New website"><span>New website</span></label><label class="chip"><input type="checkbox" name="need" value="Redesign"><span>Redesign</span></label><label class="chip"><input type="checkbox" name="need" value="Ongoing optimisation"><span>Ongoing optimisation</span></label><label class="chip"><input type="checkbox" name="need" value="Not sure yet"><span>Not sure yet</span></label></div></fieldset>
@@ -60,21 +63,19 @@
   </fieldset>
   <label><span class="lbl" style="display:block">What isn’t working?</span>
     <textarea class="input" name="message" placeholder="What does the business do, and what would a good month of enquiries look like?"></textarea></label>
-  <button class="btn btn--ink btn--block btn--lg" type="submit">Send and get my review<svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <button class="btn btn--cta btn--block" type="submit">Send and get my review<svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <p class="form__fine">We reply within one working day. No newsletter unless you ask for it.</p>
-</form></div>
-    <div class="contact-side">
-      <div class="card" data-r="80">
-        <h3>Talk to a person</h3>
-        <dl>
-          <div><dt>Phone</dt><dd><a href="tel:+442079460318">020 7946 0318</a></dd></div>
-          <div><dt>Email</dt><dd><a href="mailto:hello@quincylou.com">hello@quincylou.com</a></dd></div>
-          <div><dt>Studio</dt><dd>Studio 7, Nelson Works<br>128 Loman Street<br>London SE1 0EH</dd></div>
-          <div><dt>Hours</dt><dd>Mon to Fri, 9:00 to 17:30</dd></div>
-        </dl>
-      </div>
-      <div class="card card--ink faq" data-r="160"><h3>Before you ask</h3><details><summary>How quickly can you start?</summary><p>Usually within two to three weeks of a signed quote. We take on two new projects a month so each one gets proper attention.</p></details><details><summary>Do you work outside London?</summary><p>Yes. Most of our clients are elsewhere in the UK and we work remotely with all of them.</p></details><details><summary>What if I only need a few changes?</summary><p>Book the free review. If a full project is not worth it for you, we will say so and suggest what to do instead.</p></details></div>
+</form>
     </div>
+  </div>
+</section>
+<section class="band faq-band" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div class="faq-grid__head">
+      <h2 id="faq-h" data-r>Questions,<br><span class="acc">answered.</span></h2>
+      <p data-r="100">Still not sure? Send the form above or ring us. A real person replies within one working day.</p>
+    </div>
+    <div class="qas" data-r="120"><details class="qa" open><summary>How quickly can you start?<i aria-hidden="true"></i></summary><p>Usually within two to three weeks of a signed quote. We take on two new projects a month so each one gets proper attention.</p></details><details class="qa"><summary>Do you work outside London?<i aria-hidden="true"></i></summary><p>Yes. Most of our clients are elsewhere in the UK and we work remotely with all of them.</p></details><details class="qa"><summary>What if I only need a few changes?<i aria-hidden="true"></i></summary><p>Book the free review. If a full project is not worth it for you, we will say so and suggest what to do instead.</p></details><details class="qa"><summary>Who owns the website when it is done?<i aria-hidden="true"></i></summary><p>You do. The domain, the hosting account, the code and every file are in your name from day one.</p></details><details class="qa"><summary>Can we update the site ourselves?<i aria-hidden="true"></i></summary><p>Yes. Every site comes with an editor your team can use, and a short recorded walkthrough of how to change pages, prices and photos.</p></details><details class="qa"><summary>What if we don&#x27;t like the first design?<i aria-hidden="true"></i></summary><p>You see two directions before anything is built. We then revise the one you pick until it is right, inside the quoted price.</p></details></div>
   </div>
 </section>
 
@@ -84,7 +85,7 @@
   <div class="ftr__cta">
     <h2>Got a website that<br><span class="acc">should do more?</span></h2>
     <div class="ftr__contact">
-      <a class="btn btn--cream-on-ink" href="/contact/">Get a free website review<svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn btn--cta" href="/contact/">Get a free website review<svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a class="ftr__mail" href="mailto:hello@quincylou.com">hello@quincylou.com</a>
       <a href="tel:+442079460318">020 7946 0318</a>
     </div>
@@ -99,11 +100,11 @@
         <input type="hidden" name="form-name" value="newsletter">
         <label class="sr-only" for="nl-email">Email</label>
         <input class="input" id="nl-email" type="email" name="email" placeholder="you@company.com" required>
-        <button class="btn btn--red btn--sm" type="submit">Join</button>
+        <button class="btn btn--coral" type="submit">Join</button>
       </form>
     </div>
   </div>
-  <span class="wordmark" aria-hidden="true">quincy lou</span>
+  <span class="wordmark" aria-hidden="true">Quincy Lou</span>
   <div class="ftr__base">
     <span>© 2026 Quincy Lou Ltd. Registered in England &amp; Wales, no. 09184427.</span>
     <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
