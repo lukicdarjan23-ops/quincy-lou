@@ -243,7 +243,9 @@ h1 .acc, h2 .acc { font-size: 1.08em; line-height: 0.85; }
 
 /* --- services: tilted cards that stack on top of each other as you scroll -- */
 .svc-stack { --strip: clamp(172px, 14.6vw, 212px); display: grid; grid-template-columns: minmax(0, 1fr); padding-bottom: 24px; }
-.svc { position: sticky; border-radius: 34px; padding: clamp(28px, 3.2vw, 44px); display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(24px, 4vw, 56px); min-height: 480px; margin-bottom: 30px; box-shadow: 0 -6px 40px rgba(23,20,15,.10); }
+.svc { position: sticky; border-radius: 34px; padding: clamp(28px, 3.2vw, 44px); display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(24px, 4vw, 56px); min-height: 480px; margin-bottom: 30px; color: inherit; text-decoration: none; cursor: pointer; }
+.svc:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+.svc--ink:focus-visible { outline-color: var(--lime); }
 /* each card sticks one header-strip lower than the last, so the icon and
    title of every covered card stay readable */
 .svc:nth-child(1) { top: 92px;  rotate: -0.8deg; }
@@ -260,7 +262,7 @@ h1 .acc, h2 .acc { font-size: 1.08em; line-height: 0.85; }
 .svc--sand  { background: var(--lavender); }
 .svc--red   { background: var(--red); color: var(--ink); }
 .svc--ink   { background: var(--ink); color: var(--on-ink); }
-.svc--cream { background: var(--mint); border: 1.5px solid var(--ink); }
+.svc--cream { background: var(--mint); }
 .svc__copy { display: flex; flex-direction: column; gap: 18px; }
 .svc__icon { width: 38px; height: 38px; }
 .svc h3 { font-size: clamp(2.6rem, 5vw, 4.6rem); line-height: .95; }
@@ -298,7 +300,7 @@ h1 .acc, h2 .acc { font-size: 1.08em; line-height: 0.85; }
 /* --- pricing ------------------------------------------------------------ */
 .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.6vw, 22px); align-items: center; }
 .plan { background: var(--sand); border-radius: var(--r-xl); padding: clamp(26px, 2.6vw, 36px); display: flex; flex-direction: column; gap: 22px; min-height: 560px; }
-.plan--hot { background: var(--red); color: var(--ink); min-height: 600px; border: 0; rotate: -1.6deg; position: relative; z-index: 1; box-shadow: 0 30px 60px rgba(23,20,15,.22), 0 6px 14px rgba(23,20,15,.10); }
+.plan--hot { background: var(--lavender); color: var(--ink); min-height: 600px; border: 0; rotate: -1.6deg; position: relative; z-index: 1; box-shadow: 0 30px 60px rgba(23,20,15,.22), 0 6px 14px rgba(23,20,15,.10); }
 .plan--hot .btn { box-shadow: none; }
 .plan--hot .btn:hover { transform: translateY(-1px); box-shadow: none; background: #2E2820; }
 .plan__top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }

@@ -56,7 +56,7 @@
 
   "work": [
     {
-      "slug": "client-01", "name": "Client 01", "line": "A roofing firm that stopped losing jobs to the competitor down the road",
+      "slug": "client-01", "badge": "coral", "name": "Client 01", "line": "A roofing firm that stopped losing jobs to the competitor down the road",
       "result": "3.4× quote requests", "service": "Website rebuild", "industry": "Roofing", "year": "2026",
       "challenge": "Plenty of traffic from local ads, very few quote requests. The old site buried the phone number and asked for eleven fields before anyone could book a survey.",
       "approach": "We rebuilt the site around one action: booking a survey. A postcode checker sits on the homepage, the phone number is pinned to every screen, and the form asks for four things instead of eleven.",
@@ -74,7 +74,7 @@
       "quote": "[A short quote from the client about the result.]"
     },
     {
-      "slug": "client-03", "name": "Client 03", "line": "A law firm that put its fees on the website",
+      "slug": "client-03", "badge": "lime", "name": "Client 03", "line": "A law firm that put its fees on the website",
       "result": "+164% enquiries", "service": "Website rebuild", "industry": "Legal", "year": "2025",
       "challenge": "Every enquiry opened with the same question about price, and good prospects were leaving before asking it.",
       "approach": "Fixed fees went on every service page, each practice area got its own page, and the contact form went from eleven fields to four.",
@@ -131,22 +131,22 @@
 
   "services": [
     {
-      "key": "design", "icon": "pen", "name": "Design", "tone": "sand",
+      "key": "design", "icon": "pen", "name": "Design", "tone": "sand", "link": "/contact/",
       "text": "Customer interviews first, then pages built around what nearly stopped people from getting in touch. Two full concepts, mobile designed first.",
       "price": "From £4,500", "time": "2 to 3 weeks"
     },
     {
-      "key": "build", "icon": "cursor", "name": "Websites that sell", "tone": "red",
+      "key": "build", "icon": "cursor", "name": "Websites that sell", "tone": "red", "link": "/contact/",
       "text": "Design and build together. Fast, accessible, and simple enough that your team can change prices and photos without calling us.",
       "price": "From £8,500", "time": "4 to 6 weeks"
     },
     {
-      "key": "optimise", "icon": "chart", "name": "Optimise", "tone": "ink",
+      "key": "optimise", "icon": "chart", "name": "Optimise", "tone": "ink", "link": "/contact/",
       "text": "After launch we keep testing the headline, the form and the offer until the number of enquiries moves. One report a month in plain English.",
       "price": "From £1,200/mo", "time": "monthly"
     },
     {
-      "key": "content", "icon": "search", "name": "Content & local SEO", "tone": "cream",
+      "key": "content", "icon": "search", "name": "Content & local SEO", "tone": "cream", "link": "/contact/",
       "text": "Service pages, area pages and articles that answer what your customers actually type into Google, written so they read well and rank.",
       "price": "From £900/mo", "time": "monthly"
     }

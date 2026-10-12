@@ -210,7 +210,7 @@ ACCENTS = ["lime", "lavender", "coral", "mint", "pink"]
 
 
 def work_card(w: dict, ratio: str) -> str:
-    tone = ACCENTS[[x["slug"] for x in C["work"]].index(w["slug"]) % len(ACCENTS)]
+    tone = w.get("badge") or ACCENTS[[x["slug"] for x in C["work"]].index(w["slug"]) % len(ACCENTS)]
     return f"""<a class="card-work" href="/work/{e(w['slug'])}/" data-r>
   <div class="card-work__media">
     <span class="badge badge--{tone}">{icon('arrow')}{e(w['result'])}</span>
@@ -307,7 +307,7 @@ def build_home() -> None:
     h = C["home"]
     names = "".join(f'<span class="marquee__name">{e(n)}</span><span class="marquee__dot" aria-hidden="true"></span>'
                     for n in h["clients"])
-    services = "".join(f"""<article class="svc svc--{s['tone']}">
+    services = "".join(f"""<a class="svc svc--{s['tone']}" href="{e(s.get('link', '/contact/'))}">
   <div class="svc__copy">
     {icon(s['icon'], 'svc__icon')}
     <h3>{e(s['name'])}</h3>
@@ -315,7 +315,7 @@ def build_home() -> None:
     <p class="svc__price"><b>{e(s['price'])}</b><span>· {e(s['time'])}</span></p>
   </div>
   <div class="svc__media">{ph(f"{s['name']} example image", "", "")}</div>
-</article>""" for s in C["services"])
+</a>""" for s in C["services"])
     steps = "".join(f"""<li class="step step--{p['tone']}" data-r="{i * 90}">
   <span class="step__tape" aria-hidden="true"></span>
   <div class="step__top"><span class="step__n">{e(p['n'])}</span><span class="step__when">{e(p['when'])}</span></div>
