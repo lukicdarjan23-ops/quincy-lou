@@ -31,6 +31,8 @@ and the sitemap. Articles in `"journal"` work the same way.
 
 ## What is still a placeholder
 
+- **Client logos** are the six blank slots under the hero (`home.clients` in
+  the content names them). Swap each `ph--logo` span for an `<img>`.
 - **Every image** is a blank shape. Swap a `<span class="ph …">` for an `<img>`
   (or add an `image` field in the content and the template).
 - **Clients, team, testimonials and project results** are named
@@ -51,3 +53,9 @@ notifications.
 
 *Add new site → Import an existing project → GitHub →* this repo. Leave the
 build command empty. `netlify.toml` already sets the publish folder to `site`.
+
+## Buttons
+
+Every button is the same size. Calls to action use `btn--cta`, whose colour
+is the `--cta` token at the top of `site/assets/css/main.css` (mint for now).
+Change that one line to recolour every CTA on the site.

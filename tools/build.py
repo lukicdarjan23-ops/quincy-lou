@@ -51,7 +51,7 @@ def icon(name: str, cls: str = "") -> str:
     return f'<svg{c} viewBox="{vb}" aria-hidden="true">{paths[name]}</svg>'
 
 
-def btn(label: str, href: str, kind: str = "red", size: str = "", arrow: bool = True, extra: str = "") -> str:
+def btn(label: str, href: str, kind: str = "cta", size: str = "", arrow: bool = True, extra: str = "") -> str:
     cls = f"btn btn--{kind}" + (f" btn--{size}" if size else "") + (f" {extra}" if extra else "")
     a = icon("arrow", "arr") if arrow else ""
     return f'<a class="{cls}" href="{e(href)}">{e(label)}{a}</a>'
@@ -117,11 +117,11 @@ def header(active: str = "") -> str:
     <div class="hdr__right">
       <span class="avail"><i aria-hidden="true"></i>{e(S['availability'])}</span>
       <a class="hdr__phone" href="tel:{S['phone_href']}">{e(S['phone'])}</a>
-      {btn(S['cta'], '/contact/', 'ink', 'sm')}
+      {btn(S['cta'], '/contact/', 'cta')}
       <details class="menu">
         <summary>Menu</summary>
         <nav class="menu__panel" aria-label="Mobile">{mlinks}<a href="/contact/">Contact</a>
-          <a class="btn btn--red" href="tel:{S['phone_href']}">Call {e(S['phone'])}</a>
+          <a class="btn btn--cta" href="tel:{S['phone_href']}">Call {e(S['phone'])}</a>
         </nav>
       </details>
     </div>
@@ -152,7 +152,7 @@ def enquiry_form(form_id: str = "review") -> str:
   </fieldset>
   <label><span class="lbl" style="display:block">What isn’t working?</span>
     <textarea class="input" name="message" placeholder="What does the business do, and what would a good month of enquiries look like?"></textarea></label>
-  <button class="btn btn--ink btn--block btn--lg" type="submit">Send and get my review{icon('arrow', 'arr')}</button>
+  <button class="btn btn--cta btn--block" type="submit">Send and get my review{icon('arrow', 'arr')}</button>
   <p class="form__fine">{e(S['reply_time'])}. No newsletter unless you ask for it.</p>
 </form>"""
 
@@ -166,7 +166,7 @@ def footer() -> str:
   <div class="ftr__cta">
     <h2>Got a website that<br><span class="acc">should do more?</span></h2>
     <div class="ftr__contact">
-      {btn('Get a free website review', '/contact/', 'cream-on-ink')}
+      {btn('Get a free website review', '/contact/', 'cta')}
       <a class="ftr__mail" href="mailto:{e(S['email'])}">{e(S['email'])}</a>
       <a href="tel:{S['phone_href']}">{e(S['phone'])}</a>
     </div>
@@ -181,7 +181,7 @@ def footer() -> str:
         <input type="hidden" name="form-name" value="newsletter">
         <label class="sr-only" for="nl-email">Email</label>
         <input class="input" id="nl-email" type="email" name="email" placeholder="you@company.com" required>
-        <button class="btn btn--red btn--sm" type="submit">Join</button>
+        <button class="btn btn--cta" type="submit">Join</button>
       </form>
     </div>
   </div>
@@ -305,8 +305,7 @@ def enquire_block() -> str:
 # --------------------------------------------------------------------- pages
 def build_home() -> None:
     h = C["home"]
-    names = "".join(f'<span class="marquee__name">{e(n)}</span><span class="marquee__dot" aria-hidden="true"></span>'
-                    for n in h["clients"])
+    logos = "".join(f'<li>{ph(f"{n} logo", "ph--logo")}</li>' for n in h["clients"][:6])
     services = "".join(f"""<a class="svc svc--{s['tone']}" href="{e(s.get('link', '/contact/'))}">
   <div class="svc__copy">
     {icon(s['icon'], 'svc__icon')}
@@ -331,7 +330,7 @@ def build_home() -> None:
   <p class="plan__price"><b>{e(p['price'])}</b><span>{e(p['unit'])}</span></p>
   <p class="plan__text">{e(p['text'])}</p>
   <ul>{items}</ul>
-  {btn(p['cta'], '/contact/', 'ink' if hot else 'line')}
+  {btn(p['cta'], '/contact/', 'cta' if hot else 'line')}
 </article>"""
     t = C["testimonials"]
     others = "".join(f"""<figure class="voice" data-r="{i * 80}">
@@ -351,7 +350,7 @@ def build_home() -> None:
     <div class="hero__foot">
       <div data-r="120">
         <p class="hero__lede">{e(h['hero_lede'])}</p>
-        <div class="hero__ctas">{btn(S['cta'], '/contact/', 'red', 'lg')}{btn('See our work', '/work/', 'line', 'lg')}</div>
+        <div class="hero__ctas">{btn(S['cta'], '/contact/', 'cta')}{btn('See our work', '/work/', 'line')}</div>
       </div>
       <div class="rating" data-r="200">
         <div class="avatars">{ph('Client', 'ph--avatar')}{ph('Client', 'ph--avatar')}{ph('Client', 'ph--avatar')}{ph('Client', 'ph--avatar')}</div>
@@ -363,15 +362,13 @@ def build_home() -> None:
 
 <section class="clients" aria-label="Clients">
   <p>{e(h['clients_label'])}</p>
-  <div class="marquee"><div class="marquee__track">
-    <div class="marquee__set">{names}</div><div class="marquee__set" aria-hidden="true">{names}</div>
-  </div></div>
+  <ul class="logos wrap">{logos}</ul>
 </section>
 
 <section class="band" id="work" aria-labelledby="work-h" style="padding-top:clamp(32px,3.4vw,48px)">
   <div class="wrap">
     <div class="head">{acc_title(h['work_title'], 'h2', ' id="work-h" data-r')}
-      <div class="head__side" data-r="120"><p>{e(h['work_lede'])}</p>{btn('All projects', '/work/', 'line', 'sm')}</div></div>
+      <div class="head__side" data-r="120"><p>{e(h['work_lede'])}</p>{btn('All projects', '/work/', 'line')}</div></div>
     {work_grid(C['work'][:4])}
   </div>
 </section>
@@ -428,7 +425,7 @@ def build_home() -> None:
 <section class="band notes-band" aria-labelledby="notes-h">
   <div class="wrap">
     <div class="head head--line"><h2 id="notes-h" data-r>{e(h['journal_title'][0])} <span class="acc">{e(h['journal_title'][1])}</span></h2>
-      {btn('Read the journal', '/journal/', 'line', 'sm')}</div>
+      {btn('Read the journal', '/journal/', 'line')}</div>
     <div class="posts">{posts}</div>
   </div>
 </section>
@@ -568,7 +565,7 @@ def build_journal() -> None:
         <div class="post__meta"><span class="chip-ink">{e(f['tag'])}</span><span>{nice_date(f['date'])} · {e(f['read'])}</span></div>
         <h2>{e(f['title'])}</h2>
         <p>{e(f['lede'])}</p>
-        <span class="btn btn--line btn--sm">Read the article{icon('arrow', 'arr')}</span>
+        <span class="btn btn--line">Read the article{icon('arrow', 'arr')}</span>
       </div>
     </a>
     <div class="posts">{grid}</div>
@@ -611,7 +608,7 @@ def build_articles() -> None:
 </article>
 <section class="band" style="padding-top:0">
   <div class="wrap">
-    <div class="head"><h2>Keep <span class="acc">reading.</span></h2>{btn('All articles', '/journal/', 'line', 'sm')}</div>
+    <div class="head"><h2>Keep <span class="acc">reading.</span></h2>{btn('All articles', '/journal/', 'line')}</div>
     <div class="posts">{more}</div>
   </div>
 </section>
@@ -673,7 +670,7 @@ def build_thanks() -> None:
 <section class="page-hero"><div class="wrap lost">
   <h1>Thank<br><span class="acc">you.</span></h1>
   <p class="hero__lede">Your message is with us. {e(S['reply_time'])}, usually much sooner.</p>
-  <div class="hero__ctas">{btn('Back to the homepage', '/', 'red')}{btn('Read the journal', '/journal/', 'line')}</div>
+  <div class="hero__ctas">{btn('Back to the homepage', '/', 'cta')}{btn('Read the journal', '/journal/', 'line')}</div>
 </div></section>
 """
     page("/thanks/", "Thank you", "Thanks for getting in touch with Quincy Lou.", body)
@@ -684,7 +681,7 @@ def build_404() -> None:
 <section class="page-hero"><div class="wrap lost">
   <h1>Page<br><span class="acc">not found.</span></h1>
   <p class="hero__lede">That link has moved or never existed. The useful parts of the site are one click away.</p>
-  <div class="hero__ctas">{btn('Go to the homepage', '/', 'red')}{btn('See our work', '/work/', 'line')}</div>
+  <div class="hero__ctas">{btn('Go to the homepage', '/', 'cta')}{btn('See our work', '/work/', 'line')}</div>
 </div></section>
 """
     page("/404", "Page not found", "This page could not be found.", body)
