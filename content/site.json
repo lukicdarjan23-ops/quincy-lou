@@ -141,9 +141,14 @@
       "price": "From £8,500", "time": "4 to 6 weeks"
     },
     {
-      "key": "optimise", "icon": "chart", "name": "Optimise", "tone": "paper",
+      "key": "optimise", "icon": "chart", "name": "Optimise", "tone": "ink",
       "text": "After launch we keep testing the headline, the form and the offer until the number of enquiries moves. One report a month in plain English.",
       "price": "From £1,200/mo", "time": "monthly"
+    },
+    {
+      "key": "content", "icon": "search", "name": "Content & local SEO", "tone": "cream",
+      "text": "Service pages, area pages and articles that answer what your customers actually type into Google, written so they read well and rank.",
+      "price": "From £900/mo", "time": "monthly"
     }
   ],
 

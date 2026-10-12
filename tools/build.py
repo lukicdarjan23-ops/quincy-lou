@@ -42,10 +42,11 @@ def icon(name: str, cls: str = "") -> str:
         "pen": '<path d="M4 20 5.5 14 15 4.5l4.5 4.5L10 18.5zM13 6.5 17.5 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
         "cursor": '<path d="m5 4 13 5.5-5.6 1.9-1.9 5.6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 15.5l2-1M15 20l-.6-2.2M20 13.5l-2.1-.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
         "chart": '<path d="M4 20V10m6 10V4m6 16v-7m4 7H2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+        "search": '<circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
         "next": '<path d="M5 24h38M30 11l13 13-13 13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>',
         "quote": '<path d="M0 40V24C0 10 7 2 20 0l2 6c-7 2-11 7-11 14h9v20zm30 0V24C30 10 37 2 50 0l2 6c-7 2-11 7-11 14h9v20z" fill="#fff"/>',
     }
-    vb = {"pen": "0 0 24 24", "cursor": "0 0 24 24", "chart": "0 0 24 24",
+    vb = {"pen": "0 0 24 24", "cursor": "0 0 24 24", "chart": "0 0 24 24", "search": "0 0 24 24",
           "next": "0 0 48 48", "quote": "0 0 52 40"}.get(name, "0 0 16 16")
     return f'<svg{c} viewBox="{vb}" aria-hidden="true">{paths[name]}</svg>'
 
@@ -309,9 +310,10 @@ def build_home() -> None:
     <p>{e(s['text'])}</p>
     <p class="svc__price"><b>{e(s['price'])}</b><span>· {e(s['time'])}</span></p>
   </div>
-  {ph(f"{s['name']} example image", "", "")}
+  <div class="svc__media">{ph(f"{s['name']} example image", "", "")}</div>
 </article>""" for s in C["services"])
     steps = "".join(f"""<li class="step step--{p['tone']}" data-r="{i * 90}">
+  <span class="step__tape" aria-hidden="true"></span>
   <div class="step__top"><span class="step__n">{e(p['n'])}</span><span class="step__when">{e(p['when'])}</span></div>
   <h3>{e(p['title'])}</h3><p>{e(p['text'])}</p>
 </li>""" for i, p in enumerate(C["process"]))
@@ -362,7 +364,7 @@ def build_home() -> None:
   </div></div>
 </section>
 
-<section class="band" id="work" aria-labelledby="work-h" style="padding-top:clamp(32px,4vw,56px)">
+<section class="band" id="work" aria-labelledby="work-h" style="padding-top:clamp(56px,6.6vw,94px)">
   <div class="wrap">
     <div class="head">{acc_title(h['work_title'], 'h2', ' id="work-h" data-r')}
       <div class="head__side" data-r="120"><p>{e(h['work_lede'])}</p>{btn('All projects', '/work/', 'line', 'sm')}</div></div>
@@ -411,7 +413,7 @@ def build_home() -> None:
   </div>
 </section>
 
-<section class="band" aria-labelledby="team-h">
+<section class="band team-band" aria-labelledby="team-h">
   <div class="wrap">
     <div class="head head--line"><h2 id="team-h" data-r>{e(h['team_title'][0])} <span class="acc">{e(h['team_title'][1])}</span></h2>
       <div class="head__side" data-r="120"><p>{e(h['team_lede'])}</p></div></div>
@@ -419,7 +421,7 @@ def build_home() -> None:
   </div>
 </section>
 
-<section class="band" aria-labelledby="notes-h" style="padding-top:0">
+<section class="band notes-band" aria-labelledby="notes-h">
   <div class="wrap">
     <div class="head head--line"><h2 id="notes-h" data-r>{e(h['journal_title'][0])} <span class="acc">{e(h['journal_title'][1])}</span></h2>
       {btn('Read the journal', '/journal/', 'line', 'sm')}</div>
