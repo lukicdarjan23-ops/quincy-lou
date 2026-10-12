@@ -38,13 +38,13 @@ def icon(name: str, cls: str = "") -> str:
         "check": '<path d="m3 8.5 3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
         "play": '<path d="M4 2.5v11l9-5.5z" fill="#fff"/>',
         "spark": '<path d="M8 1.5c.4 3.3 2.2 5.1 5.5 5.5-3.3.4-5.1 2.2-5.5 5.5-.4-3.3-2.2-5.1-5.5-5.5C5.8 6.6 7.6 4.8 8 1.5Z" fill="currentColor"/>',
-        "star4": '<path d="M8 2v12M2 8h12M3.8 3.8l8.4 8.4M12.2 3.8l-8.4 8.4" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>',
+        "star4": '<path d="M8 2v12M2 8h12M3.8 3.8l8.4 8.4M12.2 3.8l-8.4 8.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>',
         "pen": '<path d="M4 20 5.5 14 15 4.5l4.5 4.5L10 18.5zM13 6.5 17.5 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
         "cursor": '<path d="m5 4 13 5.5-5.6 1.9-1.9 5.6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 15.5l2-1M15 20l-.6-2.2M20 13.5l-2.1-.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
         "chart": '<path d="M4 20V10m6 10V4m6 16v-7m4 7H2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
         "search": '<circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
         "next": '<path d="M5 24h38M30 11l13 13-13 13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>',
-        "quote": '<path d="M0 40V24C0 10 7 2 20 0l2 6c-7 2-11 7-11 14h9v20zm30 0V24C30 10 37 2 50 0l2 6c-7 2-11 7-11 14h9v20z" fill="#fff"/>',
+        "quote": '<path d="M0 40V24C0 10 7 2 20 0l2 6c-7 2-11 7-11 14h9v20zm30 0V24C30 10 37 2 50 0l2 6c-7 2-11 7-11 14h9v20z" fill="currentColor"/>',
     }
     vb = {"pen": "0 0 24 24", "cursor": "0 0 24 24", "chart": "0 0 24 24", "search": "0 0 24 24",
           "next": "0 0 48 48", "quote": "0 0 52 40"}.get(name, "0 0 16 16")
@@ -92,8 +92,8 @@ def head(title: str, desc: str, path: str) -> str:
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{e(S['url'] + path)}">
-<meta name="theme-color" content="#F2EDE4">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23CF2E22'/%3E%3Cpath d='M16 8v16M8 16h16M10.3 10.3l11.4 11.4M21.7 10.3 10.3 21.7' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#FDF9F1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23F46840'/%3E%3Cpath d='M16 8v16M8 16h16M10.3 10.3l11.4 11.4M21.7 10.3 10.3 21.7' stroke='%23000' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
@@ -206,10 +206,14 @@ def page(path: str, title: str, desc: str, body: str, active: str = "") -> None:
 
 
 # ---------------------------------------------------------------- components
+ACCENTS = ["coral", "lime", "lavender", "mint"]
+
+
 def work_card(w: dict, ratio: str) -> str:
+    tone = ACCENTS[[x["slug"] for x in C["work"]].index(w["slug"]) % len(ACCENTS)]
     return f"""<a class="card-work" href="/work/{e(w['slug'])}/" data-r>
   <div class="card-work__media">
-    <span class="badge">{icon('arrow')}{e(w['result'])}</span>
+    <span class="badge badge--{tone}">{icon('arrow')}{e(w['result'])}</span>
     {ph(f"{w['name']} project image", ratio)}
   </div>
   <div class="card-work__row">
@@ -245,14 +249,14 @@ def receipts_block() -> str:
         {acc_title(r['title'], 'h2', ' id="rcpt-h" data-r')}
         <p data-r="100">{e(r['lede'])}</p>
       </div>
-      <figure class="receipt" data-r="120" aria-label="Studio numbers">
+      <div class="receipt-wrap" data-r="120"><figure class="receipt" aria-label="Studio numbers">
         <p class="receipt__store">{e(r['store'])}</p>
         <p class="receipt__sub">{e(r['sub'])}</p>
         <ul class="receipt__lines">{lines}</ul>
         <p class="receipt__total"><span>{e(r['total'][0])}</span><b>{e(r['total'][1])}</b></p>
         <span class="receipt__barcode" aria-hidden="true"></span>
         <p class="receipt__note">{e(r['note'])}</p>
-      </figure>
+      </figure></div>
     </div>
     <div class="tools" data-r>
       <div class="tools__head"><h3>{e(r['tools_title'])}</h3><p>{e(r['tools_lede'])}</p></div>
@@ -364,7 +368,7 @@ def build_home() -> None:
   </div></div>
 </section>
 
-<section class="band" id="work" aria-labelledby="work-h" style="padding-top:clamp(56px,6.6vw,94px)">
+<section class="band" id="work" aria-labelledby="work-h" style="padding-top:clamp(32px,3.4vw,48px)">
   <div class="wrap">
     <div class="head">{acc_title(h['work_title'], 'h2', ' id="work-h" data-r')}
       <div class="head__side" data-r="120"><p>{e(h['work_lede'])}</p>{btn('All projects', '/work/', 'line', 'sm')}</div></div>
