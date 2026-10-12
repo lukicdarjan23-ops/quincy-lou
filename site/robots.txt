@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /concept/
+Sitemap: https://quincylou.com/sitemap.xml

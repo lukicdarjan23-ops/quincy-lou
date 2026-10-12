@@ -1,0 +1,291 @@
+{
+  "_readme": "All site content lives here. Edit, then run: python3 tools/build.py. Anything in [square brackets] or named 'Client 0X' / 'Name Surname' is a placeholder to replace with your own.",
+
+  "site": {
+    "name": "Quincy Lou",
+    "url": "https://quincylou.com",
+    "tagline": "Websites for service businesses",
+    "description": "Quincy Lou designs, builds and optimises websites for service businesses that live on enquiries. Fixed price, fixed launch date.",
+    "email": "hello@quincylou.com",
+    "phone": "020 7946 0318",
+    "phone_href": "+442079460318",
+    "availability": "Taking 2 projects for December",
+    "cta": "Get a website review",
+    "address": ["Studio 7, Nelson Works", "128 Loman Street", "London SE1 0EH"],
+    "hours": "Mon to Fri, 9:00 to 17:30",
+    "reply_time": "We reply within one working day",
+    "social": [
+      {"label": "LinkedIn", "href": "#"},
+      {"label": "Instagram", "href": "#"},
+      {"label": "Dribbble", "href": "#"}
+    ],
+    "rating": "4.9/5 from 80+ clients",
+    "company": "Quincy Lou Ltd. Registered in England & Wales, no. 09184427."
+  },
+
+  "home": {
+    "hero_lede": "We design, build and optimise websites for roofers, clinics, solicitors and every other business that lives on enquiries. Price and launch date in writing before you commit.",
+    "reel_caption": "Showreel 2026 (0:45)",
+    "clients_label": "Trusted by businesses like",
+    "clients": ["Client 01", "Client 02", "Client 03", "Client 04", "Client 05", "Client 06"],
+    "work_title": ["Sites that", "pay for themselves."],
+    "work_lede": "Recent launches, each measured against the same months the year before. Numbers, not adjectives.",
+    "services_title": ["What we", "build."],
+    "services_lede": "Fixed-price projects for the build, one simple monthly plan for what comes after. Prices are on this page, no call needed.",
+    "process_title": ["Six weeks.", "Then the phone rings."],
+    "pricing_title": ["Prices you can", "plan around."],
+    "pricing_note": "Not sure which fits? Book the free review and we will tell you honestly, even if the answer is none of them.",
+    "voices_title": ["Heard from", "our clients."],
+    "team_title": ["Four people.", "No middlemen."],
+    "team_lede": "No account managers and no juniors hidden behind a pitch deck. The person on your first call is the person doing the work.",
+    "journal_title": ["Notes from", "the studio."],
+    "form_title": ["Tell us what", "isn’t working."],
+    "form_lede": "Four quick questions. Within one working day you get a recorded review of your current site and the three changes we would make first. No sales call unless you ask for one."
+  },
+
+  "work": [
+    {
+      "slug": "client-01", "name": "Client 01", "line": "A roofing firm that stopped losing jobs to the competitor down the road",
+      "result": "3.4× quote requests", "service": "Website rebuild", "industry": "Roofing", "year": "2026",
+      "challenge": "Plenty of traffic from local ads, very few quote requests. The old site buried the phone number and asked for eleven fields before anyone could book a survey.",
+      "approach": "We rebuilt the site around one action: booking a survey. A postcode checker sits on the homepage, the phone number is pinned to every screen, and the form asks for four things instead of eleven.",
+      "outcome": "Quote requests more than tripled on the same ad spend, and the office now spends its mornings on callbacks instead of chasing half-finished forms.",
+      "stats": [["3.4×", "quote requests"], ["−62%", "cost per lead"], ["5 weeks", "kick-off to live"]],
+      "quote": "[A short quote from the client about the result.]"
+    },
+    {
+      "slug": "client-02", "name": "Client 02", "line": "A dental practice that moved booking out of the phone queue",
+      "result": "11 → 47 bookings a month", "service": "Design & build", "industry": "Healthcare", "year": "2026",
+      "challenge": "New patients had to ring during opening hours to book, and most of the site traffic arrived in the evening.",
+      "approach": "Online booking went on the homepage, treatment prices went public, and every treatment got its own page answering the questions reception was hearing on the phone.",
+      "outcome": "New patient bookings went from eleven to forty-seven a month, most of them made outside opening hours.",
+      "stats": [["4.3×", "new patient bookings"], ["68%", "booked after hours"], ["6 weeks", "kick-off to live"]],
+      "quote": "[A short quote from the client about the result.]"
+    },
+    {
+      "slug": "client-03", "name": "Client 03", "line": "A law firm that put its fees on the website",
+      "result": "+164% enquiries", "service": "Website rebuild", "industry": "Legal", "year": "2025",
+      "challenge": "Every enquiry opened with the same question about price, and good prospects were leaving before asking it.",
+      "approach": "Fixed fees went on every service page, each practice area got its own page, and the contact form went from eleven fields to four.",
+      "outcome": "Completed enquiry forms rose 164% in ninety days, and the partners say first calls are shorter because the price conversation has already happened.",
+      "stats": [["+164%", "completed enquiries"], ["4", "form fields, down from 11"], ["90 days", "measured period"]],
+      "quote": "[A short quote from the client about the result.]"
+    },
+    {
+      "slug": "client-04", "name": "Client 04", "line": "A landscaping company with a portfolio worth showing off",
+      "result": "+90% average job value", "service": "Design & build", "industry": "Landscaping", "year": "2025",
+      "challenge": "Their best work was sitting in a phone camera roll. The site showed three stock photos and attracted mostly small, price-sensitive jobs.",
+      "approach": "A project-led site with a gallery that is easy to update from a phone, plus a guide to typical budgets so enquiries arrive with realistic expectations.",
+      "outcome": "Average job value nearly doubled within two quarters as smaller jobs filtered themselves out.",
+      "stats": [["+90%", "average job value"], ["31", "projects added by the team"], ["4 weeks", "kick-off to live"]],
+      "quote": "[A short quote from the client about the result.]"
+    },
+    {
+      "slug": "client-05", "name": "Client 05", "line": "A physiotherapy clinic that fills its quiet mornings",
+      "result": "+38% morning bookings", "service": "Optimise", "industry": "Healthcare", "year": "2025",
+      "challenge": "Afternoons were full and mornings were half empty. The site gave nobody a reason to choose the quiet slots.",
+      "approach": "We tested a morning offer, live availability on the homepage and a shorter booking flow, one change at a time over twelve weeks.",
+      "outcome": "Morning bookings rose 38% and the clinic now runs one fewer locum shift a week.",
+      "stats": [["+38%", "morning bookings"], ["9", "tests run"], ["12 weeks", "retainer so far"]],
+      "quote": "[A short quote from the client about the result.]"
+    },
+    {
+      "slug": "client-06", "name": "Client 06", "line": "An electrician whose phone number was impossible to find",
+      "result": "2.1× phone calls", "service": "Website rebuild", "industry": "Trades", "year": "2025",
+      "challenge": "Most visitors were on a phone, in a hurry, with a problem. The number sat at the bottom of a long page.",
+      "approach": "A click-to-call bar on every screen, emergency and planned work split from the first tap, and pages that load in under a second on 4G.",
+      "outcome": "Phone calls from the site more than doubled in the first two months.",
+      "stats": [["2.1×", "calls from the site"], ["0.8s", "load time on 4G"], ["3 weeks", "kick-off to live"]],
+      "quote": "[A short quote from the client about the result.]"
+    },
+    {
+      "slug": "client-07", "name": "Client 07", "line": "An accountancy practice that stopped attracting the wrong clients",
+      "result": "−45% unqualified leads", "service": "Design & build", "industry": "Finance", "year": "2024",
+      "challenge": "The site spoke to everyone, so the team spent hours a week on calls with businesses it could not help.",
+      "approach": "We rewrote the site for the three client types the practice actually serves, with an honest section on who it is not for.",
+      "outcome": "Unqualified enquiries fell by almost half and the partners got their Friday afternoons back.",
+      "stats": [["−45%", "unqualified leads"], ["3", "ideal client pages"], ["5 weeks", "kick-off to live"]],
+      "quote": "[A short quote from the client about the result.]"
+    },
+    {
+      "slug": "client-08", "name": "Client 08", "line": "A cleaning company that turned one-off jobs into contracts",
+      "result": "+57% recurring contracts", "service": "Optimise", "industry": "Facilities", "year": "2024",
+      "challenge": "Plenty of one-off bookings, very few people coming back. The site never mentioned that regular contracts existed.",
+      "approach": "Contract pricing up front, a follow-up sequence after every one-off job, and a landing page for each type of building they clean.",
+      "outcome": "Recurring contracts rose 57% over two quarters.",
+      "stats": [["+57%", "recurring contracts"], ["4", "building-type pages"], ["6 months", "retainer so far"]],
+      "quote": "[A short quote from the client about the result.]"
+    }
+  ],
+
+  "services": [
+    {
+      "key": "design", "icon": "pen", "name": "Design", "tone": "sand",
+      "text": "Customer interviews first, then pages built around what nearly stopped people from getting in touch. Two full concepts, mobile designed first.",
+      "price": "From £4,500", "time": "2 to 3 weeks"
+    },
+    {
+      "key": "build", "icon": "cursor", "name": "Websites that bring in work", "tone": "red",
+      "text": "Design and build together. Fast, accessible, and simple enough that your team can change prices and photos without calling us.",
+      "price": "From £8,500", "time": "4 to 6 weeks"
+    },
+    {
+      "key": "optimise", "icon": "chart", "name": "Optimise", "tone": "paper",
+      "text": "After launch we keep testing the headline, the form and the offer until the number of enquiries moves. One report a month in plain English.",
+      "price": "From £1,200/mo", "time": "monthly"
+    }
+  ],
+
+  "process": [
+    {"n": "01", "when": "Week 0", "title": "Review", "text": "A recorded walkthrough of your current site and the three things costing you the most enquiries.", "tone": "paper"},
+    {"n": "02", "when": "Week 1", "title": "Quote", "text": "One call, then a written quote with a fixed price and a launch date. Nothing starts until you have it.", "tone": "red"},
+    {"n": "03", "when": "Weeks 2 to 5", "title": "Design & build", "text": "A live link every Friday. You leave comments directly on the page instead of writing long emails.", "tone": "ink"},
+    {"n": "04", "when": "Week 6 onwards", "title": "Launch & tune", "text": "Ninety days of watching the numbers and fixing what is not working. Then the keys are yours.", "tone": "cream"}
+  ],
+
+  "pricing": [
+    {
+      "name": "Refresh", "price": "£4.5k", "unit": "one-off", "featured": false,
+      "text": "A redesign of your existing site, done properly in two to three weeks.",
+      "items": ["Messaging and page structure", "Two design concepts", "Mobile-first design for up to 6 pages", "Files and guidelines for your developer"],
+      "cta": "Book a refresh"
+    },
+    {
+      "name": "Rebuild", "price": "£8.5k", "unit": "from, one-off", "featured": true, "badge": "Most chosen",
+      "text": "Design, build and launch together, live in four to six weeks.",
+      "items": ["Everything in Refresh", "Build on a CMS your team can edit", "Up to 10 pages, copy included", "Analytics and call tracking set up", "90 days of tuning after launch"],
+      "cta": "Start a rebuild"
+    },
+    {
+      "name": "Grow", "price": "£1.2k", "unit": "/ month", "featured": false,
+      "text": "Testing and improvements on any site, including ones we did not build.",
+      "items": ["A test plan every month", "Landing pages for campaigns", "Session recordings, actually watched", "One plain-English report a month", "Rolling, 30 days’ notice"],
+      "cta": "Start growing"
+    }
+  ],
+
+  "testimonials": {
+    "featured": {"quote": "[Your strongest client quote goes here. Two or three sentences about what changed for their business after the new site went live.]", "name": "Client name", "role": "Role, Company"},
+    "others": [
+      {"quote": "[Short client quote about working with you, the process or the result.]", "name": "Client name", "role": "Role, Company"},
+      {"quote": "[Short client quote about working with you, the process or the result.]", "name": "Client name", "role": "Role, Company"},
+      {"quote": "[Short client quote about working with you, the process or the result.]", "name": "Client name", "role": "Role, Company"},
+      {"quote": "[Short client quote about working with you, the process or the result.]", "name": "Client name", "role": "Role, Company"}
+    ]
+  },
+
+  "team": [
+    {"name": "Name Surname", "role": "Founder & design lead", "line": "[One honest line about this person.]"},
+    {"name": "Name Surname", "role": "Founder & build lead", "line": "[One honest line about this person.]"},
+    {"name": "Name Surname", "role": "Conversion & analytics", "line": "[One honest line about this person.]"},
+    {"name": "Name Surname", "role": "Client lead", "line": "[One honest line about this person.]"}
+  ],
+
+  "studio": {
+    "title": ["A small studio for businesses", "that run on enquiries."],
+    "lede": "We started Quincy Lou because the businesses we knew best, the trades, clinics and practices, kept being sold websites built to win awards instead of to make the phone ring.",
+    "story": [
+      "Most of our clients have never hired an agency before, or they have and it went badly. Both are fine. We work in plain English, we put the price in writing before anything starts, and we measure success in enquiries, bookings and calls.",
+      "We stay small on purpose. Four people means the person who reviews your site is the person who designs it, and the person who builds it is the one who picks up when something breaks."
+    ],
+    "numbers": [["12", "years in business"], ["310", "sites launched"], ["4.9/5", "average client rating"], ["1 day", "average reply time"]],
+    "values_title": ["What we", "believe."],
+    "values": [
+      {"title": "Prices belong on the page", "text": "If you have to ring to find out what something costs, you are already annoyed before the conversation starts."},
+      {"title": "Measure the phone, not the pixels", "text": "We agree the number we are moving before the project starts, and it is never a bounce rate."},
+      {"title": "You own everything", "text": "Your domain, your hosting, your code and your files. Nothing is held hostage if you leave."},
+      {"title": "Say no early", "text": "If we are not the right fit, we tell you on the first call and point you somewhere better."}
+    ]
+  },
+
+  "journal": [
+    {
+      "slug": "put-your-prices-on-your-website", "tag": "Pricing", "date": "2026-09-18", "read": "4 min",
+      "title": "Put your prices on your website (yes, even you)",
+      "lede": "The most common reason service businesses hide their prices is fear of scaring people off. The people it scares off were never going to buy.",
+      "body": [
+        ["p", "Every week someone tells us their work is too custom to price. Then, ten minutes later, they describe the three packages that make up most of their invoices. Most businesses have a typical range, they just have not written it down."],
+        ["h2", "What hiding prices actually does"],
+        ["p", "A visitor who cannot find a price has two choices: ring and ask, or leave. The ones who ring are often the ones with the smallest budgets, because they have the least to lose. The ones who leave include the client you wanted, who assumed you were either too expensive or not serious."],
+        ["h2", "You do not need a full price list"],
+        ["p", "A starting price is enough. So is a range with a sentence about what moves it. ‘Most kitchen installations land between £9,000 and £16,000, depending on the units and the plumbing’ tells people everything they need to decide whether to call."],
+        ["list", ["Publish a ‘from’ price for each main service", "Explain the two or three things that change the price", "Say what is not included, so nobody feels misled later"]],
+        ["p", "In our experience the enquiries that follow are fewer but much better, and the first call stops being a negotiation."]
+      ]
+    },
+    {
+      "slug": "your-contact-form-is-losing-you-work", "tag": "Conversion", "date": "2026-08-27", "read": "5 min",
+      "title": "Your contact form is quietly losing you work",
+      "lede": "Every field you add is a question someone has to feel like answering. Most forms ask far more than they need to.",
+      "body": [
+        ["p", "Open your own contact form on a phone and fill it in with your thumb. Count the fields. Notice which ones you would skip if you could. That is the experience your customers are having, usually while doing something else."],
+        ["h2", "Ask for the minimum"],
+        ["p", "To call someone back you need a name, a way to reach them and a sentence about the problem. Everything else, such as budget, timeline and how they heard about you, can wait for the first conversation."],
+        ["h2", "Tell people what happens next"],
+        ["p", "A form that ends with a vague ‘thanks’ leaves people wondering whether it worked. Say who will reply and by when. ‘Rob will call you before 5pm tomorrow’ beats ‘we will be in touch’ every time."],
+        ["list", ["Cut the form to four fields or fewer", "Put the phone number right beside it for people who would rather call", "Promise a specific reply time, and keep the promise"]]
+      ]
+    },
+    {
+      "slug": "the-90-days-after-launch", "tag": "Process", "date": "2026-07-14", "read": "4 min",
+      "title": "Why the 90 days after launch matter more than launch day",
+      "lede": "A new website is a guess about what your customers want. The three months after it goes live are when you find out how good the guess was.",
+      "body": [
+        ["p", "Launch day feels like the finish line. It is closer to the start. Until real people use the site, every decision is based on interviews, experience and educated assumptions."],
+        ["h2", "What we watch"],
+        ["p", "We watch three things: where people arrive, where they stop, and what they do just before they get in touch. Session recordings show the moments of hesitation that no analytics dashboard will."],
+        ["h2", "Small changes, one at a time"],
+        ["p", "Most improvements are not dramatic. A clearer button label, a price moved higher up the page, a photo of the actual team instead of a stock image. Made one at a time, each change can be measured."],
+        ["p", "That is why every project we build includes ninety days of tuning. It is not an upsell. It is the part of the job that turns a nice website into a useful one."]
+      ]
+    },
+    {
+      "slug": "stock-photos-cost-you-trust", "tag": "Design", "date": "2026-06-02", "read": "3 min",
+      "title": "Stock photos are costing you trust",
+      "lede": "People can tell. A slightly blurry photo of your real team does more for you than a perfect photo of strangers in a meeting room.",
+      "body": [
+        ["p", "Service businesses sell people. Customers want to know who will turn up, who will answer the phone and whether they seem like the sort of people who do a good job."],
+        ["h2", "Real beats perfect"],
+        ["p", "You do not need a professional shoot to start. Photos of the team at work, finished jobs and the van outside a client’s house are more convincing than anything from a stock library."],
+        ["list", ["Photograph every finished job before you leave", "Use the same light, warm edit on everything so it feels consistent", "Replace stock images one at a time, starting with the homepage"]]
+      ]
+    },
+    {
+      "slug": "what-a-website-review-covers", "tag": "Process", "date": "2026-05-09", "read": "3 min",
+      "title": "What our free website review actually covers",
+      "lede": "A twelve-minute recording, three priorities and a rough idea of what each is worth. Here is exactly what to expect.",
+      "body": [
+        ["p", "When you send us your address, one of us opens your site on a phone and on a laptop and records the screen while talking through it. No automated audit tool, no forty-page PDF."],
+        ["h2", "What you get back"],
+        ["list", ["A recording of around twelve minutes", "The three changes we would make first, in order", "A rough idea of what each change could be worth to you"]],
+        ["h2", "What happens next"],
+        ["p", "Nothing, unless you want it to. Plenty of people take the recording, make the changes themselves and never hire us. That is a perfectly good outcome."]
+      ]
+    }
+  ],
+
+  "contact": {
+    "title": ["Let’s talk about", "your website."],
+    "lede": "Fill in the form, ring us or send an email. Whichever you choose, a real person replies within one working day.",
+    "needs": ["New website", "Redesign", "Ongoing optimisation", "Not sure yet"],
+    "budgets": ["Under £5k", "£5–10k", "£10–20k", "£20k+"],
+    "faq": [
+      ["How quickly can you start?", "Usually within two to three weeks of a signed quote. We take on two new projects a month so each one gets proper attention."],
+      ["Do you work outside London?", "Yes. Most of our clients are elsewhere in the UK and we work remotely with all of them."],
+      ["What if I only need a few changes?", "Book the free review. If a full project is not worth it for you, we will say so and suggest what to do instead."]
+    ]
+  },
+
+  "privacy": {
+    "updated": "1 October 2026",
+    "sections": [
+      ["Who we are", "Quincy Lou Ltd is a website studio registered in England and Wales. We are the data controller for personal information collected through this website. You can contact us about privacy at the email address at the bottom of this page."],
+      ["What we collect", "When you use the contact form we collect the details you choose to give us: usually your name, email address, information about your business and your website address. If you sign up for our newsletter we collect your email address. Our hosting provider records standard technical logs such as IP addresses and browser types."],
+      ["Why we collect it", "We use your details to reply to your enquiry, to prepare a website review if you ask for one, and to send the newsletter if you subscribed. Our legal basis is your consent or our legitimate interest in responding to people who contact us."],
+      ["Who we share it with", "We do not sell your information. We share it only with services we use to run the business, such as our website host, email provider and form handling, and only as far as needed to provide those services."],
+      ["How long we keep it", "Enquiries that do not become projects are deleted after 12 months. Client records are kept for as long as the law requires for accounting purposes. You can unsubscribe from the newsletter at any time using the link in each email."],
+      ["Your rights", "You can ask to see the information we hold about you, ask us to correct or delete it, or object to how we use it. Email us and we will respond within one month. You can also complain to the Information Commissioner’s Office (ico.org.uk)."],
+      ["Cookies", "This site does not use advertising or tracking cookies. If we add privacy-friendly analytics in future, this page will be updated to explain what it collects."]
+    ]
+  }
+}
