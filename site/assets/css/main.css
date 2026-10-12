@@ -164,7 +164,8 @@ h1 .acc, h2 .acc { font-size: 1.08em; line-height: 0.85; }
 @keyframes slide { to { transform: translateX(-50%); } }
 
 /* --- work grid ---------------------------------------------------------- */
-.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 5vw, 64px) clamp(20px, 2.4vw, 32px); align-items: start; }
+.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 2.4vw, 32px); align-items: start; }
+.work-col { display: grid; gap: clamp(40px, 5vw, 64px); }
 .card-work { display: grid; gap: 18px; }
 .card-work__media { position: relative; }
 .card-work .ph { transition: transform .4s cubic-bezier(.2,.7,.2,1); }
@@ -175,7 +176,7 @@ h1 .acc, h2 .acc { font-size: 1.08em; line-height: 0.85; }
 .card-work__row > div:first-child { flex: 1; min-width: 0; }
 .card-work__row .tags { flex: none; flex-wrap: nowrap; }
 .card-work h3 { font-size: clamp(24px, 2.2vw, 30px); letter-spacing: -0.035em; }
-.card-work__line { color: var(--ash); margin-top: 6px; font-size: 16px; }
+.card-work__line { color: var(--ash); margin-top: 6px; font-size: 16px; line-height: 1.5; min-height: 3em; }  /* two lines reserved, so both columns end level */
 .tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
 .tag { font-size: 14px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); white-space: nowrap; }
 .tag--fill { background: var(--sand); border-color: transparent; }

@@ -219,9 +219,17 @@ def work_card(w: dict, ratio: str) -> str:
 
 
 def work_grid(items: list[dict]) -> str:
-    """Two columns, every card the same shape, so each left/right pair lines up."""
-    cards = "".join(work_card(w, "ph--r43") for w in items)
-    return f'<div class="work-grid">{cards}</div>'
+    """Two staggered columns that start and end level.
+
+    The left column runs tall, short, tall, short; the right runs short, tall,
+    short, tall. Both start at the same top and, with equal counts, add up to
+    the same height, so the stagger is in the middle and the edges line up.
+    """
+    a = [w for i, w in enumerate(items) if i % 2 == 0]
+    b = [w for i, w in enumerate(items) if i % 2 == 1]
+    col_a = "".join(work_card(w, "ph--r45" if i % 2 == 0 else "ph--r43") for i, w in enumerate(a))
+    col_b = "".join(work_card(w, "ph--r43" if i % 2 == 0 else "ph--r45") for i, w in enumerate(b))
+    return f'<div class="work-grid"><div class="work-col">{col_a}</div><div class="work-col">{col_b}</div></div>'
 
 
 def receipts_block() -> str:
