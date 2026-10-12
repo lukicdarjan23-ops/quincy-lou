@@ -13,9 +13,3 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-
-# Design concepts are for internal comparison; keep them out of search results.
-[[headers]]
-  for = "/concept/*"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"

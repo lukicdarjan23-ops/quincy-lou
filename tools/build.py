@@ -657,8 +657,8 @@ def build_404() -> None:
 
 
 def clean() -> None:
-    """Remove previously generated pages, keeping assets and concept/."""
-    keep = {"assets", "concept"}
+    """Remove previously generated pages, keeping assets/."""
+    keep = {"assets"}
     for child in SITE.iterdir():
         if child.name in keep:
             continue
@@ -673,7 +673,7 @@ def build_sitemap(paths: list[str]) -> None:
     (SITE / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n',
         encoding="utf-8")
-    (SITE / "robots.txt").write_text(f"User-agent: *\nDisallow: /concept/\nSitemap: {S['url']}/sitemap.xml\n", encoding="utf-8")
+    (SITE / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {S['url']}/sitemap.xml\n", encoding="utf-8")
 
 
 def main() -> None:
@@ -693,7 +693,7 @@ def main() -> None:
              + [f"/work/{w['slug']}/" for w in C["work"]]
              + [f"/journal/{p['slug']}/" for p in C["journal"]])
     build_sitemap(paths)
-    count = len(list(SITE.glob("**/index.html"))) - len(list((SITE / "concept").glob("**/index.html")))
+    count = len(list(SITE.glob("**/index.html")))
     print(f"Built {count} pages + 404 into {SITE.relative_to(ROOT)}/")
 
 

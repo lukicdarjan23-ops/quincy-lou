@@ -12,7 +12,6 @@ for service businesses. Plain static HTML and CSS, hosted on Netlify.
 | `site/` | The published website (Netlify serves this folder) |
 | `site/assets/css/main.css` | The whole design: colours, type, layout |
 | `site/assets/js/main.js` | Scroll reveal and mobile menu. The site works without it |
-| `site/concept/` | Earlier design directions, kept for reference and hidden from search |
 | `netlify.toml` | Netlify settings: publish `site/`, security headers |
 
 ## Pages
