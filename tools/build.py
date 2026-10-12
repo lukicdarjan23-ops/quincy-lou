@@ -238,6 +238,19 @@ def work_grid(items: list[dict]) -> str:
     return f'<div class="work-grid"><div class="work-col">{col_a}</div><div class="work-col">{col_b}</div></div>'
 
 
+def barcode() -> str:
+    """A fixed, barcode-looking run of bars drawn as SVG, so it stays crisp on the tilted receipt."""
+    widths = [2, 1, 1, 3, 1, 2, 2, 1, 3, 1, 1, 2, 1, 3, 2, 1, 1, 1, 2, 3, 1, 2, 1, 1, 3, 2, 1, 2, 1, 1,
+              2, 3, 1, 1, 2, 1, 2, 2, 1, 3, 1, 1, 2, 1, 1, 3, 2, 1, 2, 1, 3, 1, 1, 2, 2, 1, 1, 3, 1, 2]
+    x, bars = 0, []
+    for i, w in enumerate(widths):
+        if i % 2 == 0:
+            bars.append(f'<rect x="{x}" width="{w}" height="40"/>')
+        x += w
+    return (f'<svg class="receipt__barcode" viewBox="0 0 {x} 40" preserveAspectRatio="none" aria-hidden="true">'
+            f'{"".join(bars)}</svg>')
+
+
 def receipts_block() -> str:
     """The proof section: a short pitch beside a stats card styled as a till receipt."""
     r = C["home"]["receipts"]
@@ -255,7 +268,7 @@ def receipts_block() -> str:
         <p class="receipt__sub">{e(r['sub'])}</p>
         <ul class="receipt__lines">{lines}</ul>
         <p class="receipt__total"><span>{e(r['total'][0])}</span><b>{e(r['total'][1])}</b></p>
-        <span class="receipt__barcode" aria-hidden="true"></span>
+        {barcode()}
         <p class="receipt__note">{e(r['note'])}</p>
       </figure></div>
     </div>

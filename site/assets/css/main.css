@@ -217,7 +217,7 @@ h1 .acc, h2 .acc { font-size: 1.08em; line-height: 0.85; }
 .receipt__total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 18px; }
 .receipt__total span { font-family: var(--display); font-weight: 800; font-variation-settings: "opsz" 96, "wdth" 92; font-size: 24px; letter-spacing: -0.02em; }
 .receipt__total b { font-family: var(--display); font-weight: 800; font-variation-settings: "opsz" 96, "wdth" 92; font-size: 42px; letter-spacing: -0.03em; color: var(--ink); line-height: 1; background: linear-gradient(transparent 55%, var(--lime) 55%, var(--lime) 92%, transparent 92%); padding-inline: 4px; }
-.receipt__barcode { display: block; height: 54px; width: 70%; margin: 28px auto 12px; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 8px, var(--ink) 8px 11px, transparent 11px 12px, var(--ink) 12px 13px, transparent 13px 16px); }
+.receipt__barcode { display: block; height: 54px; width: 70%; margin: 28px auto 12px; fill: var(--ink); }
 .receipt__note { text-align: center; color: var(--ash); font-size: 15px; }
 .tools { display: grid; grid-template-columns: 300px 1fr; gap: 32px; align-items: start; margin-top: clamp(64px, 8vw, 110px); padding-top: 36px; border-top: 1px solid var(--line); }
 .tools h3 { font-size: clamp(28px, 2.6vw, 38px); letter-spacing: -0.03em; }
