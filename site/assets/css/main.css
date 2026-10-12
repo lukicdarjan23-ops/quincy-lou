@@ -376,7 +376,7 @@ textarea.input { min-height: 130px; resize: vertical; }
 
 /* --- footer ---------------------------------------------------------------- */
 .ftr-wrap { padding: 0 clamp(8px, 1vw, 14px) clamp(8px, 1vw, 14px); }
-.ftr { background: var(--ink); color: var(--on-ink); border-radius: var(--r-xl); padding: clamp(36px, 5vw, 64px) clamp(20px, 3.4vw, 48px) 26px; overflow: hidden; }
+.ftr { --ftr-px: clamp(20px, 3.4vw, 48px); container-type: inline-size; background: var(--ink); color: var(--on-ink); border-radius: var(--r-xl); padding: clamp(36px, 5vw, 64px) var(--ftr-px) 26px; overflow: hidden; }
 .ftr__cta { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; padding-bottom: clamp(40px, 5vw, 64px); border-bottom: 1px solid var(--line-ink); }
 .ftr__cta h2 { font-size: clamp(2.8rem, 6vw, 5.2rem); }
 .ftr__contact { display: grid; gap: 18px; justify-items: start; }
@@ -391,7 +391,9 @@ textarea.input { min-height: 130px; resize: vertical; }
 .ftr__news .input { background: var(--ink-2); border-color: var(--line-ink); color: var(--on-ink); }
 .ftr__news .input::placeholder { color: var(--on-ink-soft); }
 .ftr__news .btn { flex: none; }
-.wordmark { display: block; font-family: var(--display); font-weight: 800; font-variation-settings: "opsz" 96, "wdth" 85; color: var(--lavender); letter-spacing: -0.045em; line-height: .86; font-size: clamp(4.4rem, 25.5vw, 25.5rem); white-space: nowrap; margin-left: -0.04em; padding-bottom: .16em; user-select: none; }
+/* "Quincy Lou" set in Bricolage at wdth 85 is 3.621em of ink with a 0.02em left bearing,
+   so this size runs it from one edge of the footer card to the other */
+.wordmark { display: block; font-family: var(--display); font-weight: 800; font-variation-settings: "opsz" 96, "wdth" 85; color: var(--lavender); letter-spacing: -0.045em; line-height: .86; font-size: calc((100cqi + 2 * var(--ftr-px)) / 3.621); white-space: nowrap; margin-left: calc(-1 * var(--ftr-px) - 0.02em); padding-bottom: .16em; user-select: none; }
 .ftr__base { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; font-size: 14px; color: var(--on-ink-soft); padding-top: 22px; border-top: 1px solid var(--line-ink); }
 .ftr__base nav { display: flex; gap: 20px; }
 .ftr__base a:hover { color: var(--on-ink); }

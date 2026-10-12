@@ -112,7 +112,7 @@ def header(active: str = "") -> str:
     mlinks = "".join(f'<a href="{href}">{label}</a>' for label, href in NAV)
     return f"""<header class="hdr">
   <div class="wrap hdr__in">
-    <a class="logo" href="/" aria-label="{e(S['name'])}, home">{e(S['name'].lower())}<i aria-hidden="true"></i></a>
+    <a class="logo" href="/" aria-label="{e(S['name'])}, home">{e(S['name'])}<i aria-hidden="true"></i></a>
     <nav class="nav" aria-label="Main">{links}</nav>
     <div class="hdr__right">
       <span class="avail"><i aria-hidden="true"></i>{e(S['availability'])}</span>
@@ -185,7 +185,7 @@ def footer() -> str:
       </form>
     </div>
   </div>
-  <span class="wordmark" aria-hidden="true">{e(S['name'].lower())}</span>
+  <span class="wordmark" aria-hidden="true">{e(S['name'])}</span>
   <div class="ftr__base">
     <span>© {date.today().year} {e(S['company'])}</span>
     <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
