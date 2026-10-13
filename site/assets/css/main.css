@@ -21,7 +21,7 @@
   --lavender:   #ADB6FB;
   --mint:       #6DF6C4;
   --pink:       #F879EB;
-  --cta:        var(--mint);   /* the one call-to-action colour */
+  --cta:        var(--red);    /* the one call-to-action colour */
   --on-ink-soft:#A39B8E;   /* 6.7:1 on ink */
   --line-ink:   rgba(242, 237, 228, 0.14);
   --plate:      #E2DCCD;   /* image placeholders */
@@ -64,16 +64,11 @@ button, input, textarea { font: inherit; color: inherit; }
 /* the accent: an italic serif word set inside a heavy headline */
 .acc {
   font-family: var(--serif); font-style: italic; font-weight: 400;
-  letter-spacing: -0.02em; color: var(--ink); font-variation-settings: normal;
-  /* a highlighter stroke under the word, used in the hero only */
-  --hl: transparent;
-  background: linear-gradient(transparent 60%, var(--hl) 60%, var(--hl) 88%, transparent 88%);
+  letter-spacing: -0.02em; color: var(--red-display); font-variation-settings: normal;
   -webkit-box-decoration-break: clone; box-decoration-break: clone; padding-inline: .06em;
 }
-.acc { background: none; padding-inline: 0; }
-.hero .acc { --hl: var(--lavender); background: linear-gradient(transparent 60%, var(--hl) 60%, var(--hl) 88%, transparent 88%); padding-inline: .06em; }
 /* on the dark bands the word itself takes the accent */
-.dark .acc, .ftr .acc { color: var(--lavender); }
+.dark .acc, .ftr .acc { color: var(--red); }
 h1 .acc, h2 .acc { font-size: 1.08em; line-height: 0.85; }
 
 .wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gut); }
@@ -112,7 +107,7 @@ h1 .acc, h2 .acc { font-size: 1.08em; line-height: 0.85; }
 .hdr { position: sticky; top: 0; z-index: 100; background: var(--cream); }
 .hdr__in { display: flex; align-items: center; gap: 28px; height: 76px; }
 .logo { display: inline-flex; align-items: baseline; gap: 2px; font-family: var(--display); font-weight: 800; font-variation-settings: "opsz" 96, "wdth" 92; letter-spacing: -0.03em; font-size: 32px; line-height: 1; white-space: nowrap; }
-.logo i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; background: var(--lavender); margin-left: 3px; transform: translateY(-1px) rotate(45deg); }
+.logo i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; background: var(--red); margin-left: 3px; transform: translateY(-1px) rotate(45deg); }
 .nav { display: flex; gap: 26px; }
 .nav a { font-size: 15px; font-weight: 500; }
 .nav a:hover, .nav a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
@@ -254,7 +249,9 @@ h1 .acc, h2 .acc { font-size: 1.08em; line-height: 0.85; }
 .step--red   { background: var(--lavender); color: var(--ink); }
 .step--ink   { background: var(--ink); color: var(--on-ink); }
 .step__top { display: flex; justify-content: space-between; align-items: flex-start; }
-.step__n { font-family: var(--serif); font-style: italic; font-size: 68px; line-height: .8; }
+.step__n { font-family: var(--serif); font-style: italic; font-size: 68px; line-height: .8; color: var(--red-display); }
+.step--red .step__n { color: var(--ink); }
+.step--ink .step__n { color: var(--red); }
 .step__when { font-size: 15px; font-weight: 500; }
 .step h3 { margin-top: auto; font-family: var(--sans); font-variation-settings: normal; font-weight: 600; font-size: 26px; letter-spacing: -0.02em; line-height: 1.1; }
 .step p { margin-top: 10px; font-size: 16px; line-height: 1.45; opacity: .92; }
@@ -394,7 +391,7 @@ textarea.input { min-height: 130px; resize: vertical; }
 .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .gallery .wide { grid-column: 1 / -1; }
 .cs-quote { background: var(--sand); border-radius: var(--r-xl); padding: clamp(30px, 4vw, 56px); display: grid; gap: 28px; }
-.cs-quote blockquote { font-family: var(--serif); font-style: italic; font-size: clamp(28px, 3.4vw, 46px); line-height: 1.15; letter-spacing: -0.015em; max-width: 26ch; }
+.cs-quote blockquote { font-family: var(--serif); font-style: italic; font-size: clamp(28px, 3.4vw, 46px); line-height: 1.15; letter-spacing: -0.015em; max-width: 26ch; color: var(--red-display); }
 .cs-quote .who span { color: var(--ash); }
 .next { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 36px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .next span { color: var(--ash); font-size: 15px; display: block; margin-bottom: 6px; }
@@ -439,7 +436,7 @@ textarea.input { min-height: 130px; resize: vertical; }
 .band.ways-band { padding-top: clamp(56px, 8vw, 120px); padding-bottom: clamp(72px, 9vw, 132px); }
 .ways { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .way { background: var(--sand); border-radius: var(--r-lg); padding: clamp(24px, 2.4vw, 32px); display: grid; gap: 12px; align-content: start; min-height: clamp(240px, 23vw, 338px); }
-.way span { font-family: var(--serif); font-style: italic; font-size: clamp(52px, 5vw, 72px); line-height: .9; color: var(--ink); margin-bottom: clamp(12px, 2vw, 28px); }
+.way span { font-family: var(--serif); font-style: italic; font-size: clamp(52px, 5vw, 72px); line-height: .9; color: var(--red-display); margin-bottom: clamp(12px, 2vw, 28px); }
 .way h3 { font-size: clamp(28px, 2.8vw, 40px); letter-spacing: -0.035em; line-height: 1; }
 .way p { color: var(--ash); font-size: 17px; max-width: 30em; }
 .way:nth-child(2) { background: var(--lavender); }
