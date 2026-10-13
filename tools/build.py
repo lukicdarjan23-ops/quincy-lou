@@ -38,28 +38,31 @@ def icon(name: str, cls: str = "") -> str:
         "check": '<path d="m3 8.5 3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
         "play": '<path d="M4 2.5v11l9-5.5z" fill="#fff"/>',
         "spark": '<path d="M8 1.5c.4 3.3 2.2 5.1 5.5 5.5-3.3.4-5.1 2.2-5.5 5.5-.4-3.3-2.2-5.1-5.5-5.5C5.8 6.6 7.6 4.8 8 1.5Z" fill="currentColor"/>',
-        "star4": '<path d="M8 2v12M2 8h12M3.8 3.8l8.4 8.4M12.2 3.8l-8.4 8.4" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>',
+        "asterisk": '<path d="M8 2v12M2.8 5l10.4 6M2.8 11l10.4-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+        "star4": '<path d="M8 2v12M2 8h12M3.8 3.8l8.4 8.4M12.2 3.8l-8.4 8.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>',
         "pen": '<path d="M4 20 5.5 14 15 4.5l4.5 4.5L10 18.5zM13 6.5 17.5 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
         "cursor": '<path d="m5 4 13 5.5-5.6 1.9-1.9 5.6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 15.5l2-1M15 20l-.6-2.2M20 13.5l-2.1-.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
         "chart": '<path d="M4 20V10m6 10V4m6 16v-7m4 7H2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+        "search": '<circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
         "next": '<path d="M5 24h38M30 11l13 13-13 13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>',
-        "quote": '<path d="M0 40V24C0 10 7 2 20 0l2 6c-7 2-11 7-11 14h9v20zm30 0V24C30 10 37 2 50 0l2 6c-7 2-11 7-11 14h9v20z" fill="#fff"/>',
+        "quote": '<path d="M0 40V24C0 10 7 2 20 0l2 6c-7 2-11 7-11 14h9v20zm30 0V24C30 10 37 2 50 0l2 6c-7 2-11 7-11 14h9v20z" fill="currentColor"/>',
     }
-    vb = {"pen": "0 0 24 24", "cursor": "0 0 24 24", "chart": "0 0 24 24",
+    vb = {"pen": "0 0 24 24", "cursor": "0 0 24 24", "chart": "0 0 24 24", "search": "0 0 24 24",
           "next": "0 0 48 48", "quote": "0 0 52 40"}.get(name, "0 0 16 16")
     return f'<svg{c} viewBox="{vb}" aria-hidden="true">{paths[name]}</svg>'
 
 
-def btn(label: str, href: str, kind: str = "red", size: str = "", arrow: bool = True, extra: str = "") -> str:
+def btn(label: str, href: str, kind: str = "cta", size: str = "", arrow: bool = True, extra: str = "") -> str:
     cls = f"btn btn--{kind}" + (f" btn--{size}" if size else "") + (f" {extra}" if extra else "")
     a = icon("arrow", "arr") if arrow else ""
     return f'<a class="{cls}" href="{e(href)}">{e(label)}{a}</a>'
 
 
-def acc_title(parts: list[str], tag: str = "h2", attrs: str = "") -> str:
+def acc_title(parts: list[str], tag: str = "h2", attrs: str = "", one_line: bool = False) -> str:
     """Two-part headline: the first part in the grotesk, the second as the italic accent."""
     first, second = parts
-    return f'<{tag}{attrs}>{e(first)}<br><span class="acc">{e(second)}</span></{tag}>'
+    gap = " " if one_line else "<br>"
+    return f'<{tag}{attrs}>{e(first)}{gap}<span class="acc">{e(second)}</span></{tag}>'
 
 
 def ph(label: str, cls: str = "ph--r43", extra: str = "") -> str:
@@ -91,8 +94,8 @@ def head(title: str, desc: str, path: str) -> str:
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{e(S['url'] + path)}">
-<meta name="theme-color" content="#F2EDE4">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23CF2E22'/%3E%3Cpath d='M16 8v16M8 16h16M10.3 10.3l11.4 11.4M21.7 10.3 10.3 21.7' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#FDF9F1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23F46840'/%3E%3Cpath d='M16 8v16M8 16h16M10.3 10.3l11.4 11.4M21.7 10.3 10.3 21.7' stroke='%23000' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
@@ -111,16 +114,15 @@ def header(active: str = "") -> str:
     mlinks = "".join(f'<a href="{href}">{label}</a>' for label, href in NAV)
     return f"""<header class="hdr">
   <div class="wrap hdr__in">
-    <a class="logo" href="/" aria-label="{e(S['name'])}, home">{e(S['name'].lower())}<i aria-hidden="true"></i></a>
+    <a class="logo" href="/" aria-label="{e(S['name'])}, home">{e(S['name'])}<i aria-hidden="true"></i></a>
     <nav class="nav" aria-label="Main">{links}</nav>
     <div class="hdr__right">
-      <span class="avail"><i aria-hidden="true"></i>{e(S['availability'])}</span>
       <a class="hdr__phone" href="tel:{S['phone_href']}">{e(S['phone'])}</a>
-      {btn(S['cta'], '/contact/', 'ink', 'sm')}
+      {btn(S['cta'], '/contact/', 'cta')}
       <details class="menu">
         <summary>Menu</summary>
         <nav class="menu__panel" aria-label="Mobile">{mlinks}<a href="/contact/">Contact</a>
-          <a class="btn btn--red" href="tel:{S['phone_href']}">Call {e(S['phone'])}</a>
+          <a class="btn btn--cta" href="tel:{S['phone_href']}">Call {e(S['phone'])}</a>
         </nav>
       </details>
     </div>
@@ -151,7 +153,7 @@ def enquiry_form(form_id: str = "review") -> str:
   </fieldset>
   <label><span class="lbl" style="display:block">What isn’t working?</span>
     <textarea class="input" name="message" placeholder="What does the business do, and what would a good month of enquiries look like?"></textarea></label>
-  <button class="btn btn--ink btn--block btn--lg" type="submit">Send and get my review{icon('arrow', 'arr')}</button>
+  <button class="btn btn--cta btn--block" type="submit">Send and get my review{icon('arrow', 'arr')}</button>
   <p class="form__fine">{e(S['reply_time'])}. No newsletter unless you ask for it.</p>
 </form>"""
 
@@ -165,7 +167,7 @@ def footer() -> str:
   <div class="ftr__cta">
     <h2>Got a website that<br><span class="acc">should do more?</span></h2>
     <div class="ftr__contact">
-      {btn('Get a free website review', '/contact/', 'cream-on-ink')}
+      {btn('Get a free website review', '/contact/', 'cta')}
       <a class="ftr__mail" href="mailto:{e(S['email'])}">{e(S['email'])}</a>
       <a href="tel:{S['phone_href']}">{e(S['phone'])}</a>
     </div>
@@ -180,11 +182,11 @@ def footer() -> str:
         <input type="hidden" name="form-name" value="newsletter">
         <label class="sr-only" for="nl-email">Email</label>
         <input class="input" id="nl-email" type="email" name="email" placeholder="you@company.com" required>
-        <button class="btn btn--red btn--sm" type="submit">Join</button>
+        <button class="btn btn--cta" type="submit">Join</button>
       </form>
     </div>
   </div>
-  <span class="wordmark" aria-hidden="true">{e(S['name'].lower())}</span>
+  <span class="wordmark" aria-hidden="true">{e(S['name'])}</span>
   <div class="ftr__base">
     <span>© {date.today().year} {e(S['company'])}</span>
     <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
@@ -219,11 +221,59 @@ def work_card(w: dict, ratio: str) -> str:
 
 
 def work_grid(items: list[dict]) -> str:
+    """Two staggered columns that start and end level.
+
+    The left column runs tall, short, tall, short; the right runs short, tall,
+    short, tall. Both start at the same top and, with equal counts, add up to
+    the same height, so the stagger is in the middle and the edges line up.
+    """
     a = [w for i, w in enumerate(items) if i % 2 == 0]
     b = [w for i, w in enumerate(items) if i % 2 == 1]
     col_a = "".join(work_card(w, "ph--r45" if i % 2 == 0 else "ph--r43") for i, w in enumerate(a))
     col_b = "".join(work_card(w, "ph--r43" if i % 2 == 0 else "ph--r45") for i, w in enumerate(b))
-    return f'<div class="work-grid"><div class="work-col">{col_a}</div><div class="work-col work-col--b">{col_b}</div></div>'
+    return f'<div class="work-grid"><div class="work-col">{col_a}</div><div class="work-col">{col_b}</div></div>'
+
+
+def barcode() -> str:
+    """A fixed, barcode-looking run of bars drawn as SVG, so it stays crisp on the tilted receipt."""
+    widths = [2, 1, 1, 3, 1, 2, 2, 1, 3, 1, 1, 2, 1, 3, 2, 1, 1, 1, 2, 3, 1, 2, 1, 1, 3, 2, 1, 2, 1, 1,
+              2, 3, 1, 1, 2, 1, 2, 2, 1, 3, 1, 1, 2, 1, 1, 3, 2, 1, 2, 1, 3, 1, 1, 2, 2, 1, 1, 3, 1, 2]
+    x, bars = 0, []
+    for i, w in enumerate(widths):
+        if i % 2 == 0:
+            bars.append(f'<rect x="{x}" width="{w}" height="40"/>')
+        x += w
+    return (f'<svg class="receipt__barcode" viewBox="0 0 {x} 40" preserveAspectRatio="none" aria-hidden="true">'
+            f'{"".join(bars)}</svg>')
+
+
+def receipts_block() -> str:
+    """The proof section: a short pitch beside a stats card styled as a till receipt."""
+    r = C["home"]["receipts"]
+    lines = "".join(f'<li><span>{e(k)}</span><i aria-hidden="true"></i><b>{e(v)}</b></li>' for k, v in r["lines"])
+    tools = "".join(f'<li class="tool">{e(t)}</li>' for t in r["tools"])
+    return f"""<section class="band receipts-band" aria-labelledby="rcpt-h">
+  <div class="wrap">
+    <div class="receipts">
+      <div class="receipts__copy">
+        {acc_title(r['title'], 'h2', ' id="rcpt-h" data-r')}
+        <p data-r="100">{e(r['lede'])}</p>
+      </div>
+      <div class="receipt-wrap" data-r="120"><figure class="receipt" aria-label="Studio numbers">
+        <p class="receipt__store">{e(r['store'])}</p>
+        <p class="receipt__sub">{e(r['sub'])}</p>
+        <ul class="receipt__lines">{lines}</ul>
+        <p class="receipt__total"><span>{e(r['total'][0])}</span><b>{e(r['total'][1])}</b></p>
+        {barcode()}
+        <p class="receipt__note">{e(r['note'])}</p>
+      </figure></div>
+    </div>
+    <div class="tools" data-r>
+      <div class="tools__head"><h3>{e(r['tools_title'])}</h3><p>{e(r['tools_lede'])}</p></div>
+      <ul class="tools__list">{tools}</ul>
+    </div>
+  </div>
+</section>"""
 
 
 def post_card(p: dict, idx: int = 0) -> str:
@@ -242,13 +292,13 @@ def team_block() -> str:
     return f'<div class="team">{cards}</div>'
 
 
-def enquire_block() -> str:
+def enquire_block(form_id: str = "review", tag: str = "h2", cls: str = "band") -> str:
     h = C["home"]
-    return f"""<section class="band" id="enquire" aria-labelledby="enq-h">
+    return f"""<section class="{cls}" id="enquire" aria-labelledby="enq-h">
   <div class="wrap">
     <div class="enquire" data-r>
       <div>
-        {acc_title(h['form_title'], 'h2', ' id="enq-h"')}
+        {acc_title(h['form_title'], tag, ' id="enq-h"')}
         <p class="enquire__lede">{e(h['form_lede'])}</p>
         <div class="enquire__alt">
           <a href="mailto:{e(S['email'])}">Prefer email? {e(S['email'])}</a>
@@ -256,7 +306,7 @@ def enquire_block() -> str:
           <span>{e(S['reply_time'])}.</span>
         </div>
       </div>
-      {enquiry_form()}
+      {enquiry_form(form_id)}
     </div>
   </div>
 </section>"""
@@ -265,17 +315,16 @@ def enquire_block() -> str:
 # --------------------------------------------------------------------- pages
 def build_home() -> None:
     h = C["home"]
-    names = "".join(f'<span class="marquee__name">{e(n)}</span><span class="marquee__dot" aria-hidden="true"></span>'
-                    for n in h["clients"])
-    services = "".join(f"""<article class="svc svc--{s['tone']}">
+    logos = "".join(f'<li>{ph(f"{n} logo", "ph--logo")}</li>' for n in h["clients"][:6])
+    services = "".join(f"""<a class="svc svc--{s['tone']}" href="{e(s.get('link', '/contact/'))}">
   <div class="svc__copy">
     {icon(s['icon'], 'svc__icon')}
     <h3>{e(s['name'])}</h3>
     <p>{e(s['text'])}</p>
     <p class="svc__price"><b>{e(s['price'])}</b><span>· {e(s['time'])}</span></p>
   </div>
-  {ph(f"{s['name']} example image", "", "")}
-</article>""" for s in C["services"])
+  <div class="svc__media">{ph(f"{s['name']} example image", "", "")}</div>
+</a>""" for s in C["services"])
     steps = "".join(f"""<li class="step step--{p['tone']}" data-r="{i * 90}">
   <div class="step__top"><span class="step__n">{e(p['n'])}</span><span class="step__when">{e(p['when'])}</span></div>
   <h3>{e(p['title'])}</h3><p>{e(p['text'])}</p>
@@ -290,7 +339,7 @@ def build_home() -> None:
   <p class="plan__price"><b>{e(p['price'])}</b><span>{e(p['unit'])}</span></p>
   <p class="plan__text">{e(p['text'])}</p>
   <ul>{items}</ul>
-  {btn(p['cta'], '/contact/', 'ink' if hot else 'line')}
+  {btn(p['cta'], '/contact/', 'cta' if hot else 'line')}
 </article>"""
     t = C["testimonials"]
     others = "".join(f"""<figure class="voice" data-r="{i * 80}">
@@ -304,13 +353,13 @@ def build_home() -> None:
     body = f"""
 <section class="hero">
   <div class="wrap">
-    <h1 data-r>Websites <span class="inline-ph" role="img" aria-label="Photo of a finished client website"></span> that make the
-      <span class="inline-mark" aria-hidden="true">{icon('star4')}</span> <span class="acc">phone</span> ring
-      more often. <span class="inline-ph inline-ph--2" role="img" aria-label="Photo of the team at work"></span></h1>
+    <h1 data-r>Websites <span class="inline-ph" role="img" aria-label="Photo of a finished client website"></span><br>
+      that make the <span class="acc">phone</span><br>
+      ring more often. <span class="inline-ph inline-ph--2" role="img" aria-label="Photo of the team at work"></span></h1>
     <div class="hero__foot">
       <div data-r="120">
         <p class="hero__lede">{e(h['hero_lede'])}</p>
-        <div class="hero__ctas">{btn(S['cta'], '/contact/', 'red', 'lg')}{btn('See our work', '/work/', 'line', 'lg')}</div>
+        <div class="hero__ctas">{btn(S['cta'], '/contact/', 'cta')}{btn('See our work', '/work/', 'line')}</div>
       </div>
       <div class="rating" data-r="200">
         <div class="avatars">{ph('Client', 'ph--avatar')}{ph('Client', 'ph--avatar')}{ph('Client', 'ph--avatar')}{ph('Client', 'ph--avatar')}</div>
@@ -320,33 +369,24 @@ def build_home() -> None:
   </div>
 </section>
 
-<section aria-label="Showreel">
-  <div class="wrap">
-    <div class="reel" data-r>
-      {ph('Showreel video', 'ph--reel')}
-      <span class="reel__cap"><b>{icon('play')}</b>{e(h['reel_caption'])}</span>
-    </div>
-  </div>
-</section>
-
 <section class="clients" aria-label="Clients">
   <p>{e(h['clients_label'])}</p>
-  <div class="marquee"><div class="marquee__track">
-    <div class="marquee__set">{names}</div><div class="marquee__set" aria-hidden="true">{names}</div>
-  </div></div>
+  <ul class="logos wrap">{logos}</ul>
 </section>
 
-<section class="band" id="work" aria-labelledby="work-h" style="padding-top:clamp(32px,4vw,56px)">
+<section class="band" id="work" aria-labelledby="work-h" style="padding-top:clamp(32px,3.4vw,48px)">
   <div class="wrap">
     <div class="head">{acc_title(h['work_title'], 'h2', ' id="work-h" data-r')}
-      <div class="head__side" data-r="120"><p>{e(h['work_lede'])}</p>{btn('All projects', '/work/', 'line', 'sm')}</div></div>
+      <div class="head__side" data-r="120"><p>{e(h['work_lede'])}</p>{btn('All projects', '/work/', 'line')}</div></div>
     {work_grid(C['work'][:4])}
   </div>
 </section>
 
+{receipts_block()}
+
 <section class="band" id="services" aria-labelledby="svc-h">
   <div class="wrap">
-    <div class="head">{acc_title(h['services_title'], 'h2', ' id="svc-h" data-r')}
+    <div class="head">{acc_title(h['services_title'], 'h2', ' id="svc-h" data-r', one_line=True)}
       <div class="head__side" data-r="120"><p>{e(h['services_lede'])}</p></div></div>
     <div class="svc-stack">{services}</div>
   </div>
@@ -354,7 +394,7 @@ def build_home() -> None:
 
 <section class="band" id="process" aria-labelledby="proc-h" style="padding-top:0">
   <div class="wrap">
-    <div class="head"><h2 id="proc-h" data-r>{e(h['process_title'][0])} <span class="acc">{e(h['process_title'][1])}</span></h2></div>
+    <div class="head head--line"><h2 id="proc-h" data-r>{e(h['process_title'][0])} <span class="acc">{e(h['process_title'][1])}</span></h2></div>
     <ol class="process">{steps}</ol>
   </div>
 </section>
@@ -370,8 +410,7 @@ def build_home() -> None:
 
 <section class="band dark" aria-labelledby="voices-h">
   <div class="wrap">
-    <div class="head">{acc_title(h['voices_title'], 'h2', ' id="voices-h" data-r')}
-      <div class="head__side" data-r="120"><p>Unedited, from the people who pay the invoices.</p></div></div>
+    <div class="head">{acc_title(h['voices_title'], 'h2', ' id="voices-h" data-r', one_line=True)}</div>
     <div class="voices">
       <figure class="voice-hero" data-r>
         {icon('quote')}
@@ -383,18 +422,18 @@ def build_home() -> None:
   </div>
 </section>
 
-<section class="band" aria-labelledby="team-h">
+<section class="band team-band" aria-labelledby="team-h">
   <div class="wrap">
-    <div class="head"><h2 id="team-h" data-r>{e(h['team_title'][0])} <span class="acc">{e(h['team_title'][1])}</span></h2>
+    <div class="head head--line"><h2 id="team-h" data-r>{e(h['team_title'][0])} <span class="acc">{e(h['team_title'][1])}</span></h2>
       <div class="head__side" data-r="120"><p>{e(h['team_lede'])}</p></div></div>
     {team_block()}
   </div>
 </section>
 
-<section class="band" aria-labelledby="notes-h" style="padding-top:0">
+<section class="band notes-band" aria-labelledby="notes-h">
   <div class="wrap">
-    <div class="head"><h2 id="notes-h" data-r>{e(h['journal_title'][0])} <span class="acc">{e(h['journal_title'][1])}</span></h2>
-      {btn('Read the journal', '/journal/', 'line', 'sm')}</div>
+    <div class="head head--line"><h2 id="notes-h" data-r>{e(h['journal_title'][0])} <span class="acc">{e(h['journal_title'][1])}</span></h2>
+      {btn('Read the journal', '/journal/', 'line')}</div>
     <div class="posts">{posts}</div>
   </div>
 </section>
@@ -415,7 +454,6 @@ def build_work_index() -> None:
 <section class="band" style="padding-top:0">
   <div class="wrap">{work_grid(C['work'])}</div>
 </section>
-{enquire_block()}
 """
     page("/work/", "Work", "Websites Quincy Lou has designed, built and optimised, with the numbers behind each one.", body, "Work")
 
@@ -478,10 +516,10 @@ def build_case_studies() -> None:
 
 def build_studio() -> None:
     st = C["studio"]
-    nums = "".join(f'<div data-r="{i * 80}"><b>{e(v)}</b><span>{e(k)}</span></div>' for i, (v, k) in enumerate(st["numbers"]))
-    story = "".join(f"<p>{e(p)}</p>" for p in st["story"])
-    values = "".join(f"""<div class="value" data-r="{i * 80}"><span>0{i + 1}</span><h3>{e(v['title'])}</h3><p>{e(v['text'])}</p></div>"""
-                     for i, v in enumerate(st["values"]))
+    ways = "".join(f"""<div class="way" data-r="{i * 80}"><span>0{i + 1}</span><h3>{e(w['title'])}</h3><p>{e(w['text'])}</p></div>"""
+                   for i, w in enumerate(st["ways"]))
+    beliefs = "".join(f'<li data-r>{icon("asterisk")}<span>{e(b)}</span></li>' for b in st["beliefs"])
+    hire = st["hiring"]
     body = f"""
 <section class="page-hero">
   <div class="wrap page-hero__row">
@@ -489,28 +527,30 @@ def build_studio() -> None:
     <p class="page-hero__side" data-r="120">{e(st['lede'])}</p>
   </div>
 </section>
-<section><div class="wrap" data-r>{ph('The team in the studio', 'ph--reel')}</div></section>
-<section class="band">
-  <div class="wrap story">
-    <div data-r>{story}</div>
-    <div data-r="120">{ph('A client project in progress', 'ph--r43')}</div>
-  </div>
+<section>
+  <div class="wrap"><div class="studio-shot" data-r>{ph('The team in the studio', 'ph--studio')}<span class="place-tag">{icon('asterisk')}{e(st['place'])}</span></div></div>
 </section>
-<section class="band" style="padding-top:0"><div class="wrap numbers">{nums}</div></section>
-<section class="band" style="padding-top:0">
+<section class="band ways-band"><div class="wrap ways">{ways}</div></section>
+<section class="band team-band" style="padding-top:0">
   <div class="wrap">
-    <div class="head">{acc_title(st['values_title'], 'h2', ' data-r')}</div>
-    <div class="values">{values}</div>
-  </div>
-</section>
-<section class="band" style="padding-top:0">
-  <div class="wrap">
-    <div class="head"><h2 data-r>{e(C['home']['team_title'][0])} <span class="acc">{e(C['home']['team_title'][1])}</span></h2>
-      <div class="head__side" data-r="120"><p>{e(C['home']['team_lede'])}</p></div></div>
+    <div class="head">{acc_title(C['home']['team_title'], 'h2', ' data-r')}</div>
     {team_block()}
   </div>
 </section>
-{enquire_block()}
+<section class="band beliefs-band" style="padding-top:0" aria-labelledby="beliefs-h">
+  <div class="wrap">
+    <p class="beliefs__label" id="beliefs-h">{e(st['beliefs_label'])}</p>
+    <ul class="beliefs">{beliefs}</ul>
+  </div>
+</section>
+<section class="hiring-band">
+  <div class="wrap">
+    <div class="hiring" data-r>
+      <div><h2>{e(hire['title'])}</h2><p>{e(hire['text'])}</p></div>
+      {btn(hire['cta'], 'mailto:' + S['email'], 'cta')}
+    </div>
+  </div>
+</section>
 """
     page("/studio/", "Studio", "Quincy Lou is a small website studio for service businesses. Four people, no middlemen.", body, "Studio")
 
@@ -531,16 +571,14 @@ def build_journal() -> None:
     <a class="feature" href="/journal/{e(f['slug'])}/" data-r>
       {ph(f"Cover image for {f['title']}", "ph--r43")}
       <div>
-        <div class="post__meta"><span class="chip-ink">{e(f['tag'])}</span><span>{nice_date(f['date'])} · {e(f['read'])}</span></div>
+        <div class="post__meta"><span class="chip-ink">{e(f['tag'])}</span><span>{nice_date(f['date'])}</span></div>
         <h2>{e(f['title'])}</h2>
         <p>{e(f['lede'])}</p>
-        <span class="btn btn--line btn--sm">Read the article{icon('arrow', 'arr')}</span>
       </div>
     </a>
-    <div class="posts">{grid}</div>
+    <div class="posts posts--two">{grid}</div>
   </div>
 </section>
-{enquire_block()}
 """
     page("/journal/", "Journal", "Practical notes on websites for service businesses, from the Quincy Lou studio.", body, "Journal")
 
@@ -577,7 +615,7 @@ def build_articles() -> None:
 </article>
 <section class="band" style="padding-top:0">
   <div class="wrap">
-    <div class="head"><h2>Keep <span class="acc">reading.</span></h2>{btn('All articles', '/journal/', 'line', 'sm')}</div>
+    <div class="head"><h2>Keep <span class="acc">reading.</span></h2>{btn('All articles', '/journal/', 'line')}</div>
     <div class="posts">{more}</div>
   </div>
 </section>
@@ -587,30 +625,17 @@ def build_articles() -> None:
 
 def build_contact() -> None:
     ct = C["contact"]
-    faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in ct["faq"])
-    addr = "<br>".join(e(x) for x in S["address"])
+    faq = "".join(f"""<details class="qa"{' open' if i == 0 else ''}><summary>{e(q)}<i aria-hidden="true"></i></summary><p>{e(a)}</p></details>"""
+                  for i, (q, a) in enumerate(ct["faq"]))
     body = f"""
-<section class="page-hero">
-  <div class="wrap page-hero__row">
-    {acc_title(ct['title'], 'h1', ' data-r')}
-    <p class="page-hero__side" data-r="120">{e(ct['lede'])}</p>
-  </div>
-</section>
-<section class="band" style="padding-top:0">
-  <div class="wrap contact-grid">
-    <div data-r>{enquiry_form('contact')}</div>
-    <div class="contact-side">
-      <div class="card" data-r="80">
-        <h3>Talk to a person</h3>
-        <dl>
-          <div><dt>Phone</dt><dd><a href="tel:{S['phone_href']}">{e(S['phone'])}</a></dd></div>
-          <div><dt>Email</dt><dd><a href="mailto:{e(S['email'])}">{e(S['email'])}</a></dd></div>
-          <div><dt>Studio</dt><dd>{addr}</dd></div>
-          <div><dt>Hours</dt><dd>{e(S['hours'])}</dd></div>
-        </dl>
-      </div>
-      <div class="card card--ink faq" data-r="160"><h3>Before you ask</h3>{faq}</div>
+{enquire_block('contact', 'h1', 'band contact-top')}
+<section class="band faq-band" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div class="faq-grid__head">
+      {acc_title(ct['faq_title'], 'h2', ' id="faq-h" data-r')}
+      <p data-r="100">{e(ct['faq_lede'])}</p>
     </div>
+    <div class="qas" data-r="120">{faq}</div>
   </div>
 </section>
 """
@@ -639,7 +664,7 @@ def build_thanks() -> None:
 <section class="page-hero"><div class="wrap lost">
   <h1>Thank<br><span class="acc">you.</span></h1>
   <p class="hero__lede">Your message is with us. {e(S['reply_time'])}, usually much sooner.</p>
-  <div class="hero__ctas">{btn('Back to the homepage', '/', 'red')}{btn('Read the journal', '/journal/', 'line')}</div>
+  <div class="hero__ctas">{btn('Back to the homepage', '/', 'cta')}{btn('Read the journal', '/journal/', 'line')}</div>
 </div></section>
 """
     page("/thanks/", "Thank you", "Thanks for getting in touch with Quincy Lou.", body)
@@ -650,7 +675,7 @@ def build_404() -> None:
 <section class="page-hero"><div class="wrap lost">
   <h1>Page<br><span class="acc">not found.</span></h1>
   <p class="hero__lede">That link has moved or never existed. The useful parts of the site are one click away.</p>
-  <div class="hero__ctas">{btn('Go to the homepage', '/', 'red')}{btn('See our work', '/work/', 'line')}</div>
+  <div class="hero__ctas">{btn('Go to the homepage', '/', 'cta')}{btn('See our work', '/work/', 'line')}</div>
 </div></section>
 """
     page("/404", "Page not found", "This page could not be found.", body)
