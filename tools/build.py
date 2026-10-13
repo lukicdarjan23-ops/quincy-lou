@@ -207,14 +207,10 @@ def page(path: str, title: str, desc: str, body: str, active: str = "") -> None:
 
 
 # ---------------------------------------------------------------- components
-ACCENTS = ["lime", "lavender", "coral", "mint", "pink"]
-
-
 def work_card(w: dict, ratio: str) -> str:
-    tone = w.get("badge") or ACCENTS[[x["slug"] for x in C["work"]].index(w["slug"]) % len(ACCENTS)]
     return f"""<a class="card-work" href="/work/{e(w['slug'])}/" data-r>
   <div class="card-work__media">
-    <span class="badge badge--{tone}">{icon('arrow')}{e(w['result'])}</span>
+    <span class="badge">{icon('arrow')}{e(w['result'])}</span>
     {ph(f"{w['name']} project image", ratio)}
   </div>
   <div class="card-work__row">
@@ -330,7 +326,6 @@ def build_home() -> None:
   <div class="svc__media">{ph(f"{s['name']} example image", "", "")}</div>
 </a>""" for s in C["services"])
     steps = "".join(f"""<li class="step step--{p['tone']}" data-r="{i * 90}">
-  <span class="step__tape" aria-hidden="true"></span>
   <div class="step__top"><span class="step__n">{e(p['n'])}</span><span class="step__when">{e(p['when'])}</span></div>
   <h3>{e(p['title'])}</h3><p>{e(p['text'])}</p>
 </li>""" for i, p in enumerate(C["process"]))
