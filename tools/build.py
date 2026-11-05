@@ -345,10 +345,10 @@ def landing_page(body: str) -> None:
     <div class="l-wrap l-nav__in">
       <a class="l-logo" href="/" aria-label="{e(S['name'])}, home">{logo}</a>
       <nav class="l-nav__links" aria-label="Main">{nav}</nav>
-      <a class="l-btn l-btn--white l-nav__cta" href="/contact/">{e(L['nav_cta'])}</a>
+      <a class="l-btn l-btn--white l-nav__cta" href="#review">{e(L['nav_cta'])}</a>
       <details class="l-menu">
         <summary aria-label="Menu"><i></i><i></i><i></i></summary>
-        <nav class="l-menu__panel" aria-label="Mobile">{nav}<a href="/work/">Work</a><a href="/studio/">Studio</a><a href="/contact/">Contact</a></nav>
+        <nav class="l-menu__panel" aria-label="Mobile">{nav}<a href="/journal/">Journal</a><a href="/studio/">Studio</a><a href="#review">Free review</a></nav>
       </details>
     </div>
 </header>
@@ -373,7 +373,7 @@ def landing_page(body: str) -> None:
     <div class="l-footer__bottom">
       <a class="l-footer__big" href="/" aria-label="{e(S['name'])}, home"><span class="l-logo__mark">{icon("mark")}</span><span>{e(S['name'])}</span></a>
       <div class="l-footer__info">
-        <div class="l-footer__links"><a href="/work/">Work</a><i></i><a href="/studio/">Studio</a><i></i><a href="/privacy/">Privacy</a></div>
+        <div class="l-footer__links"><a href="/work/">Work</a><i></i><a href="/journal/">Journal</a><i></i><a href="/privacy/">Privacy</a></div>
         <p>© {date.today().year} {e(S['name'])} Ltd.</p>
       </div>
     </div>
@@ -434,13 +434,69 @@ def build_home() -> None:
   {('<div class="l-step__img">' + ph('Example of a recorded website review', '') + '</div>') if i == 0 else ''}
 </li>""" for i, st in enumerate(L["steps"]))
 
-    posts = sorted(C["journal"], key=lambda p: p["date"], reverse=True)
-    slides = "".join(f"""<li class="l-post">
-  <a href="/journal/{e(p['slug'])}/">
-    <div class="l-post__img">{ph(f"Cover image for {p['title']}", '')}<span class="l-pill l-pill--mint">{nice_date(p['date'])}</span></div>
-    <div class="l-post__content"><h3>{e(p['title'])}</h3><p>{e(p['lede'])}</p></div>
+    problems = "".join(f"""<li class="l-card l-problem">
+  <span class="l-feature__icon">{icon(p['icon'])}</span><h3>{e(p['title'])}</h3><p>{e(p['text'])}</p>
+</li>""" for p in L["problems"])
+
+    sectors = L["case_sectors"]
+    cases = [w for w in C["work"] if w["slug"] in sectors]
+    filters = ["All"] + sorted(set(sectors.values()), key=["Dental & health", "Home services", "Construction"].index)
+    filter_btns = "".join(f'<button type="button" class="l-filter{" is-on" if f == "All" else ""}" data-filter="{e(f)}" aria-pressed="{"true" if f == "All" else "false"}">{e(f)}</button>'
+                          for f in filters)
+    case_cards = "".join(f"""<li class="l-case" data-sector="{e(sectors[w['slug']])}">
+  <a href="/work/{e(w['slug'])}/">
+    <div class="l-case__img">{ph(f"{w['name']} website", '')}<span class="l-pill l-pill--mint">{e(sectors[w['slug']])}</span></div>
+    <div class="l-case__body">
+      <p class="l-case__num">{e(w['stats'][0][0])}<span>{e(w['stats'][0][1])}</span></p>
+      <h3>{e(w['name'])}</h3><p>{e(w['line'])}</p>
+      <span class="l-case__more">Read the case study{icon('right')}</span>
+    </div>
   </a>
-</li>""" for p in posts)
+</li>""" for w in cases)
+
+    industries = "".join(f"""<li class="l-industry">
+  <div class="l-industry__img">{ph(f"{x['title']} website example", '')}</div>
+  <div class="l-industry__body">
+    <h3>{e(x['title'])}</h3><p>{e(x['problem'])}</p>
+    <div class="l-industry__foot"><span class="l-pill l-pill--mint">{e(x['result'])}</span>
+      <a class="l-link" href="#work" data-set-filter="{e(x['filter'])}">See the work{icon('right')}</a></div>
+  </div>
+</li>""" for x in L["industries"])
+
+    facts = "".join(f'<li><b>{e(v)}</b><span>{e(k)}</span></li>' for v, k in L["founder_facts"])
+
+    voices = "".join(f"""<li class="l-card l-voice">
+  <p class="l-voice__num">{e(v['metric'])}<span>{e(v['label'])}</span></p>
+  <blockquote>{e(v['quote'])}</blockquote>
+  <div class="l-voice__who">{ph('Client photo', 'l-voice__photo')}<div><b>{e(v['name'])}</b><span>{e(v['role'])}</span></div></div>
+</li>""" for v in L["voices"])
+
+    def mark(v: str) -> str:
+        if v == "yes":
+            return f'<span class="l-yes">{icon("check")}<span class="sr">Yes</span></span>'
+        if v == "no":
+            return '<span class="l-no" aria-label="No">–</span>'
+        return e(v)
+    cols = L["compare_cols"]
+    us = ' class="is-us"'
+    compare_head = "".join(f'<th scope="col"{us if i == 0 else ""}>{e(c)}</th>' for i, c in enumerate(cols))
+    compare_rows = "".join('<tr><th scope="row">' + e(r[0]) + "</th>"
+                           + "".join(f'<td{us if i == 0 else ""} data-label="{e(cols[i])}">{mark(v)}</td>' for i, v in enumerate(r[1:]))
+                           + "</tr>" for r in L["compare_rows"])
+
+    plans = "".join(f"""<li class="l-plan{' is-featured' if p['featured'] else ''}">
+  <div class="l-plan__top"><h3>{e(p['name'])}</h3>{('<span class="l-pill l-pill--mint">' + e(p['badge']) + '</span>') if p.get('badge') else ''}</div>
+  <p class="l-plan__price">{e(p['price'])}<span>{e(p['unit'])}</span></p>
+  <p class="l-plan__text">{e(p['text'])}</p>
+  <ul>{''.join(f'<li>{icon("check")}{e(i)}</li>' for i in p['items'])}</ul>
+  <a class="l-btn {'l-btn--icon' if p['featured'] else 'l-btn--dark'}" href="#review">{e(p['cta'])}{('<span>' + icon('right') + '</span>') if p['featured'] else ''}</a>
+</li>""" for p in C["pricing"])
+
+    faq = "".join(f"""<details class="l-qa"{' open' if i == 0 else ''}><summary>{e(q)}<i aria-hidden="true"></i></summary><p>{e(a_)}</p></details>"""
+                  for i, (q, a_) in enumerate(L["faq"]))
+
+    points = "".join(f'<li>{icon("check")}{e(x)}</li>' for x in L["cta_points"])
+    sector_opts = "".join(f'<option>{e(x)}</option>' for x in L["cta_sectors"])
 
     body = f"""<main id="main">
   <section class="l-hero" aria-labelledby="hero-h">
@@ -451,7 +507,7 @@ def build_home() -> None:
           <h1 id="hero-h">{e(L['title'])}</h1>
           <p class="l-hero__lede">{e(L['lede'])}</p>
           <div class="l-hero__buttons">
-            <a class="l-btn l-btn--icon" href="/contact/">{e(L['primary'])}<span>{icon('right')}</span></a>
+            <a class="l-btn l-btn--icon" href="#review">{e(L['primary'])}<span>{icon('right')}</span></a>
             <a class="l-btn l-btn--dark" href="/work/">{e(L['secondary'])}</a>
           </div>
         </div>
@@ -468,6 +524,17 @@ def build_home() -> None:
       <ul class="l-loop__row">{logo_cells}</ul><ul class="l-loop__row" aria-hidden="true">{logo_cells}</ul>
       <span class="l-loop__fade l-loop__fade--l"></span><span class="l-loop__fade l-loop__fade--r"></span>
     </div>
+  </div>
+</section>
+
+<section class="l-section" id="problem" aria-labelledby="problem-h">
+  <div class="l-wrap">
+    <div class="l-head l-head--center">
+      <span class="l-pill">{e(L['problem_tag'])}</span>
+      <h2 id="problem-h">{e(L['problem_title'])}</h2>
+      <p>{e(L['problem_lede'])}</p>
+    </div>
+    <ul class="l-problems">{problems}</ul>
   </div>
 </section>
 
@@ -494,6 +561,19 @@ def build_home() -> None:
   </div>
 </section>
 
+<section class="l-section" id="work" aria-labelledby="work-h">
+  <div class="l-wrap">
+    <div class="l-head">
+      <span class="l-pill">{e(L['cases_tag'])}</span>
+      <h2 id="work-h">{e(L['cases_title'])}</h2>
+      <div class="l-head__bottom"><p>{e(L['cases_lede'])}</p>
+        <div class="l-filters" role="group" aria-label="Filter case studies by industry">{filter_btns}</div></div>
+    </div>
+    <ul class="l-cases">{case_cards}</ul>
+    <div class="l-center"><a class="l-btn l-btn--dark" href="/work/">See all projects</a></div>
+  </div>
+</section>
+
 <section class="l-section" id="services" aria-labelledby="services-h">
   <div class="l-wrap">
     <div class="l-head l-head--center">
@@ -510,6 +590,16 @@ def build_home() -> None:
   </div>
 </section>
 
+<section class="l-section" id="industries" aria-labelledby="industries-h">
+  <div class="l-wrap">
+    <div class="l-head l-head--center">
+      <span class="l-pill">{e(L['industries_tag'])}</span>
+      <h2 id="industries-h">{e(L['industries_title'])}</h2>
+    </div>
+    <ul class="l-industries">{industries}</ul>
+  </div>
+</section>
+
 <section class="l-section" id="how" aria-labelledby="how-h">
   <div class="l-wrap">
     <div class="l-head l-head--center">
@@ -521,18 +611,91 @@ def build_home() -> None:
   </div>
 </section>
 
-<section class="l-section l-section--journal" id="journal" aria-labelledby="journal-h">
+<section class="l-section" id="founder" aria-labelledby="founder-h">
   <div class="l-wrap">
-    <div class="l-head">
-      <span class="l-pill">{e(L['journal_tag'])}</span>
-      <h2 id="journal-h">{e(L['journal_title'])}</h2>
-      <div class="l-head__bottom"><p>{e(L['journal_lede'])}</p>
-        <div class="l-arrows"><button type="button" class="l-arrow" data-dir="-1" aria-label="Previous articles">{icon('left')}</button><button type="button" class="l-arrow" data-dir="1" aria-label="Next articles">{icon('right')}</button></div>
+    <div class="l-founder">
+      <div class="l-founder__img">{ph(f"Photo of {L['founder_name']}", '')}</div>
+      <div class="l-founder__body">
+        <span class="l-pill l-pill--grey">{e(L['founder_tag'])}</span>
+        <h2 id="founder-h">{e(L['founder_title'])}</h2>
+        <p>{e(L['founder_text'])}</p>
+        <p class="l-founder__sig"><b>{e(L['founder_name'])}</b><span>{e(L['founder_role'])}</span></p>
+        <ul class="l-founder__facts">{facts}</ul>
+        <a class="l-btn l-btn--dark" href="#review">{e(L['founder_cta'])}</a>
       </div>
     </div>
   </div>
-  <ul class="l-posts" tabindex="0" aria-label="Journal articles">{slides}</ul>
 </section>
+
+<section class="l-section" id="testimonials" aria-labelledby="voices-h">
+  <div class="l-wrap">
+    <div class="l-head l-head--split">
+      <div><span class="l-pill">{e(L['voices_tag'])}</span><h2 id="voices-h">{e(L['voices_title'])}</h2></div>
+      <p class="l-google">{stars()}<span>{e(L['google_rating'])}</span></p>
+    </div>
+    <ul class="l-voices">{voices}</ul>
+  </div>
+</section>
+
+<section class="l-section" id="compare" aria-labelledby="compare-h">
+  <div class="l-wrap">
+    <div class="l-head l-head--center">
+      <span class="l-pill">{e(L['compare_tag'])}</span>
+      <h2 id="compare-h">{e(L['compare_title'])}</h2>
+    </div>
+    <div class="l-compare" tabindex="0" role="region" aria-labelledby="compare-h">
+      <table><thead><tr><td></td>{compare_head}</tr></thead><tbody>{compare_rows}</tbody></table>
+    </div>
+  </div>
+</section>
+
+<section class="l-section" id="pricing" aria-labelledby="pricing-h">
+  <div class="l-wrap">
+    <div class="l-head l-head--center">
+      <span class="l-pill">{e(L['pricing_tag'])}</span>
+      <h2 id="pricing-h">{e(L['pricing_title'])}</h2>
+      <p>{e(L['pricing_lede'])}</p>
+    </div>
+    <ul class="l-plans">{plans}</ul>
+    <div class="l-card l-guarantee"><span class="l-feature__icon">{icon('check')}</span><div><h3>{e(L['guarantee_title'])}</h3><p>{e(L['guarantee_text'])}</p></div></div>
+  </div>
+</section>
+
+<section class="l-section" id="faq" aria-labelledby="faq-h">
+  <div class="l-wrap l-faq">
+    <div class="l-faq__head">
+      <span class="l-pill">{e(L['faq_tag'])}</span>
+      <h2 id="faq-h">{e(L['faq_title'])}</h2>
+      <p>{e(L['faq_lede'])}</p>
+    </div>
+    <div class="l-qas">{faq}</div>
+  </div>
+</section>
+
+<section class="l-cta" id="review" aria-labelledby="review-h">
+  <div class="l-wrap l-cta__layout">
+    <div class="l-cta__copy">
+      <span class="l-pill l-pill--glass">{e(L['cta_tag'])}</span>
+      <h2 id="review-h">{e(L['cta_title'])}</h2>
+      <p>{e(L['cta_text'])}</p>
+      <ul class="l-cta__points">{points}</ul>
+    </div>
+    <form class="l-form" name="website-review" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company-website">
+      <input type="hidden" name="form-name" value="website-review">
+      <p class="l-hp" aria-hidden="true"><label>Leave this empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
+      <div class="l-form__row">
+        <label><span>Your name</span><input name="name" autocomplete="name" required></label>
+        <label><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+      </div>
+      <label><span>Your website</span><input type="url" name="website" placeholder="https://" inputmode="url"></label>
+      <label><span>Type of business</span><select name="business" required><option value="">Choose one</option>{sector_opts}</select></label>
+      <label><span>Anything we should know? <em>(optional)</em></span><textarea name="message" rows="3" placeholder="What would a good month of enquiries look like?"></textarea></label>
+      <button class="l-btn l-btn--dark l-form__submit" type="submit">{e(L['cta_button'])}</button>
+      <p class="l-form__note">{e(S['reply_time'])}. No newsletter unless you ask for it.</p>
+    </form>
+  </div>
+</section>
+
 </main>"""
     landing_page(body)
 

@@ -1,27 +1,27 @@
-/* Quincy Lou homepage: journal slider arrows and the mobile menu. The page works without it. */
+/* Quincy Lou homepage: case study filter and the mobile menu. The page works without it. */
 (function () {
   "use strict";
-  var track = document.querySelector(".l-posts");
-  var arrows = document.querySelectorAll(".l-arrow");
-  if (track && arrows.length) {
-    var step = function () {
-      var card = track.querySelector(".l-post");
-      return card ? card.getBoundingClientRect().width + 24 : track.clientWidth;
-    };
-    var update = function () {
-      var max = track.scrollWidth - track.clientWidth - 2;
-      arrows[0].disabled = track.scrollLeft <= 2;
-      arrows[1].disabled = track.scrollLeft >= max;
-    };
-    arrows.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        track.scrollBy({ left: step() * +btn.getAttribute("data-dir"), behavior: "smooth" });
-      });
+
+  // filter the case studies by industry
+  var buttons = document.querySelectorAll(".l-filter");
+  var cases = document.querySelectorAll(".l-case");
+  var apply = function (sector) {
+    buttons.forEach(function (b) {
+      var on = b.getAttribute("data-filter") === sector;
+      b.classList.toggle("is-on", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
     });
-    track.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    update();
-  }
+    cases.forEach(function (c) {
+      c.hidden = sector !== "All" && c.getAttribute("data-sector") !== sector;
+    });
+  };
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () { apply(b.getAttribute("data-filter")); });
+  });
+  // "See the work" on an industry card opens the case studies already filtered
+  document.querySelectorAll("[data-set-filter]").forEach(function (a) {
+    a.addEventListener("click", function () { apply(a.getAttribute("data-set-filter")); });
+  });
 
   // close the mobile menu after choosing a link
   var menu = document.querySelector(".l-menu");

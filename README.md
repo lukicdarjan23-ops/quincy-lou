@@ -36,6 +36,11 @@ and the sitemap. Articles in `"journal"` work the same way.
 - **Homepage** words live under `"landing"` in the content. The small interface
   cards in its illustrations (enquiries, calls, bookings) use sample names and
   numbers: change them in `build_home()` in `tools/build.py`.
+- **Homepage sections still waiting for you:** the founder section (your name,
+  photo and a few sentences in `founder_*`), the three testimonials (`voices`),
+  and the case studies, which use the sample `Client 0X` projects. Decide
+  whether you really offer the **90-day promise** (`guarantee_*`) before launch;
+  remove it if not.
 - **Client logos** are the six blank slots under the hero. Swap each `l-logo-ph`
   span for an `<img>`.
 - **Every image** is a blank shape. Swap a `<span class="ph …">` for an `<img>`
@@ -49,7 +54,8 @@ and the sitemap. Articles in `"journal"` work the same way.
 
 ## Forms
 
-The review form, contact form and newsletter use **Netlify Forms**. Nothing to
+The homepage form (`website-review`), the review and contact forms and the
+newsletter use **Netlify Forms**. Nothing to
 configure: Netlify detects them on the first deploy and submissions appear
 under *Forms* in the Netlify dashboard, where you can turn on email
 notifications.
