@@ -161,7 +161,8 @@ body.landing {
 @keyframes l-loop { to { transform: translateX(-100%); } }
 
 /* --- section shell and headings --------------------------------------------- */
-.l-section { padding: 80px 0; }
+.l-section { padding: 60px 0; }   /* 120px between consecutive sections */
+.l-section#problem { padding-top: 96px; }   /* the logo strip above keeps 24px of its own */
 .l-head h2 { margin-top: 16px; font-size: 64px; line-height: 1.12; font-weight: 500; letter-spacing: -0.04em; max-width: 36rem; text-wrap: balance; }
 .l-head > p, .l-head__bottom p { max-width: 376px; color: var(--grey); }
 .l-head--split { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; }
@@ -370,7 +371,7 @@ body.landing {
 
 /* --- closing call to action ------------------------------------------------------------ */
 .l-cta {
-  margin: 0 24px 80px; border-radius: 24px; padding: 96px 0; position: relative; overflow: hidden;
+  margin: 60px 24px 120px; border-radius: 24px; padding: 96px 0; position: relative; overflow: hidden;
   background: radial-gradient(60% 60% at 50% 0%, rgba(20, 135, 210, 1) 0%, rgba(20, 135, 210, 0) 100%), linear-gradient(180deg, #1A88D3 0%, #2C93D7 45%, #4CA4DF 100%);
 }
 .l-cta__layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
@@ -481,7 +482,7 @@ body.landing {
   .l-plan__price { font-size: 48px; }
   .l-guarantee { flex-direction: column; align-items: flex-start; }
   .l-qa summary { font-size: 17px; }
-  .l-cta { margin: 0 12px 56px; border-radius: 20px; padding: 56px 0; }
+  .l-cta { margin: 56px 12px 112px; border-radius: 20px; padding: 56px 0; }
   .l-form { padding: 20px; }
   .l-form__row { grid-template-columns: 1fr; }
   .l-hero { margin: 12px 12px 0; border-radius: 20px; min-height: 0; padding: 112px 0 48px; }
@@ -499,6 +500,7 @@ body.landing {
   .l-loop__track { width: 100%; }
   .l-loop__row li { width: 180px; }
   .l-section { padding: 56px 0; }
+  .l-section#problem { padding-top: 88px; }
   .l-head h2 { font-size: 40px; }
   .l-impacts { grid-template-columns: 1fr; margin-top: 40px; }
   .l-card--dark { grid-row: auto; }
