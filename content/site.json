@@ -196,6 +196,49 @@
     {"name": "Name Surname", "role": "Client lead", "line": "[One honest line about this person.]"}
   ],
 
+  "landing": {
+    "_note": "The homepage. Numbers and names in the small interface cards are illustrative; replace them with your own before launch.",
+    "nav": [["Results", "#results"], ["Services", "#services"], ["How it works", "#how"], ["Journal", "#journal"]],
+    "nav_cta": "Free review",
+    "tag": "Websites for service businesses",
+    "title": "Websites that keep the phone ringing.",
+    "lede": "We design, build and optimise websites for dental practices, trades and construction firms. Fixed price, launch date in writing, results you can check.",
+    "primary": "Get a free review",
+    "secondary": "See our work",
+    "rating": "4.9/5 average client rating",
+    "trusted": ["Trusted by", "local businesses"],
+    "logos": 6,
+    "results_tag": "Our results",
+    "results_title": ["Real calls.", "Real bookings."],
+    "results_lede": "Every figure on this page comes from our clients' own analytics. Ask and we will show you the dashboards behind them.",
+    "trust_line": "Trusted by 80+ firms",
+    "card_a": {"text": "Clear pages, visible prices and one obvious next step. That is what turns a visit into a call.", "value": "2.3", "suffix": "×", "caption": "Average lift in enquiries after launch"},
+    "card_b": {"text": "We measure success the way you do: in calls, booked appointments and quote requests.", "value": "4.9", "suffix": "/5", "caption": "Average client rating"},
+    "card_c": {"text": "Every project starts with a written price and a launch date, and ends with ninety days of tuning.", "value": "310", "suffix": "+", "caption": "Sites launched for service businesses"},
+    "fast_line": "Live in six weeks on average",
+    "services_tag": "What we do",
+    "services_title": "Everything you need to win work.",
+    "services_lede": "Four services, each priced up front and built around the calls and bookings you want more of.",
+    "services": [
+      {"icon": "pen", "title": "Website design", "text": "Customer interviews first, then pages built around what nearly stopped people from getting in touch. Mobile designed first."},
+      {"icon": "cursor", "title": "Websites that sell", "text": "Fast, accessible pages with the phone number, the prices and the booking button exactly where people look for them."},
+      {"icon": "chart", "title": "Ongoing optimisation", "text": "Every month we test one change, track the calls and forms it brings in, and report back in plain English."},
+      {"icon": "search", "title": "Content & local SEO", "text": "Service and area pages that answer what people search for locally, so the right customers find you before a competitor."}
+    ],
+    "steps_tag": "How it works",
+    "steps_title": "Live in three simple steps.",
+    "steps_lede": "No long meetings and no surprises on the invoice. Here is what working with us looks like.",
+    "steps": [
+      {"title": "Free website review", "text": "A recorded walkthrough of your current site and the three things costing you the most enquiries."},
+      {"title": "Fixed quote", "text": "One call, then a written price and a launch date. Nothing starts until you have both."},
+      {"title": "Launch and tune", "text": "We design, build and launch, then spend ninety days improving what the numbers show."}
+    ],
+    "journal_tag": "Journal",
+    "journal_title": "Notes on websites that bring in work",
+    "journal_lede": "Short, practical pieces for owners of dental practices, trades and construction firms.",
+    "footer_text": "Websites for dental practices, trades and construction firms. Designed, built and optimised to bring in calls."
+  },
+
   "studio": {
     "title": ["A small studio", "with plain prices."],
     "lede": "Four people in London building websites for trades, clinics and practices. No account managers, no juniors behind a pitch deck, prices in writing.",

@@ -10,8 +10,10 @@ for service businesses. Plain static HTML and CSS, hosted on Netlify.
 | `content/site.json` | **All the words, projects, prices, team and articles.** Edit this. |
 | `tools/build.py` | Turns `content/site.json` into the HTML pages in `site/` |
 | `site/` | The published website (Netlify serves this folder) |
-| `site/assets/css/main.css` | The whole design: colours, type, layout |
-| `site/assets/js/main.js` | Scroll reveal and mobile menu. The site works without it |
+| `site/assets/css/landing.css` | The homepage design: colours, type, layout |
+| `site/assets/js/landing.js` | Homepage journal slider and mobile menu. The page works without it |
+| `site/assets/css/main.css` | The design of every other page |
+| `site/assets/js/main.js` | Scroll reveal and mobile menu on the other pages |
 | `netlify.toml` | Netlify settings: publish `site/`, security headers |
 
 ## Pages
@@ -31,8 +33,11 @@ and the sitemap. Articles in `"journal"` work the same way.
 
 ## What is still a placeholder
 
-- **Client logos** are the six blank slots under the hero (`home.clients` in
-  the content names them). Swap each `ph--logo` span for an `<img>`.
+- **Homepage** words live under `"landing"` in the content. The small interface
+  cards in its illustrations (enquiries, calls, bookings) use sample names and
+  numbers: change them in `build_home()` in `tools/build.py`.
+- **Client logos** are the six blank slots under the hero. Swap each `l-logo-ph`
+  span for an `<img>`.
 - **Every image** is a blank shape. Swap a `<span class="ph …">` for an `<img>`
   (or add an `image` field in the content and the template).
 - **Clients, team, testimonials and project results** are named
