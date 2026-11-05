@@ -10,10 +10,8 @@ for service businesses. Plain static HTML and CSS, hosted on Netlify.
 | `content/site.json` | **All the words, projects, prices, team and articles.** Edit this. |
 | `tools/build.py` | Turns `content/site.json` into the HTML pages in `site/` |
 | `site/` | The published website (Netlify serves this folder) |
-| `site/assets/css/landing.css` | The homepage design: colours, type, layout |
-| `site/assets/js/landing.js` | Homepage journal slider and mobile menu. The page works without it |
-| `site/assets/css/main.css` | The design of every other page |
-| `site/assets/js/main.js` | Scroll reveal and mobile menu on the other pages |
+| `site/assets/css/site.css` | The whole design: colours, type, layout, every page |
+| `site/assets/js/site.js` | Case study filter and mobile menu. Every page works without it |
 | `netlify.toml` | Netlify settings: publish `site/`, security headers |
 
 ## Pages
@@ -35,7 +33,8 @@ and the sitemap. Articles in `"journal"` work the same way.
 
 - **Homepage** words live under `"landing"` in the content. The small interface
   cards in its illustrations (enquiries, calls, bookings) use sample names and
-  numbers: change them in `build_home()` in `tools/build.py`.
+  numbers: change them in `build_home()` in `tools/build.py`. Navigation, footer and the
+  closing free-review form are shared by every page and also read from `"landing"`.
 - **Homepage sections still waiting for you:** the founder section (your name,
   photo and a few sentences in `founder_*`), the three testimonials (`voices`),
   and the case studies, which use the sample `Client 0X` projects. Decide
@@ -64,9 +63,3 @@ notifications.
 
 *Add new site → Import an existing project → GitHub →* this repo. Leave the
 build command empty. `netlify.toml` already sets the publish folder to `site`.
-
-## Buttons
-
-Every button is the same size. Calls to action use `btn--cta`, whose colour
-is the `--cta` token at the top of `site/assets/css/main.css` (mint for now).
-Change that one line to recolour every CTA on the site.

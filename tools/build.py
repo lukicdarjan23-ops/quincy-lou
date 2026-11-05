@@ -20,10 +20,6 @@ SITE = ROOT / "site"
 C = json.loads((ROOT / "content" / "site.json").read_text(encoding="utf-8"))
 S = C["site"]
 
-FONTS = ("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800"
-         "&family=Geist:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap")
-
-
 def e(text: str) -> str:
     """Escape text for HTML."""
     return html.escape(str(text), quote=True)
@@ -62,19 +58,6 @@ def icon(name: str, cls: str = "") -> str:
     return f'<svg{c} viewBox="{vb}" aria-hidden="true">{paths[name]}</svg>'
 
 
-def btn(label: str, href: str, kind: str = "cta", size: str = "", arrow: bool = True, extra: str = "") -> str:
-    cls = f"btn btn--{kind}" + (f" btn--{size}" if size else "") + (f" {extra}" if extra else "")
-    a = icon("arrow", "arr") if arrow else ""
-    return f'<a class="{cls}" href="{e(href)}">{e(label)}{a}</a>'
-
-
-def acc_title(parts: list[str], tag: str = "h2", attrs: str = "", one_line: bool = False) -> str:
-    """Two-part headline: the first part in the grotesk, the second as the italic accent."""
-    first, second = parts
-    gap = " " if one_line else "<br>"
-    return f'<{tag}{attrs}>{e(first)}{gap}<span class="acc">{e(second)}</span></{tag}>'
-
-
 def ph(label: str, cls: str = "ph--r43", extra: str = "") -> str:
     """A blank image placeholder that still tells a screen reader what belongs there."""
     return f'<span class="ph {cls}{" " + extra if extra else ""}" role="img" aria-label="{e(label)}"></span>'
@@ -86,202 +69,7 @@ def nice_date(iso: str) -> str:
 
 
 # ------------------------------------------------------------- page chrome
-NAV = [("Work", "/work/"), ("Services", "/#services"), ("Pricing", "/#pricing"),
-       ("Studio", "/studio/"), ("Journal", "/journal/")]
-
-
-def head(title: str, desc: str, path: str) -> str:
-    full = title if title == S["name"] else f"{title} | {S['name']}"
-    return f"""<!doctype html>
-<html lang="en-GB">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{e(full)}</title>
-<meta name="description" content="{e(desc)}">
-<link rel="canonical" href="{e(S['url'] + path)}">
-<meta property="og:title" content="{e(full)}">
-<meta property="og:description" content="{e(desc)}">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{e(S['url'] + path)}">
-<meta name="theme-color" content="#FDF9F1">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23F46840'/%3E%3Cpath d='M16 8v16M8 16h16M10.3 10.3l11.4 11.4M21.7 10.3 10.3 21.7' stroke='%23000' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
-<link rel="stylesheet" href="/assets/css/main.css">
-</head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-"""
-
-
-def header(active: str = "") -> str:
-    current = ' aria-current="page"'
-    links = "".join(
-        f'<a href="{href}"{current if label == active else ""}>{label}</a>'
-        for label, href in NAV)
-    mlinks = "".join(f'<a href="{href}">{label}</a>' for label, href in NAV)
-    return f"""<header class="hdr">
-  <div class="wrap hdr__in">
-    <a class="logo" href="/" aria-label="{e(S['name'])}, home">{e(S['name'])}<i aria-hidden="true"></i></a>
-    <nav class="nav" aria-label="Main">{links}</nav>
-    <div class="hdr__right">
-      <a class="hdr__phone" href="tel:{S['phone_href']}">{e(S['phone'])}</a>
-      {btn(S['cta'], '/contact/', 'cta')}
-      <details class="menu">
-        <summary>Menu</summary>
-        <nav class="menu__panel" aria-label="Mobile">{mlinks}<a href="/contact/">Contact</a>
-          <a class="btn btn--cta" href="tel:{S['phone_href']}">Call {e(S['phone'])}</a>
-        </nav>
-      </details>
-    </div>
-  </div>
-</header>
-"""
-
-
-def enquiry_form(form_id: str = "review") -> str:
-    ct = C["contact"]
-    needs = "".join(
-        f'<label class="chip"><input type="checkbox" name="need" value="{e(n)}"><span>{e(n)}</span></label>'
-        for n in ct["needs"])
-    budgets = "".join(
-        f'<label class="chip"><input type="radio" name="budget" value="{e(b)}"><span>{e(b)}</span></label>'
-        for b in ct["budgets"])
-    return f"""<form class="form" name="{form_id}" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company-website">
-  <input type="hidden" name="form-name" value="{form_id}">
-  <p class="hp"><label>Leave this empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
-  <fieldset><legend>What do you need?</legend><div class="chips">{needs}</div></fieldset>
-  <fieldset><legend>Rough budget</legend><div class="chips">{budgets}</div></fieldset>
-  <fieldset><legend>Who are you?</legend>
-    <div class="fields">
-      <label><span class="sr-only">Your name</span><input class="input" name="name" placeholder="Your name" autocomplete="name" required></label>
-      <label><span class="sr-only">Email</span><input class="input" type="email" name="email" placeholder="Email" autocomplete="email" required></label>
-    </div>
-    <label><span class="sr-only">Website address</span><input class="input" name="website" placeholder="Your current website (if you have one)" inputmode="url"></label>
-  </fieldset>
-  <label><span class="lbl" style="display:block">What isn’t working?</span>
-    <textarea class="input" name="message" placeholder="What does the business do, and what would a good month of enquiries look like?"></textarea></label>
-  <button class="btn btn--cta btn--block" type="submit">Send and get my review{icon('arrow', 'arr')}</button>
-  <p class="form__fine">{e(S['reply_time'])}. No newsletter unless you ask for it.</p>
-</form>"""
-
-
-def footer() -> str:
-    nav = "".join(f'<li><a href="{href}">{label}</a></li>' for label, href in NAV)
-    social = "".join(f'<li><a href="{e(s["href"])}">{e(s["label"])}</a></li>' for s in S["social"])
-    addr = "".join(f"<li>{e(line)}</li>" for line in S["address"])
-    return f"""<div class="ftr-wrap">
-<footer class="ftr">
-  <div class="ftr__cta">
-    <h2>Got a website that<br><span class="acc">should do more?</span></h2>
-    <div class="ftr__contact">
-      {btn('Get a free website review', '/contact/', 'cta')}
-      <a class="ftr__mail" href="mailto:{e(S['email'])}">{e(S['email'])}</a>
-      <a href="tel:{S['phone_href']}">{e(S['phone'])}</a>
-    </div>
-  </div>
-  <div class="ftr__cols">
-    <div><h3>Studio</h3><ul>{addr}<li>{e(S['hours'])}</li></ul></div>
-    <div><h3>Pages</h3><ul>{nav}<li><a href="/contact/">Contact</a></li></ul></div>
-    <div><h3>Elsewhere</h3><ul>{social}</ul></div>
-    <div class="ftr__news"><h3>Field notes</h3>
-      <p>One email a month on what is making websites bring in more work. Unsubscribe any time.</p>
-      <form name="newsletter" method="POST" action="/thanks/" data-netlify="true">
-        <input type="hidden" name="form-name" value="newsletter">
-        <label class="sr-only" for="nl-email">Email</label>
-        <input class="input" id="nl-email" type="email" name="email" placeholder="you@company.com" required>
-        <button class="btn btn--cta" type="submit">Join</button>
-      </form>
-    </div>
-  </div>
-  <span class="wordmark" aria-hidden="true">{e(S['name'])}</span>
-  <div class="ftr__base">
-    <span>© {date.today().year} {e(S['company'])}</span>
-    <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></nav>
-  </div>
-</footer>
-</div>
-<script src="/assets/js/main.js" defer></script>
-</body>
-</html>
-"""
-
-
-def page(path: str, title: str, desc: str, body: str, active: str = "") -> None:
-    out = SITE / path.strip("/") / "index.html" if path != "/404" else SITE / "404.html"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(head(title, desc, path) + header(active) + f'<main id="main">\n{body}\n</main>\n' + footer(),
-                   encoding="utf-8")
-
-
-# ---------------------------------------------------------------- components
-def work_card(w: dict, ratio: str) -> str:
-    return f"""<a class="card-work" href="/work/{e(w['slug'])}/" data-r>
-  <div class="card-work__media">
-    <span class="badge">{icon('arrow')}{e(w['result'])}</span>
-    {ph(f"{w['name']} project image", ratio)}
-  </div>
-  <div class="card-work__row">
-    <div><h3>{e(w['name'])}</h3><p class="card-work__line">{e(w['line'])}</p></div>
-    <div class="tags"><span class="tag">{e(w['service'])}</span><span class="tag tag--fill">{e(w['year'])}</span></div>
-  </div>
-</a>"""
-
-
-def work_grid(items: list[dict]) -> str:
-    """Two staggered columns that start and end level.
-
-    The left column runs tall, short, tall, short; the right runs short, tall,
-    short, tall. Both start at the same top and, with equal counts, add up to
-    the same height, so the stagger is in the middle and the edges line up.
-    """
-    a = [w for i, w in enumerate(items) if i % 2 == 0]
-    b = [w for i, w in enumerate(items) if i % 2 == 1]
-    col_a = "".join(work_card(w, "ph--r45" if i % 2 == 0 else "ph--r43") for i, w in enumerate(a))
-    col_b = "".join(work_card(w, "ph--r43" if i % 2 == 0 else "ph--r45") for i, w in enumerate(b))
-    return f'<div class="work-grid"><div class="work-col">{col_a}</div><div class="work-col">{col_b}</div></div>'
-
-
-def post_card(p: dict, idx: int = 0) -> str:
-    return f"""<a class="post" href="/journal/{e(p['slug'])}/" data-r="{idx * 80}">
-  {ph(f"Cover image for {p['title']}", "ph--r43")}
-  <div class="post__meta"><span class="chip-ink">{e(p['tag'])}</span><span>{nice_date(p['date'])}</span></div>
-  <h3>{e(p['title'])}</h3>
-</a>"""
-
-
-def team_block() -> str:
-    cards = "".join(f"""<div class="member" data-r="{i * 70}">
-  {ph(f"Portrait of {m['name']}", "ph--r45")}
-  <h3>{e(m['name'])}</h3><p class="member__role">{e(m['role'])}</p><p class="member__line">{e(m['line'])}</p>
-</div>""" for i, m in enumerate(C["team"]))
-    return f'<div class="team">{cards}</div>'
-
-
-def enquire_block(form_id: str = "review", tag: str = "h2", cls: str = "band") -> str:
-    h = C["home"]
-    return f"""<section class="{cls}" id="enquire" aria-labelledby="enq-h">
-  <div class="wrap">
-    <div class="enquire" data-r>
-      <div>
-        {acc_title(h['form_title'], tag, ' id="enq-h"')}
-        <p class="enquire__lede">{e(h['form_lede'])}</p>
-        <div class="enquire__alt">
-          <a href="mailto:{e(S['email'])}">Prefer email? {e(S['email'])}</a>
-          <a href="tel:{S['phone_href']}">Or ring {e(S['phone'])}</a>
-          <span>{e(S['reply_time'])}.</span>
-        </div>
-      </div>
-      {enquiry_form(form_id)}
-    </div>
-  </div>
-</section>"""
-
-
-# --------------------------------------------------------------------- pages
-LANDING_FONTS = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+FONTS = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
 
 
 def stars(n: int = 5) -> str:
@@ -311,48 +99,60 @@ def phone(screen: str, cls: str = "") -> str:
 </div>"""
 
 
-def landing_page(body: str) -> None:
+def page(path: str, title: str, desc: str, body: str, *, home: bool = False, review: bool = True) -> None:
+    """Write one page: head, navigation, the page body, footer.
+
+    home:   the homepage, whose navigation sits over the blue hero panel.
+    review: the page carries the free-review form (id="review"), so the
+            navigation button can jump to it; other pages link to the contact page.
+    """
     L = C["landing"]
-    nav = "".join(f'<a href="{e(h)}">{e(n)}</a>' for n, h in L["nav"])
+    pre = "" if home else "/"
+    links = [(n, (pre + h) if h.startswith("#") else h) for n, h in L["nav"]]
+    nav = "".join(f'<a href="{e(h)}">{e(n)}</a>' for n, h in links)
+    cta = "#review" if review else "/contact/"
     logo = f'<span class="l-logo__mark">{icon("mark")}</span><span>{e(S["name"])}</span>'
     social_icon = {"LinkedIn": "linkedin", "Instagram": "instagram", "Dribbble": "dribbble"}
     social = "".join(f'<a class="l-social" href="{e(s["href"])}" aria-label="{e(s["label"])}">{icon(social_icon.get(s["label"], "arrow"))}</a>'
                      for s in S["social"])
     addr = ", ".join(S["address"])
-    full = f"{S['name']} | {S['tagline']}"
+    full = f"{S['name']} | {S['tagline']}" if home else f"{title} | {S['name']}"
+    url = S["url"] + ("/" if path == "/" else path)
     html_doc = f"""<!doctype html>
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(full)}</title>
-<meta name="description" content="{e(S['description'])}">
-<link rel="canonical" href="{e(S['url'] + '/')}">
+<meta name="description" content="{e(desc)}">
+<link rel="canonical" href="{e(url)}">
 <meta property="og:title" content="{e(full)}">
-<meta property="og:description" content="{e(S['description'])}">
+<meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
-<meta property="og:url" content="{e(S['url'] + '/')}">
-<meta name="theme-color" content="#1487D2">
+<meta property="og:url" content="{e(url)}">
+<meta name="theme-color" content="{'#1487D2' if home else '#F7F7F7'}">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231487D2'/%3E%3Cpath d='M16 5 27 16 16 27 5 16z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{LANDING_FONTS}">
-<link rel="stylesheet" href="/assets/css/landing.css">
+<link rel="stylesheet" href="{FONTS}">
+<link rel="stylesheet" href="/assets/css/site.css">
 </head>
-<body class="landing">
+<body class="page">
 <a class="l-skip" href="#main">Skip to content</a>
-<header class="l-nav">
+<header class="l-nav{'' if home else ' l-nav--light'}">
     <div class="l-wrap l-nav__in">
       <a class="l-logo" href="/" aria-label="{e(S['name'])}, home">{logo}</a>
       <nav class="l-nav__links" aria-label="Main">{nav}</nav>
-      <a class="l-btn l-btn--white l-nav__cta" href="#review">{e(L['nav_cta'])}</a>
+      <a class="l-btn {'l-btn--white' if home else 'l-btn--dark'} l-nav__cta" href="{cta}">{e(L['nav_cta'])}</a>
       <details class="l-menu">
         <summary aria-label="Menu"><i></i><i></i><i></i></summary>
-        <nav class="l-menu__panel" aria-label="Mobile">{nav}<a href="/journal/">Journal</a><a href="/studio/">Studio</a><a href="#review">Free review</a></nav>
+        <nav class="l-menu__panel" aria-label="Mobile">{nav}<a href="/work/">Work</a><a href="/journal/">Journal</a><a href="/studio/">Studio</a><a href="/contact/">Contact</a></nav>
       </details>
     </div>
 </header>
+<main id="main">
 {body}
+</main>
 <footer class="l-footer">
   <div class="l-wrap">
     <div class="l-footer__top">
@@ -373,17 +173,122 @@ def landing_page(body: str) -> None:
     <div class="l-footer__bottom">
       <a class="l-footer__big" href="/" aria-label="{e(S['name'])}, home"><span class="l-logo__mark">{icon("mark")}</span><span>{e(S['name'])}</span></a>
       <div class="l-footer__info">
-        <div class="l-footer__links"><a href="/work/">Work</a><i></i><a href="/journal/">Journal</a><i></i><a href="/privacy/">Privacy</a></div>
-        <p>© {date.today().year} {e(S['name'])} Ltd.</p>
+        <div class="l-footer__links"><a href="/work/">Work</a><i></i><a href="/studio/">Studio</a><i></i><a href="/journal/">Journal</a><i></i><a href="/contact/">Contact</a><i></i><a href="/privacy/">Privacy</a></div>
+        <p>© {date.today().year} {e(S['company'])}</p>
       </div>
     </div>
   </div>
 </footer>
-<script src="/assets/js/landing.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>
 """
-    (SITE / "index.html").write_text(html_doc, encoding="utf-8")
+    out = SITE / "404.html" if path == "/404" else SITE / path.strip("/") / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html_doc, encoding="utf-8")
+
+
+# --------------------------------------------------------- shared sections
+def sector_of(w: dict) -> str:
+    """The industry filter a project sits under."""
+    return C["landing"]["case_sectors"].get(w["slug"], w["industry"])
+
+
+def review_form(name: str = "website-review") -> str:
+    L = C["landing"]
+    sector_opts = "".join(f'<option>{e(x)}</option>' for x in L["cta_sectors"])
+    return f"""<form class="l-form" name="{name}" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company-website">
+      <input type="hidden" name="form-name" value="{name}">
+      <p class="l-hp" aria-hidden="true"><label>Leave this empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
+      <div class="l-form__row">
+        <label><span>Your name</span><input name="name" autocomplete="name" required></label>
+        <label><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+      </div>
+      <label><span>Your website</span><input type="url" name="website" placeholder="https://" inputmode="url"></label>
+      <label><span>Type of business</span><select name="business" required><option value="">Choose one</option>{sector_opts}</select></label>
+      <label><span>Anything we should know? <em>(optional)</em></span><textarea name="message" rows="3" placeholder="What would a good month of enquiries look like?"></textarea></label>
+      <button class="l-btn l-btn--dark l-form__submit" type="submit">{e(L['cta_button'])}</button>
+      <p class="l-form__note">{e(S['reply_time'])}. No newsletter unless you ask for it.</p>
+    </form>"""
+
+
+def cta_block() -> str:
+    """The blue free-review panel that closes most pages."""
+    L = C["landing"]
+    points = "".join(f'<li>{icon("check")}{e(x)}</li>' for x in L["cta_points"])
+    return f"""<section class="l-cta" id="review" aria-labelledby="review-h">
+  <div class="l-wrap l-cta__layout">
+    <div class="l-cta__copy">
+      <span class="l-pill l-pill--glass">{e(L['cta_tag'])}</span>
+      <h2 id="review-h">{e(L['cta_title'])}</h2>
+      <p>{e(L['cta_text'])}</p>
+      <ul class="l-cta__points">{points}</ul>
+    </div>
+    {review_form()}
+  </div>
+</section>"""
+
+
+def cta_band(title: str, text: str) -> str:
+    """A short dark strip with one button, for the middle of a long page."""
+    return f"""<div class="l-band">
+  <div><h3>{e(title)}</h3><p>{e(text)}</p></div>
+  <a class="l-btn l-btn--icon" href="#review">{e(C['landing']['primary'])}<span>{icon('right')}</span></a>
+</div>"""
+
+
+def case_card(w: dict) -> str:
+    sector = sector_of(w)
+    return f"""<li class="l-case" data-sector="{e(sector)}">
+  <a href="/work/{e(w['slug'])}/">
+    <div class="l-case__img">{ph(f"{w['name']} website", '')}<span class="l-pill l-pill--mint">{e(sector)}</span></div>
+    <div class="l-case__body">
+      <p class="l-case__num">{e(w['stats'][0][0])}<span>{e(w['stats'][0][1])}</span></p>
+      <h3>{e(w['name'])}</h3><p>{e(w['line'])}</p>
+      <span class="l-case__more">Read the case study{icon('right')}</span>
+    </div>
+  </a>
+</li>"""
+
+
+def case_filters(items: list) -> str:
+    order = ["Dental & health", "Home services", "Construction"]
+    found = {sector_of(w) for w in items}
+    sectors = [s for s in order if s in found] + sorted(found - set(order))
+    btns = "".join(f'<button type="button" class="l-filter{" is-on" if f == "All" else ""}" data-filter="{e(f)}" aria-pressed="{"true" if f == "All" else "false"}">{e(f)}</button>'
+                   for f in ["All"] + sectors)
+    return f'<div class="l-filters" role="group" aria-label="Filter case studies by industry">{btns}</div>'
+
+
+def post_card(p: dict) -> str:
+    return f"""<li class="l-case l-case--post">
+  <a href="/journal/{e(p['slug'])}/">
+    <div class="l-case__img l-case__img--blue">{ph(f"Cover image for {p['title']}", '')}<span class="l-pill l-pill--mint">{nice_date(p['date'])}</span></div>
+    <div class="l-case__body">
+      <h3>{e(p['title'])}</h3><p>{e(p['lede'])}</p>
+      <span class="l-case__more">Read the article{icon('right')}</span>
+    </div>
+  </a>
+</li>"""
+
+
+def list_head(tag: str, title: str, lede: str, extra: str = "") -> str:
+    """The opening of a listing page: label, big title, a short line and optional controls."""
+    return f"""<div class="l-head l-head--page">
+      <span class="l-pill">{e(tag)}</span>
+      <h1 id="page-h">{e(title)}</h1>
+      <div class="l-head__bottom"><p>{e(lede)}</p>{extra}</div>
+    </div>"""
+
+
+def doc_head(tags: str, title: str, lede: str, image: str = "", meta: str = "") -> str:
+    """The opening of a single article or project: a centred white card, like a document cover."""
+    img = f'<div class="l-doc__img">{image}</div>' if image else ""
+    met = f'<div class="l-doc__meta">{meta}</div>' if meta else ""
+    return f"""<header class="l-doc__head">
+      <div class="l-doc__title"><div class="l-doc__tags">{tags}</div><h1>{e(title)}</h1><p>{e(lede)}</p></div>
+      {img}{met}
+    </header>"""
 
 
 def build_home() -> None:
@@ -438,21 +343,8 @@ def build_home() -> None:
   <span class="l-feature__icon">{icon(p['icon'])}</span><h3>{e(p['title'])}</h3><p>{e(p['text'])}</p>
 </li>""" for p in L["problems"])
 
-    sectors = L["case_sectors"]
-    cases = [w for w in C["work"] if w["slug"] in sectors]
-    filters = ["All"] + sorted(set(sectors.values()), key=["Dental & health", "Home services", "Construction"].index)
-    filter_btns = "".join(f'<button type="button" class="l-filter{" is-on" if f == "All" else ""}" data-filter="{e(f)}" aria-pressed="{"true" if f == "All" else "false"}">{e(f)}</button>'
-                          for f in filters)
-    case_cards = "".join(f"""<li class="l-case" data-sector="{e(sectors[w['slug']])}">
-  <a href="/work/{e(w['slug'])}/">
-    <div class="l-case__img">{ph(f"{w['name']} website", '')}<span class="l-pill l-pill--mint">{e(sectors[w['slug']])}</span></div>
-    <div class="l-case__body">
-      <p class="l-case__num">{e(w['stats'][0][0])}<span>{e(w['stats'][0][1])}</span></p>
-      <h3>{e(w['name'])}</h3><p>{e(w['line'])}</p>
-      <span class="l-case__more">Read the case study{icon('right')}</span>
-    </div>
-  </a>
-</li>""" for w in cases)
+    cases = [w for w in C["work"] if w["slug"] in L["case_sectors"]]
+    case_cards = "".join(case_card(w) for w in cases)
 
     industries = "".join(f"""<li class="l-industry">
   <div class="l-industry__img">{ph(f"{x['title']} website example", '')}</div>
@@ -495,10 +387,8 @@ def build_home() -> None:
     faq = "".join(f"""<details class="l-qa"{' open' if i == 0 else ''}><summary>{e(q)}<i aria-hidden="true"></i></summary><p>{e(a_)}</p></details>"""
                   for i, (q, a_) in enumerate(L["faq"]))
 
-    points = "".join(f'<li>{icon("check")}{e(x)}</li>' for x in L["cta_points"])
-    sector_opts = "".join(f'<option>{e(x)}</option>' for x in L["cta_sectors"])
 
-    body = f"""<main id="main">
+    body = f"""
   <section class="l-hero" aria-labelledby="hero-h">
     <div class="l-wrap l-hero__layout">
       <div class="l-hero__left">
@@ -538,6 +428,16 @@ def build_home() -> None:
   </div>
 </section>
 
+<section class="l-section" id="industries" aria-labelledby="industries-h">
+  <div class="l-wrap">
+    <div class="l-head l-head--center">
+      <span class="l-pill">{e(L['industries_tag'])}</span>
+      <h2 id="industries-h">{e(L['industries_title'])}</h2>
+    </div>
+    <ul class="l-industries">{industries}</ul>
+  </div>
+</section>
+
 <section class="l-section" id="results" aria-labelledby="results-h">
   <div class="l-wrap">
     <div class="l-head l-head--split">
@@ -567,11 +467,15 @@ def build_home() -> None:
       <span class="l-pill">{e(L['cases_tag'])}</span>
       <h2 id="work-h">{e(L['cases_title'])}</h2>
       <div class="l-head__bottom"><p>{e(L['cases_lede'])}</p>
-        <div class="l-filters" role="group" aria-label="Filter case studies by industry">{filter_btns}</div></div>
+        {case_filters(cases)}</div>
     </div>
     <ul class="l-cases">{case_cards}</ul>
     <div class="l-center"><a class="l-btn l-btn--dark" href="/work/">See all projects</a></div>
   </div>
+</section>
+
+<section class="l-section l-section--band" aria-label="Free review">
+  <div class="l-wrap">{cta_band(L['band_title'], L['band_text'])}</div>
 </section>
 
 <section class="l-section" id="services" aria-labelledby="services-h">
@@ -590,16 +494,6 @@ def build_home() -> None:
   </div>
 </section>
 
-<section class="l-section" id="industries" aria-labelledby="industries-h">
-  <div class="l-wrap">
-    <div class="l-head l-head--center">
-      <span class="l-pill">{e(L['industries_tag'])}</span>
-      <h2 id="industries-h">{e(L['industries_title'])}</h2>
-    </div>
-    <ul class="l-industries">{industries}</ul>
-  </div>
-</section>
-
 <section class="l-section" id="how" aria-labelledby="how-h">
   <div class="l-wrap">
     <div class="l-head l-head--center">
@@ -608,22 +502,6 @@ def build_home() -> None:
       <p>{e(L['steps_lede'])}</p>
     </div>
     <ol class="l-steps">{step_cards}</ol>
-  </div>
-</section>
-
-<section class="l-section" id="founder" aria-labelledby="founder-h">
-  <div class="l-wrap">
-    <div class="l-founder">
-      <div class="l-founder__img">{ph(f"Photo of {L['founder_name']}", '')}</div>
-      <div class="l-founder__body">
-        <span class="l-pill l-pill--grey">{e(L['founder_tag'])}</span>
-        <h2 id="founder-h">{e(L['founder_title'])}</h2>
-        <p>{e(L['founder_text'])}</p>
-        <p class="l-founder__sig"><b>{e(L['founder_name'])}</b><span>{e(L['founder_role'])}</span></p>
-        <ul class="l-founder__facts">{facts}</ul>
-        <a class="l-btn l-btn--dark" href="#review">{e(L['founder_cta'])}</a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -661,6 +539,22 @@ def build_home() -> None:
   </div>
 </section>
 
+<section class="l-section" id="founder" aria-labelledby="founder-h">
+  <div class="l-wrap">
+    <div class="l-founder">
+      <div class="l-founder__img">{ph(f"Photo of {L['founder_name']}", '')}</div>
+      <div class="l-founder__body">
+        <span class="l-pill l-pill--grey">{e(L['founder_tag'])}</span>
+        <h2 id="founder-h">{e(L['founder_title'])}</h2>
+        <p>{e(L['founder_text'])}</p>
+        <p class="l-founder__sig"><b>{e(L['founder_name'])}</b><span>{e(L['founder_role'])}</span></p>
+        <ul class="l-founder__facts">{facts}</ul>
+        <a class="l-btn l-btn--dark" href="#review">{e(L['founder_cta'])}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="l-section" id="faq" aria-labelledby="faq-h">
   <div class="l-wrap l-faq">
     <div class="l-faq__head">
@@ -672,172 +566,121 @@ def build_home() -> None:
   </div>
 </section>
 
-<section class="l-cta" id="review" aria-labelledby="review-h">
-  <div class="l-wrap l-cta__layout">
-    <div class="l-cta__copy">
-      <span class="l-pill l-pill--glass">{e(L['cta_tag'])}</span>
-      <h2 id="review-h">{e(L['cta_title'])}</h2>
-      <p>{e(L['cta_text'])}</p>
-      <ul class="l-cta__points">{points}</ul>
-    </div>
-    <form class="l-form" name="website-review" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company-website">
-      <input type="hidden" name="form-name" value="website-review">
-      <p class="l-hp" aria-hidden="true"><label>Leave this empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
-      <div class="l-form__row">
-        <label><span>Your name</span><input name="name" autocomplete="name" required></label>
-        <label><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
-      </div>
-      <label><span>Your website</span><input type="url" name="website" placeholder="https://" inputmode="url"></label>
-      <label><span>Type of business</span><select name="business" required><option value="">Choose one</option>{sector_opts}</select></label>
-      <label><span>Anything we should know? <em>(optional)</em></span><textarea name="message" rows="3" placeholder="What would a good month of enquiries look like?"></textarea></label>
-      <button class="l-btn l-btn--dark l-form__submit" type="submit">{e(L['cta_button'])}</button>
-      <p class="l-form__note">{e(S['reply_time'])}. No newsletter unless you ask for it.</p>
-    </form>
-  </div>
-</section>
-
-</main>"""
-    landing_page(body)
+{cta_block()}
+"""
+    page("/", S["name"], S["description"], body, home=True)
 
 
 def build_work_index() -> None:
-    body = f"""
-<section class="page-hero">
-  <div class="wrap page-hero__row">
-    <h1 data-r>Every project<br><span class="acc">we’ve launched.</span></h1>
-    <p class="page-hero__side" data-r="120">{len(C['work'])} projects, each measured against the same months the year before. Reported in enquiries, bookings and calls.</p>
+    work = C["work"]
+    body = f"""<section class="l-section l-section--first" aria-labelledby="page-h">
+  <div class="l-wrap">
+    {list_head('Case studies', 'Every project we have launched.', f"{len(work)} projects, each measured against the same months the year before. Reported in calls, bookings and enquiries.", case_filters(work))}
+    <ul class="l-cases">{''.join(case_card(w) for w in work)}</ul>
   </div>
 </section>
-<section class="band" style="padding-top:0">
-  <div class="wrap">{work_grid(C['work'])}</div>
-</section>
-"""
-    page("/work/", "Work", "Websites Quincy Lou has designed, built and optimised, with the numbers behind each one.", body, "Work")
+
+{cta_block()}"""
+    page("/work/", "Work", "Websites Quincy Lou has designed, built and optimised, with the numbers behind each one.", body)
 
 
 def build_case_studies() -> None:
     work = C["work"]
     for i, w in enumerate(work):
         nxt = work[(i + 1) % len(work)]
-        stats = "".join(f'<div class="stat" data-r="{j * 80}"><b>{e(v)}</b><span>{e(k)}</span></div>'
-                        for j, (v, k) in enumerate(w["stats"]))
-        body = f"""
-<section class="page-hero">
-  <div class="wrap">
-    <a class="back" href="/work/">{icon('back')}All work</a>
-    <div class="cs-title" data-r><h1>{e(w['name'])}<span class="acc">{e(w['line'])}</span></h1></div>
-    <dl class="meta" data-r="120">
-      <div><dt>Year</dt><dd>{e(w['year'])}</dd></div>
-      <div><dt>Service</dt><dd>{e(w['service'])}</dd></div>
-      <div><dt>Industry</dt><dd>{e(w['industry'])}</dd></div>
-      <div><dt>Result</dt><dd class="red">{e(w['result'])}</dd></div>
-    </dl>
-  </div>
-</section>
-<section><div class="wrap" data-r>{ph(f"{w['name']} hero image", "ph--reel")}</div></section>
-<section class="band">
-  <div class="wrap cs-body">
-    <h2 data-r>The short <span class="acc">version.</span></h2>
-    <div class="cs-parts">
-      <div data-r><h3>The problem</h3><p>{e(w['challenge'])}</p></div>
-      <div data-r><h3>What we did</h3><p>{e(w['approach'])}</p></div>
-      <div data-r><h3>What changed</h3><p>{e(w['outcome'])}</p></div>
+        sector = sector_of(w)
+        stats = "".join(f'<li class="l-card"><p class="l-num">{e(v)}</p><p class="l-card__cap">{e(k)}</p></li>' for v, k in w["stats"])
+        meta = "".join(f'<div><span>{e(k)}</span><b>{e(v)}</b></div>'
+                       for k, v in [("Service", w["service"]), ("Industry", w["industry"]), ("Year", w["year"]), ("Result", w["result"])])
+        head = doc_head(f'<span class="l-pill l-pill--mint">{e(sector)}</span>', w["name"], w["line"],
+                        ph(f"{w['name']} website on a laptop", "") + f'<span class="l-pill l-pill--mint">{e(w["result"])}</span>', meta)
+        body = f"""<section class="l-section l-section--first">
+  <div class="l-wrap l-doc">
+    <a class="l-back" href="/work/">{icon('left')}All case studies</a>
+    {head}
+    <ul class="l-stats">{stats}</ul>
+    <div class="l-card l-parts">
+      <div><h2>The problem</h2><p>{e(w['challenge'])}</p></div>
+      <div><h2>What we did</h2><p>{e(w['approach'])}</p></div>
+      <div><h2>What changed</h2><p>{e(w['outcome'])}</p></div>
     </div>
   </div>
-</section>
-<section class="band" style="padding-top:0"><div class="wrap stats">{stats}</div></section>
-<section class="band" style="padding-top:0">
-  <div class="wrap gallery">
-    <div class="wide" data-r>{ph(f"{w['name']} homepage on desktop", "ph--r169")}</div>
-    <div data-r>{ph(f"{w['name']} on a phone", "ph--r45")}</div>
-    <div data-r="100">{ph(f"{w['name']} detail", "ph--r45")}</div>
+  <div class="l-wrap l-gallery">
+    <div class="l-gallery__wide">{ph(f"{w['name']} homepage on desktop", '')}</div>
+    <div>{ph(f"{w['name']} on a phone", '')}</div>
+    <div>{ph(f"{w['name']} detail", '')}</div>
   </div>
-</section>
-<section class="band" style="padding-top:0">
-  <div class="wrap">
-    <figure class="cs-quote" data-r>
+  <div class="l-wrap l-doc">
+    <figure class="l-quote">
       <blockquote>{e(w['quote'])}</blockquote>
-      <figcaption class="who">{ph('Client photo', 'ph--avatar')}<span><b>Client name</b><span>Role, {e(w['name'])}</span></span></figcaption>
+      <figcaption>{ph('Client photo', 'l-voice__photo')}<div><b>[Client name]</b><span>[Role], {e(w['name'])}</span></div></figcaption>
     </figure>
+    <a class="l-next" href="/work/{e(nxt['slug'])}/"><div><span>Next case study</span><b>{e(nxt['name'])}</b><em>{e(nxt['line'])}</em></div><span class="l-next__arrow">{icon('right')}</span></a>
   </div>
 </section>
-<section class="band" style="padding-top:0">
-  <div class="wrap">
-    <a class="next" href="/work/{e(nxt['slug'])}/"><div><span>Next project</span><b>{e(nxt['name'])}</b></div>{icon('next')}</a>
-  </div>
-</section>
-{enquire_block()}
-"""
-        page(f"/work/{w['slug']}/", w["name"], f"{w['name']}: {w['line']}. {w['result']}.", body, "Work")
+
+{cta_block()}"""
+        page(f"/work/{w['slug']}/", w["name"], f"{w['name']}: {w['line']}. {w['result']}.", body)
 
 
 def build_studio() -> None:
     st = C["studio"]
-    ways = "".join(f"""<div class="way" data-r="{i * 80}"><span>0{i + 1}</span><h3>{e(w['title'])}</h3><p>{e(w['text'])}</p></div>"""
+    ways = "".join(f"""<li class="l-card l-problem"><span class="l-pill l-pill--mint">0{i + 1}</span><h3>{e(w['title'])}</h3><p>{e(w['text'])}</p></li>"""
                    for i, w in enumerate(st["ways"]))
-    beliefs = "".join(f'<li data-r>{icon("asterisk")}<span>{e(b)}</span></li>' for b in st["beliefs"])
+    team = "".join(f"""<li class="l-member">{ph(f"Portrait of {m['name']}", '')}<div><h3>{e(m['name'])}</h3><p>{e(m['role'])}</p><p class="l-member__line">{e(m['line'])}</p></div></li>"""
+                   for m in C["team"])
+    beliefs = "".join(f'<li><span class="l-yes">{icon("check")}</span>{e(x)}</li>' for x in st["beliefs"])
     hire = st["hiring"]
-    body = f"""
-<section class="page-hero">
-  <div class="wrap page-hero__row">
-    {acc_title(st['title'], 'h1', ' data-r')}
-    <p class="page-hero__side" data-r="120">{e(st['lede'])}</p>
+    body = f"""<section class="l-section l-section--first" aria-labelledby="page-h">
+  <div class="l-wrap">
+    {list_head('Studio', ' '.join(st['title']), st['lede'])}
+    <div class="l-studio-shot">{ph('The team in the studio', '')}<span class="l-pill">{e(st['place'])}</span></div>
+    <ul class="l-problems l-problems--three">{ways}</ul>
   </div>
 </section>
-<section>
-  <div class="wrap"><div class="studio-shot" data-r>{ph('The team in the studio', 'ph--studio')}<span class="place-tag">{icon('asterisk')}{e(st['place'])}</span></div></div>
-</section>
-<section class="band ways-band"><div class="wrap ways">{ways}</div></section>
-<section class="band team-band" style="padding-top:0">
-  <div class="wrap">
-    <div class="head">{acc_title(C['home']['team_title'], 'h2', ' data-r')}</div>
-    {team_block()}
+
+<section class="l-section" aria-labelledby="team-h">
+  <div class="l-wrap">
+    <div class="l-head l-head--center"><span class="l-pill">The team</span><h2 id="team-h">{e(' '.join(C['home']['team_title']))}</h2><p>{e(C['home']['team_lede'])}</p></div>
+    <ul class="l-team">{team}</ul>
   </div>
 </section>
-<section class="band beliefs-band" style="padding-top:0" aria-labelledby="beliefs-h">
-  <div class="wrap">
-    <p class="beliefs__label" id="beliefs-h">{e(st['beliefs_label'])}</p>
-    <ul class="beliefs">{beliefs}</ul>
-  </div>
-</section>
-<section class="hiring-band">
-  <div class="wrap">
-    <div class="hiring" data-r>
-      <div><h2>{e(hire['title'])}</h2><p>{e(hire['text'])}</p></div>
-      {btn(hire['cta'], 'mailto:' + S['email'], 'cta')}
+
+<section class="l-section" aria-labelledby="beliefs-h">
+  <div class="l-wrap">
+    <div class="l-head l-head--center"><span class="l-pill">Principles</span><h2 id="beliefs-h">{e(st['beliefs_label'])}.</h2></div>
+    <ul class="l-card l-beliefs">{beliefs}</ul>
+    <div class="l-card l-hiring">
+      <div><h3>{e(hire['title'])}</h3><p>{e(hire['text'])}</p></div>
+      <a class="l-btn l-btn--dark" href="mailto:{e(S['email'])}">{e(hire['cta'])}</a>
     </div>
   </div>
 </section>
-"""
-    page("/studio/", "Studio", "Quincy Lou is a small website studio for service businesses. Four people, no middlemen.", body, "Studio")
+
+{cta_block()}"""
+    page("/studio/", "Studio", "Quincy Lou is a small website studio for service businesses. Four people, no middlemen.", body)
 
 
 def build_journal() -> None:
     posts = sorted(C["journal"], key=lambda p: p["date"], reverse=True)
     f, rest = posts[0], posts[1:]
-    grid = "".join(post_card(p, i) for i, p in enumerate(rest))
-    body = f"""
-<section class="page-hero">
-  <div class="wrap page-hero__row">
-    <h1 data-r>Notes from<br><span class="acc">the studio.</span></h1>
-    <p class="page-hero__side" data-r="120">Short, practical pieces on what makes a service business website bring in more work.</p>
-  </div>
-</section>
-<section class="band" style="padding-top:0">
-  <div class="wrap">
-    <a class="feature" href="/journal/{e(f['slug'])}/" data-r>
-      {ph(f"Cover image for {f['title']}", "ph--r43")}
-      <div>
-        <div class="post__meta"><span class="chip-ink">{e(f['tag'])}</span><span>{nice_date(f['date'])}</span></div>
-        <h2>{e(f['title'])}</h2>
-        <p>{e(f['lede'])}</p>
+    body = f"""<section class="l-section l-section--first" aria-labelledby="page-h">
+  <div class="l-wrap">
+    {list_head('Journal', 'Notes on websites that bring in work.', 'Short, practical pieces for owners of dental practices, trades and construction firms.')}
+    <a class="l-feature is-large l-feature--link" href="/journal/{e(f['slug'])}/">
+      <div class="l-visual l-case__img--blue">{ph(f"Cover image for {f['title']}", '')}<span class="l-pill l-pill--mint">{nice_date(f['date'])}</span></div>
+      <div class="l-feature__content is-large">
+        <span class="l-pill l-pill--grey">{e(f['tag'])}</span>
+        <h2>{e(f['title'])}</h2><p>{e(f['lede'])}</p>
+        <span class="l-case__more">Read the article{icon('right')}</span>
       </div>
     </a>
-    <div class="posts posts--two">{grid}</div>
+    <ul class="l-cases l-cases--two">{''.join(post_card(p) for p in rest)}</ul>
   </div>
 </section>
-"""
-    page("/journal/", "Journal", "Practical notes on websites for service businesses, from the Quincy Lou studio.", body, "Journal")
+
+{cta_block()}"""
+    page("/journal/", "Journal", "Practical notes on websites for service businesses, from the Quincy Lou studio.", body)
 
 
 def build_articles() -> None:
@@ -851,91 +694,106 @@ def build_articles() -> None:
                 blocks.append(f"<h2>{e(val)}</h2>")
             elif kind == "list":
                 blocks.append("<ul>" + "".join(f"<li>{e(x)}</li>" for x in val) + "</ul>")
-        more = "".join(post_card(q, i) for i, q in enumerate([q for q in posts if q["slug"] != p["slug"]][:3]))
-        body = f"""
-<article>
-  <section class="page-hero">
-    <div class="wrap">
-      <a class="back" href="/journal/">{icon('back')}All articles</a>
-      <div class="article-head" data-r>
-        <div class="post__meta"><span class="chip-ink">{e(p['tag'])}</span><span>{nice_date(p['date'])} · {e(p['read'])} read</span></div>
-        <h1>{e(p['title'])}</h1>
-        <p class="lede">{e(p['lede'])}</p>
-      </div>
-    </div>
-  </section>
-  <div class="wrap" data-r>{ph(f"Cover image for {p['title']}", "ph--reel")}</div>
-  <div class="wrap band">
-    <div class="prose">{''.join(blocks)}</div>
-    <div class="share"><span>Written by the Quincy Lou studio</span><a href="/contact/">Want us to look at your site?</a></div>
-  </div>
-</article>
-<section class="band" style="padding-top:0">
-  <div class="wrap">
-    <div class="head"><h2>Keep <span class="acc">reading.</span></h2>{btn('All articles', '/journal/', 'line')}</div>
-    <div class="posts">{more}</div>
+        more = "".join(post_card(q) for q in [q for q in posts if q["slug"] != p["slug"]][:3])
+        meta = (f'<div class="l-doc__author"><span class="l-logo__mark l-doc__avatar">{icon("mark")}</span><div><b>{e(S["name"])} studio</b><span>{e(p["read"])} read</span></div></div>'
+                '<a class="l-btn l-btn--dark" href="#review">Get a free review</a>')
+        head = doc_head(f'<span class="l-pill l-pill--mint">{e(p["tag"])}</span>', p["title"], p["lede"],
+                        ph(f"Cover image for {p['title']}", "") + f'<span class="l-pill l-pill--mint">{nice_date(p["date"])}</span>', meta)
+        body = f"""<section class="l-section l-section--first">
+  <div class="l-wrap l-doc">
+    <a class="l-back" href="/journal/">{icon('left')}All articles</a>
+    <article class="l-doc__article">
+      {head}
+      <div class="l-card l-prose">{''.join(blocks)}</div>
+    </article>
   </div>
 </section>
-"""
-        page(f"/journal/{p['slug']}/", p["title"], p["lede"], body, "Journal")
+
+<section class="l-section" aria-labelledby="more-h">
+  <div class="l-wrap">
+    <div class="l-head l-head--split"><div><span class="l-pill">Journal</span><h2 id="more-h">Keep reading.</h2></div><a class="l-btn l-btn--dark" href="/journal/">All articles</a></div>
+    <ul class="l-cases">{more}</ul>
+  </div>
+</section>
+
+{cta_block()}"""
+        page(f"/journal/{p['slug']}/", p["title"], p["lede"], body)
 
 
 def build_contact() -> None:
     ct = C["contact"]
-    faq = "".join(f"""<details class="qa"{' open' if i == 0 else ''}><summary>{e(q)}<i aria-hidden="true"></i></summary><p>{e(a)}</p></details>"""
+    h = C["home"]
+    faq = "".join(f"""<details class="l-qa"{' open' if i == 0 else ''}><summary>{e(q)}<i aria-hidden="true"></i></summary><p>{e(a)}</p></details>"""
                   for i, (q, a) in enumerate(ct["faq"]))
-    body = f"""
-{enquire_block('contact', 'h1', 'band contact-top')}
-<section class="band faq-band" aria-labelledby="faq-h">
-  <div class="wrap faq-grid">
-    <div class="faq-grid__head">
-      {acc_title(ct['faq_title'], 'h2', ' id="faq-h" data-r')}
-      <p data-r="100">{e(ct['faq_lede'])}</p>
+    addr = "<br>".join(e(x) for x in S["address"])
+    body = f"""<section class="l-section l-section--first" id="review" aria-labelledby="page-h">
+  <div class="l-wrap">
+    {list_head('Contact', ' '.join(h['form_title']), h['form_lede'])}
+    <div class="l-contact">
+      {review_form('contact')}
+      <aside class="l-card l-info" aria-label="Contact details">
+        <h2>Talk to a person</h2>
+        <dl>
+          <div><dt>Phone</dt><dd><a href="tel:{S['phone_href']}">{e(S['phone'])}</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:{e(S['email'])}">{e(S['email'])}</a></dd></div>
+          <div><dt>Studio</dt><dd>{addr}</dd></div>
+          <div><dt>Hours</dt><dd>{e(S['hours'])}</dd></div>
+        </dl>
+        <p class="l-info__note"><span class="l-yes">{icon('check')}</span>{e(S['reply_time'])}.</p>
+      </aside>
     </div>
-    <div class="qas" data-r="120">{faq}</div>
   </div>
 </section>
-"""
+
+<section class="l-section" id="faq" aria-labelledby="faq-h">
+  <div class="l-wrap l-faq">
+    <div class="l-faq__head">
+      <span class="l-pill">FAQ</span>
+      <h2 id="faq-h">{e(' '.join(ct['faq_title']))}</h2>
+      <p>{e(ct['faq_lede'])}</p>
+    </div>
+    <div class="l-qas">{faq}</div>
+  </div>
+</section>"""
     page("/contact/", "Contact", "Get in touch with Quincy Lou for a free website review. We reply within one working day.", body)
 
 
 def build_privacy() -> None:
     pv = C["privacy"]
-    secs = "".join(f"<section><h2>{e(h)}</h2><p>{e(t)}</p></section>" for h, t in pv["sections"])
-    body = f"""
-<section class="page-hero">
-  <div class="wrap page-hero__row">
-    <h1 data-r>Privacy<br><span class="acc">policy.</span></h1>
-    <p class="page-hero__side" data-r="120">Last updated {e(pv['updated'])}. Plain English, as short as we could make it.</p>
+    secs = "".join(f"<h2>{e(h)}</h2><p>{e(t)}</p>" for h, t in pv["sections"])
+    body = f"""<section class="l-section l-section--first l-section--last">
+  <div class="l-wrap l-doc">
+    {doc_head('<span class="l-pill l-pill--mint">Legal</span>', 'Privacy policy', f"Last updated {pv['updated']}. Plain English, as short as we could make it.")}
+    <div class="l-card l-prose">{secs}<h2>Contact</h2><p>Questions about this policy: <a href="mailto:{e(S['email'])}">{e(S['email'])}</a>. {e(S['company'])}</p></div>
   </div>
-</section>
-<section class="band" style="padding-top:0"><div class="wrap legal">{secs}
-  <section><h2>Contact</h2><p>Questions about this policy: <a href="mailto:{e(S['email'])}">{e(S['email'])}</a>. {e(S['company'])}</p></section>
-</div></section>
-"""
-    page("/privacy/", "Privacy", "How Quincy Lou collects and uses personal information.", body)
+</section>"""
+    page("/privacy/", "Privacy", "How Quincy Lou collects and uses personal information.", body, review=False)
+
+
+def simple_page(path: str, title: str, desc: str, tag: str, heading: str, text: str, buttons: str) -> None:
+    body = f"""<section class="l-section l-section--first l-section--last">
+  <div class="l-wrap l-doc">
+    <div class="l-card l-notice">
+      <span class="l-pill l-pill--mint">{e(tag)}</span>
+      <h1>{e(heading)}</h1>
+      <p>{e(text)}</p>
+      <div class="l-hero__buttons">{buttons}</div>
+    </div>
+  </div>
+</section>"""
+    page(path, title, desc, body, review=False)
 
 
 def build_thanks() -> None:
-    body = f"""
-<section class="page-hero"><div class="wrap lost">
-  <h1>Thank<br><span class="acc">you.</span></h1>
-  <p class="hero__lede">Your message is with us. {e(S['reply_time'])}, usually much sooner.</p>
-  <div class="hero__ctas">{btn('Back to the homepage', '/', 'cta')}{btn('Read the journal', '/journal/', 'line')}</div>
-</div></section>
-"""
-    page("/thanks/", "Thank you", "Thanks for getting in touch with Quincy Lou.", body)
+    simple_page("/thanks/", "Thank you", "Thanks for getting in touch with Quincy Lou.", "Message sent", "Thank you.",
+                f"Your message is with us. {S['reply_time']}, usually much sooner.",
+                f'<a class="l-btn l-btn--dark" href="/">Back to the homepage</a><a class="l-btn l-btn--line" href="/work/">See our work</a>')
 
 
 def build_404() -> None:
-    body = f"""
-<section class="page-hero"><div class="wrap lost">
-  <h1>Page<br><span class="acc">not found.</span></h1>
-  <p class="hero__lede">That link has moved or never existed. The useful parts of the site are one click away.</p>
-  <div class="hero__ctas">{btn('Go to the homepage', '/', 'cta')}{btn('See our work', '/work/', 'line')}</div>
-</div></section>
-"""
-    page("/404", "Page not found", "This page could not be found.", body)
+    simple_page("/404", "Page not found", "This page could not be found.", "Error 404", "Page not found.",
+                "That link has moved or never existed. The useful parts of the site are one click away.",
+                f'<a class="l-btn l-btn--dark" href="/">Go to the homepage</a><a class="l-btn l-btn--line" href="/work/">See our work</a>')
 
 
 def clean() -> None:

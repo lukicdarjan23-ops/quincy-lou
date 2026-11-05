@@ -15,9 +15,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="/assets/css/landing.css">
+<link rel="stylesheet" href="/assets/css/site.css">
 </head>
-<body class="landing">
+<body class="page">
 <a class="l-skip" href="#main">Skip to content</a>
 <header class="l-nav">
     <div class="l-wrap l-nav__in">
@@ -26,11 +26,12 @@
       <a class="l-btn l-btn--white l-nav__cta" href="#review">Free review</a>
       <details class="l-menu">
         <summary aria-label="Menu"><i></i><i></i><i></i></summary>
-        <nav class="l-menu__panel" aria-label="Mobile"><a href="#work">Case studies</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="/journal/">Journal</a><a href="/studio/">Studio</a><a href="#review">Free review</a></nav>
+        <nav class="l-menu__panel" aria-label="Mobile"><a href="#work">Case studies</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="/work/">Work</a><a href="/journal/">Journal</a><a href="/studio/">Studio</a><a href="/contact/">Contact</a></nav>
       </details>
     </div>
 </header>
 <main id="main">
+
   <section class="l-hero" aria-labelledby="hero-h">
     <div class="l-wrap l-hero__layout">
       <div class="l-hero__left">
@@ -107,6 +108,37 @@
   <span class="l-feature__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 5.5 14 15 4.5l4.5 4.5L10 18.5zM13 6.5 17.5 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><h3>Forms that ask too much</h3><p>Every extra field is a reason to give up. Eleven fields lose far more enquiries than four.</p>
 </li><li class="l-card l-problem">
   <span class="l-feature__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10m6 10V4m6 16v-7m4 7H2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><h3>Slow on a phone</h3><p>A page that takes five seconds to load on 4G has lost most of its visitors before it shows them anything.</p>
+</li></ul>
+  </div>
+</section>
+
+<section class="l-section" id="industries" aria-labelledby="industries-h">
+  <div class="l-wrap">
+    <div class="l-head l-head--center">
+      <span class="l-pill">Who we work with</span>
+      <h2 id="industries-h">Made for local businesses.</h2>
+    </div>
+    <ul class="l-industries"><li class="l-industry">
+  <div class="l-industry__img"><span class="ph " role="img" aria-label="Dental practices website example"></span></div>
+  <div class="l-industry__body">
+    <h3>Dental practices</h3><p>New patients compare three practices on their phone and book with whoever makes it easiest.</p>
+    <div class="l-industry__foot"><span class="l-pill l-pill--mint">4.3× new patient bookings</span>
+      <a class="l-link" href="#work" data-set-filter="Dental &amp; health">See the work<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+  </div>
+</li><li class="l-industry">
+  <div class="l-industry__img"><span class="ph " role="img" aria-label="Home services website example"></span></div>
+  <div class="l-industry__body">
+    <h3>Home services</h3><p>Plumbers, electricians and cleaners lose urgent jobs when the number is buried or the site is slow.</p>
+    <div class="l-industry__foot"><span class="l-pill l-pill--mint">2.1× calls from the site</span>
+      <a class="l-link" href="#work" data-set-filter="Home services">See the work<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+  </div>
+</li><li class="l-industry">
+  <div class="l-industry__img"><span class="ph " role="img" aria-label="Construction firms website example"></span></div>
+  <div class="l-industry__body">
+    <h3>Construction firms</h3><p>Bigger jobs need trust first: past projects, clear prices and a quote form that doesn&#x27;t feel like a tax return.</p>
+    <div class="l-industry__foot"><span class="l-pill l-pill--mint">3.4× quote requests</span>
+      <a class="l-link" href="#work" data-set-filter="Construction">See the work<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+  </div>
 </li></ul>
   </div>
 </section>
@@ -201,6 +233,13 @@
   </div>
 </section>
 
+<section class="l-section l-section--band" aria-label="Free review">
+  <div class="l-wrap"><div class="l-band">
+  <div><h3>Want numbers like these?</h3><p>Send us your website and we&#x27;ll show you, on video, the three changes that would bring in the most enquiries.</p></div>
+  <a class="l-btn l-btn--icon" href="#review">Get a free review<span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+</div></div>
+</section>
+
 <section class="l-section" id="services" aria-labelledby="services-h">
   <div class="l-wrap">
     <div class="l-head l-head--center">
@@ -264,37 +303,6 @@
   </div>
 </section>
 
-<section class="l-section" id="industries" aria-labelledby="industries-h">
-  <div class="l-wrap">
-    <div class="l-head l-head--center">
-      <span class="l-pill">Who we work with</span>
-      <h2 id="industries-h">Made for local businesses.</h2>
-    </div>
-    <ul class="l-industries"><li class="l-industry">
-  <div class="l-industry__img"><span class="ph " role="img" aria-label="Dental practices website example"></span></div>
-  <div class="l-industry__body">
-    <h3>Dental practices</h3><p>New patients compare three practices on their phone and book with whoever makes it easiest.</p>
-    <div class="l-industry__foot"><span class="l-pill l-pill--mint">4.3× new patient bookings</span>
-      <a class="l-link" href="#work" data-set-filter="Dental &amp; health">See the work<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-  </div>
-</li><li class="l-industry">
-  <div class="l-industry__img"><span class="ph " role="img" aria-label="Home services website example"></span></div>
-  <div class="l-industry__body">
-    <h3>Home services</h3><p>Plumbers, electricians and cleaners lose urgent jobs when the number is buried or the site is slow.</p>
-    <div class="l-industry__foot"><span class="l-pill l-pill--mint">2.1× calls from the site</span>
-      <a class="l-link" href="#work" data-set-filter="Home services">See the work<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-  </div>
-</li><li class="l-industry">
-  <div class="l-industry__img"><span class="ph " role="img" aria-label="Construction firms website example"></span></div>
-  <div class="l-industry__body">
-    <h3>Construction firms</h3><p>Bigger jobs need trust first: past projects, clear prices and a quote form that doesn&#x27;t feel like a tax return.</p>
-    <div class="l-industry__foot"><span class="l-pill l-pill--mint">3.4× quote requests</span>
-      <a class="l-link" href="#work" data-set-filter="Construction">See the work<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-  </div>
-</li></ul>
-  </div>
-</section>
-
 <section class="l-section" id="how" aria-labelledby="how-h">
   <div class="l-wrap">
     <div class="l-head l-head--center">
@@ -321,22 +329,6 @@
   </div>
   
 </li></ol>
-  </div>
-</section>
-
-<section class="l-section" id="founder" aria-labelledby="founder-h">
-  <div class="l-wrap">
-    <div class="l-founder">
-      <div class="l-founder__img"><span class="ph " role="img" aria-label="Photo of [Your name]"></span></div>
-      <div class="l-founder__body">
-        <span class="l-pill l-pill--grey">Who you&#x27;ll work with</span>
-        <h2 id="founder-h">You talk to the person doing the work.</h2>
-        <p>[A few sentences in your own words: who you are, why you started Quincy Lou and why you work with dental practices, trades and construction firms. Keep it personal and plain.]</p>
-        <p class="l-founder__sig"><b>[Your name]</b><span>Founder, Quincy Lou</span></p>
-        <ul class="l-founder__facts"><li><b>12</b><span>years building websites</span></li><li><b>310+</b><span>sites launched</span></li><li><b>1 day</b><span>to reply, every time</span></li></ul>
-        <a class="l-btn l-btn--dark" href="#review">Book a call with me</a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -404,6 +396,22 @@
   </div>
 </section>
 
+<section class="l-section" id="founder" aria-labelledby="founder-h">
+  <div class="l-wrap">
+    <div class="l-founder">
+      <div class="l-founder__img"><span class="ph " role="img" aria-label="Photo of [Your name]"></span></div>
+      <div class="l-founder__body">
+        <span class="l-pill l-pill--grey">Who you&#x27;ll work with</span>
+        <h2 id="founder-h">You talk to the person doing the work.</h2>
+        <p>[A few sentences in your own words: who you are, why you started Quincy Lou and why you work with dental practices, trades and construction firms. Keep it personal and plain.]</p>
+        <p class="l-founder__sig"><b>[Your name]</b><span>Founder, Quincy Lou</span></p>
+        <ul class="l-founder__facts"><li><b>12</b><span>years building websites</span></li><li><b>310+</b><span>sites launched</span></li><li><b>1 day</b><span>to reply, every time</span></li></ul>
+        <a class="l-btn l-btn--dark" href="#review">Book a call with me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="l-section" id="faq" aria-labelledby="faq-h">
   <div class="l-wrap l-faq">
     <div class="l-faq__head">
@@ -460,12 +468,12 @@
     <div class="l-footer__bottom">
       <a class="l-footer__big" href="/" aria-label="Quincy Lou, home"><span class="l-logo__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 22.5 12 12 22.5 1.5 12z" fill="currentColor"/><path d="M12 7.5 16.5 12 12 16.5 7.5 12z" style="fill: var(--mark-hole, #1487D2)"/></svg></span><span>Quincy Lou</span></a>
       <div class="l-footer__info">
-        <div class="l-footer__links"><a href="/work/">Work</a><i></i><a href="/journal/">Journal</a><i></i><a href="/privacy/">Privacy</a></div>
-        <p>© 2026 Quincy Lou Ltd.</p>
+        <div class="l-footer__links"><a href="/work/">Work</a><i></i><a href="/studio/">Studio</a><i></i><a href="/journal/">Journal</a><i></i><a href="/contact/">Contact</a><i></i><a href="/privacy/">Privacy</a></div>
+        <p>© 2026 Quincy Lou Ltd. Registered in England &amp; Wales, no. 09184427.</p>
       </div>
     </div>
   </div>
 </footer>
-<script src="/assets/js/landing.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>

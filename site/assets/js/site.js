@@ -1,4 +1,4 @@
-/* Quincy Lou homepage: case study filter and the mobile menu. The page works without it. */
+/* Quincy Lou: case study filter and the mobile menu. Every page works without it. */
 (function () {
   "use strict";
 
