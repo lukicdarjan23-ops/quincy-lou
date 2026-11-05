@@ -9,7 +9,6 @@
     "email": "hello@quincylou.com",
     "phone": "020 7946 0318",
     "phone_href": "+442079460318",
-    "availability": "Taking 2 projects for December",
     "cta": "Get a website review",
     "address": ["Studio 7, Nelson Works", "128 Loman Street", "London SE1 0EH"],
     "hours": "Mon to Fri, 9:00 to 17:30",
@@ -25,8 +24,19 @@
 
   "home": {
     "hero_lede": "We design, build and optimise websites for roofers, clinics, solicitors and every other business that lives on enquiries. Price and launch date in writing before you commit.",
-    "reel_caption": "Showreel 2026 (0:45)",
     "clients_label": "Trusted by businesses like",
+    "receipts": {
+      "title": ["Numbers you", "can check."],
+      "lede": "Every figure on this site comes from our clients’ own analytics, not from a pitch deck. Ask and we will show you the dashboards behind them.",
+      "store": "Quincy Lou studio",
+      "sub": "Since 2014 · London",
+      "lines": [["Sites launched", "310"], ["Years in business", "12"], ["Avg. lift in enquiries", "2.3×"], ["Average rating", "4.9/5"]],
+      "total": ["Happy clients", "80+"],
+      "note": "Paid in full. No hidden fees.",
+      "tools_title": "Tools we work with",
+      "tools_lede": "Set up, run and reported by the same four people.",
+      "tools": ["Google Analytics", "Search Console", "Hotjar", "WordPress", "Webflow", "Netlify", "HubSpot", "Calendly", "Mailchimp"]
+    },
     "clients": ["Client 01", "Client 02", "Client 03", "Client 04", "Client 05", "Client 06"],
     "work_title": ["Sites that", "pay for themselves."],
     "work_lede": "Recent launches, each measured against the same months the year before. Numbers, not adjectives.",
@@ -120,19 +130,24 @@
 
   "services": [
     {
-      "key": "design", "icon": "pen", "name": "Design", "tone": "sand",
+      "key": "design", "icon": "pen", "name": "Design", "tone": "sand", "link": "/contact/",
       "text": "Customer interviews first, then pages built around what nearly stopped people from getting in touch. Two full concepts, mobile designed first.",
       "price": "From £4,500", "time": "2 to 3 weeks"
     },
     {
-      "key": "build", "icon": "cursor", "name": "Websites that bring in work", "tone": "red",
+      "key": "build", "icon": "cursor", "name": "Websites that sell", "tone": "red", "link": "/contact/",
       "text": "Design and build together. Fast, accessible, and simple enough that your team can change prices and photos without calling us.",
       "price": "From £8,500", "time": "4 to 6 weeks"
     },
     {
-      "key": "optimise", "icon": "chart", "name": "Optimise", "tone": "paper",
+      "key": "optimise", "icon": "chart", "name": "Optimise", "tone": "ink", "link": "/contact/",
       "text": "After launch we keep testing the headline, the form and the offer until the number of enquiries moves. One report a month in plain English.",
       "price": "From £1,200/mo", "time": "monthly"
+    },
+    {
+      "key": "content", "icon": "search", "name": "Content & local SEO", "tone": "cream", "link": "/contact/",
+      "text": "Service pages, area pages and articles that answer what your customers actually type into Google, written so they read well and rank.",
+      "price": "From £900/mo", "time": "monthly"
     }
   ],
 
@@ -181,23 +196,149 @@
     {"name": "Name Surname", "role": "Client lead", "line": "[One honest line about this person.]"}
   ],
 
-  "studio": {
-    "title": ["A small studio for businesses", "that run on enquiries."],
-    "lede": "We started Quincy Lou because the businesses we knew best, the trades, clinics and practices, kept being sold websites built to win awards instead of to make the phone ring.",
-    "story": [
-      "Most of our clients have never hired an agency before, or they have and it went badly. Both are fine. We work in plain English, we put the price in writing before anything starts, and we measure success in enquiries, bookings and calls.",
-      "We stay small on purpose. Four people means the person who reviews your site is the person who designs it, and the person who builds it is the one who picks up when something breaks."
+  "landing": {
+    "_note": "The homepage. Numbers and names in the small interface cards are illustrative; replace them with your own before launch.",
+    "nav": [["Case studies", "#work"], ["Services", "#services"], ["Pricing", "#pricing"], ["FAQ", "#faq"]],
+    "nav_cta": "Free review",
+    "tag": "Websites for service businesses",
+    "title": "Websites that keep the phone ringing.",
+    "lede": "We design, build and optimise websites for dental practices, trades and construction firms. Fixed price, launch date in writing, results you can check.",
+    "primary": "Get a free review",
+    "secondary": "See our work",
+    "rating": "4.9/5 average client rating",
+    "trusted": ["Trusted by", "local businesses"],
+    "logos": 6,
+    "results_tag": "Our results",
+    "results_title": ["Real calls.", "Real bookings."],
+    "results_lede": "Every figure on this page comes from our clients' own analytics. Ask and we will show you the dashboards behind them.",
+    "trust_line": "Trusted by 80+ firms",
+    "card_a": {"text": "Clear pages, visible prices and one obvious next step. That is what turns a visit into a call.", "value": "2.3", "suffix": "×", "caption": "Average lift in enquiries after launch"},
+    "card_b": {"text": "We measure success the way you do: in calls, booked appointments and quote requests.", "value": "4.9", "suffix": "/5", "caption": "Average client rating"},
+    "card_c": {"text": "Every project starts with a written price and a launch date, and ends with ninety days of tuning.", "value": "310", "suffix": "+", "caption": "Sites launched for service businesses"},
+    "fast_line": "Live in six weeks on average",
+    "services_tag": "What we do",
+    "services_title": "Everything you need to win work.",
+    "services_lede": "Four services, each priced up front and built around the calls and bookings you want more of.",
+    "services": [
+      {"icon": "pen", "title": "Website design", "text": "Customer interviews first, then pages built around what nearly stopped people from getting in touch. Mobile designed first."},
+      {"icon": "cursor", "title": "Websites that sell", "text": "Fast, accessible pages with the phone number, the prices and the booking button exactly where people look for them."},
+      {"icon": "chart", "title": "Ongoing optimisation", "text": "Every month we test one change, track the calls and forms it brings in, and report back in plain English."},
+      {"icon": "search", "title": "Content & local SEO", "text": "Service and area pages that answer what people search for locally, so the right customers find you before a competitor."}
     ],
-    "numbers": [["12", "years in business"], ["310", "sites launched"], ["4.9/5", "average client rating"], ["1 day", "average reply time"]],
-    "values_title": ["What we", "believe."],
-    "values": [
-      {"title": "Prices belong on the page", "text": "If you have to ring to find out what something costs, you are already annoyed before the conversation starts."},
-      {"title": "Measure the phone, not the pixels", "text": "We agree the number we are moving before the project starts, and it is never a bounce rate."},
-      {"title": "You own everything", "text": "Your domain, your hosting, your code and your files. Nothing is held hostage if you leave."},
-      {"title": "Say no early", "text": "If we are not the right fit, we tell you on the first call and point you somewhere better."}
-    ]
+    "steps_tag": "How it works",
+    "steps_title": "Live in three simple steps.",
+    "steps_lede": "No long meetings and no surprises on the invoice. Here is what working with us looks like.",
+    "steps": [
+      {"title": "Free website review", "text": "A recorded walkthrough of your current site and the three things costing you the most enquiries."},
+      {"title": "Fixed quote", "text": "One call, then a written price and a launch date. Nothing starts until you have both."},
+      {"title": "Launch and tune", "text": "We design, build and launch, then spend ninety days improving what the numbers show."}
+    ],
+    "journal_tag": "Journal",
+    "journal_title": "Notes on websites that bring in work",
+    "journal_lede": "Short, practical pieces for owners of dental practices, trades and construction firms.",
+    "footer_text": "Websites for dental practices, trades and construction firms. Designed, built and optimised to bring in calls.",
+
+    "problem_tag": "The problem",
+    "problem_title": "Where your calls are leaking.",
+    "problem_lede": "Most small business websites look fine and still lose people in the first ten seconds. These are the four leaks we fix most often.",
+    "problems": [
+      {"icon": "phone", "title": "The number is hard to find", "text": "Most visitors are on a phone and want to call. If the number isn't one tap away, they ring the next result."},
+      {"icon": "search", "title": "No prices, no trust", "text": "When people can't see roughly what something costs, they assume it's too much and leave without asking."},
+      {"icon": "pen", "title": "Forms that ask too much", "text": "Every extra field is a reason to give up. Eleven fields lose far more enquiries than four."},
+      {"icon": "chart", "title": "Slow on a phone", "text": "A page that takes five seconds to load on 4G has lost most of its visitors before it shows them anything."}
+    ],
+
+    "cases_tag": "Case studies",
+    "cases_title": "Proof from real clients.",
+    "cases_lede": "Each one measured against the same months the year before, from the client's own analytics.",
+    "band_title": "Want numbers like these?",
+    "band_text": "Send us your website and we'll show you, on video, the three changes that would bring in the most enquiries.",
+    "case_sectors": {"client-01": "Construction", "client-02": "Dental & health", "client-04": "Home services", "client-05": "Dental & health", "client-06": "Home services", "client-08": "Home services"},
+
+    "industries_tag": "Who we work with",
+    "industries_title": "Made for local businesses.",
+    "industries": [
+      {"title": "Dental practices", "filter": "Dental & health", "problem": "New patients compare three practices on their phone and book with whoever makes it easiest.", "result": "4.3× new patient bookings"},
+      {"title": "Home services", "filter": "Home services", "problem": "Plumbers, electricians and cleaners lose urgent jobs when the number is buried or the site is slow.", "result": "2.1× calls from the site"},
+      {"title": "Construction firms", "filter": "Construction", "problem": "Bigger jobs need trust first: past projects, clear prices and a quote form that doesn't feel like a tax return.", "result": "3.4× quote requests"}
+    ],
+
+    "founder_tag": "Who you'll work with",
+    "founder_title": "You talk to the person doing the work.",
+    "founder_text": "[A few sentences in your own words: who you are, why you started Quincy Lou and why you work with dental practices, trades and construction firms. Keep it personal and plain.]",
+    "founder_name": "[Your name]",
+    "founder_role": "Founder, Quincy Lou",
+    "founder_facts": [["12", "years building websites"], ["310+", "sites launched"], ["1 day", "to reply, every time"]],
+    "founder_cta": "Book a call with me",
+
+    "voices_tag": "Testimonials",
+    "voices_title": "What our clients say.",
+    "voices": [
+      {"metric": "2.1×", "label": "more calls", "quote": "[Short quote from a client about what changed after the new site went live.]", "name": "[Client name]", "role": "[Owner, business, town]"},
+      {"metric": "+38%", "label": "more bookings", "quote": "[Short quote from a client about what changed after the new site went live.]", "name": "[Client name]", "role": "[Practice manager, business, town]"},
+      {"metric": "3.4×", "label": "more quote requests", "quote": "[Short quote from a client about what changed after the new site went live.]", "name": "[Client name]", "role": "[Director, business, town]"}
+    ],
+    "google_rating": "4.9 average on Google from 80+ reviews",
+
+    "compare_tag": "Why Quincy Lou",
+    "compare_title": "How we compare.",
+    "compare_cols": ["Quincy Lou", "Typical agency", "DIY website builder"],
+    "compare_rows": [
+      ["Price agreed before work starts", "yes", "Often hourly", "Monthly fee"],
+      ["Launch date in writing", "yes", "Rarely", "no"],
+      ["Built around calls and bookings", "yes", "Sometimes", "no"],
+      ["Call and form tracking set up", "yes", "Extra cost", "no"],
+      ["90 days of improvements after launch", "yes", "Extra cost", "no"],
+      ["You own the site and the domain", "yes", "Not always", "Tied to the platform"],
+      ["One person from first call to launch", "yes", "Account managers", "You do it yourself"]
+    ],
+
+    "pricing_tag": "Pricing",
+    "pricing_title": "Clear prices, before we start.",
+    "pricing_lede": "Fixed prices for projects and one simple monthly plan. Every quote is in writing before any work begins.",
+    "guarantee_title": "The 90-day promise",
+    "guarantee_text": "If your enquiries haven't gone up 90 days after launch, we keep working on the site at no extra cost until they do.",
+
+    "faq_tag": "FAQ",
+    "faq_title": "Questions, answered.",
+    "faq_lede": "Still not sure? Send your website below or ring us. A real person replies within one working day.",
+    "faq": [
+      ["How long does a new website take?", "Most sites go live four to six weeks after the quote is signed. A refresh of an existing site takes two to three weeks."],
+      ["What does it cost?", "A refresh starts at £4,500 and a full rebuild at £8,500, both fixed. Ongoing optimisation is £1,200 a month, rolling, with 30 days' notice."],
+      ["I already have a website. Do I need a new one?", "Not always. The free review tells you whether fixing your current site is enough. If it is, we'll say so."],
+      ["Do I have to change my hosting or domain?", "No. We can work with what you have, or move everything to hosting in your name. You own the site and the domain either way."],
+      ["How do you measure results?", "We set up call tracking and form tracking before launch, then compare calls, forms and bookings with the same months the year before."],
+      ["What if the results don't come?", "Every rebuild includes 90 days of improvements after launch, and the 90-day promise covers you if enquiries don't go up."]
+    ],
+
+    "cta_tag": "Free website review",
+    "cta_title": "Find out what your website is costing you.",
+    "cta_text": "Send us your website. Within one working day you get a recorded walkthrough of the three changes that would bring in the most enquiries.",
+    "cta_points": ["A recorded video, not a sales call", "The three biggest leaks, in plain English", "Free, with no obligation"],
+    "cta_sectors": ["Dental practice", "Home services", "Construction", "Something else"],
+    "cta_button": "Send my website"
   },
 
+  "studio": {
+    "title": ["A small studio", "with plain prices."],
+    "lede": "Four people in London building websites for trades, clinics and practices. No account managers, no juniors behind a pitch deck, prices in writing.",
+    "place": "London, since 2014",
+    "ways": [
+      {"title": "One call, not five meetings.", "text": "We would rather show you a working draft than talk about one for an hour. Most decisions get made on a single call."},
+      {"title": "The person you call builds it.", "text": "No hand-offs. Whoever reviews your site designs it, and whoever builds it picks up when something breaks."},
+      {"title": "Fixed price, fixed date.", "text": "Every project has a written price and a launch date before it starts. If we run over, that is on us."}
+    ],
+    "beliefs_label": "What we believe",
+    "beliefs": [
+      "Prices belong on the page.",
+      "Measure the phone, not the pixels.",
+      "You own everything you paid for.",
+      "Say no early, not late.",
+      "If you can't edit it, it isn't finished.",
+      "A website is a salesperson, not a brochure."
+    ],
+    "hiring": {"title": "We're hiring a front-end developer.", "text": "London or remote in the UK. Send us a site you built, not a CV.", "cta": "Say hello"}
+  },
   "journal": [
     {
       "slug": "put-your-prices-on-your-website", "tag": "Pricing", "date": "2026-09-18", "read": "4 min",
@@ -265,14 +406,17 @@
   ],
 
   "contact": {
-    "title": ["Let’s talk about", "your website."],
-    "lede": "Fill in the form, ring us or send an email. Whichever you choose, a real person replies within one working day.",
+    "faq_title": ["Questions,", "answered."],
+    "faq_lede": "Still not sure? Send the form above or ring us. A real person replies within one working day.",
     "needs": ["New website", "Redesign", "Ongoing optimisation", "Not sure yet"],
     "budgets": ["Under £5k", "£5–10k", "£10–20k", "£20k+"],
     "faq": [
       ["How quickly can you start?", "Usually within two to three weeks of a signed quote. We take on two new projects a month so each one gets proper attention."],
       ["Do you work outside London?", "Yes. Most of our clients are elsewhere in the UK and we work remotely with all of them."],
-      ["What if I only need a few changes?", "Book the free review. If a full project is not worth it for you, we will say so and suggest what to do instead."]
+      ["What if I only need a few changes?", "Book the free review. If a full project is not worth it for you, we will say so and suggest what to do instead."],
+      ["Who owns the website when it is done?", "You do. The domain, the hosting account, the code and every file are in your name from day one."],
+      ["Can we update the site ourselves?", "Yes. Every site comes with an editor your team can use, and a short recorded walkthrough of how to change pages, prices and photos."],
+      ["What if we don't like the first design?", "You see two directions before anything is built. We then revise the one you pick until it is right, inside the quoted price."]
     ]
   },
 
